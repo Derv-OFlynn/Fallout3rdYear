@@ -160,23 +160,68 @@ grep -n Cork cities.txt
 ```
 17. Display just the first character of each line in the file `cities.txt`. Hint: _Use the `cat` and `cut` commands with piping_.
 ```Shell
+cut -c 1 cities.txt
 ```
 18. Display just the second last line of the file `capital.txt`. Hint: _Use the `cat`, `tail` and `head` commands with piping_.
 ```Shell
+tail -n 2 capital.txt | head -n 1
 ```
 19. Display the output of the command `ps -aux` _both_ to the screen _and_ redirect the stdout to the file `processes.txt`.
 ```Shell
+ps -aux >> processes.txt | cat processes.txt
 ```
 20. The command `seq` generates a sequence of numbers. For example, the command `seq 5` generates a sequence of numbers from 1 to 5. Try it out for yourself.
     
     1. Create a new file called `numbers.txt` with the sequence of numbers from 1 to 4 each on a separate line. Hint: _Use the `seq` command with redirection_.
-        
+    ```Bash
+seq 4 > numbers.txt
+```
     2. Now, using one command, appended the sequence numbers from 1 to 6 to the end of the file `numbers.txt`, each number on a separate line.
-        
+	```Shell
+seq 6 >> numbers.txt
+```
     3. Display the contents of the file `numbers.txt` sorted in ascending order.
-        
+	```Shell
+sort numbers.txt
+```
     4. Display the contents of the file `numbers.txt` sorted in ascending order, with duplicates removed. Hint: _Use the `cat`, `sort` and `uniq` commands with piping_.
-        
-    5. Display how many times each line is duplicated in the file `numbers.txt`.
-        
-    6. Display only the unique (non-duplicate lines) in the file. `numbers.txt`.
+	```Shell
+sort numbers.txt | uniq
+```
+    1. Display how many times each line is duplicated in the file `numbers.txt`.
+	```Shell
+sort numbers.txt | uniq -c
+```
+    1. Display only the unique (non-duplicate lines) in the file. `numbers.txt`.
+	```Shell
+sort numbers.txt | uniq -u
+```
+
+PROCESSES
+
+1. Start five processes in the background as indicated below:
+    
+    ```
+    $ sleep 1000 &                              P1
+    $ sleep 2000 &                              P2
+    $ sleep 3000 &                              P3
+    $ sleep 4000 &                              P4
+    $ sleep 5000 &                              P5
+    ```
+    
+
+- Please complete the following exercises, and write the commands and/or keystrokes you used as your answer.
+    
+- Terminate process P1 without using the `kill` command.
+    
+- Identify the process identifier (PID) of process P2.
+    
+- Terminate process P2 using the `kill` command.
+    
+- Suspend process P3.
+    
+- Bring process P4 to the foreground and then terminate it.
+    
+- Terminate process P5 by force using the `kill` command.
+    
+- Terminate process P3 without using the `kill` command.
