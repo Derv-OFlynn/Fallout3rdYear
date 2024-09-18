@@ -211,17 +211,34 @@ PROCESSES
     
 
 - Please complete the following exercises, and write the commands and/or keystrokes you used as your answer.
-    
 - Terminate process P1 without using the `kill` command.
-    
+```Shell
+^C
+```
 - Identify the process identifier (PID) of process P2.
-    
+```Shell
+[2] 1575
+```
 - Terminate process P2 using the `kill` command.
-    
+```Shell
+kill 1575
+```
 - Suspend process P3.
-    
+```Shell
+kill -STOP 1576
+```
 - Bring process P4 to the foreground and then terminate it.
-    
+```Shell
+fg %4
+^C
+```
 - Terminate process P5 by force using the `kill` command.
-    
+```Shell
+kill -9 1578
+```
 - Terminate process P3 without using the `kill` command.
+```Shell
+top
+k
+1576
+```
