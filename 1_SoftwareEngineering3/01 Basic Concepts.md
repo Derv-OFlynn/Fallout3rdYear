@@ -164,9 +164,4 @@ These requirements are supported by allowing objects to be linked together - thi
 
 The object model views a running program as a  network, or graph of objects. The objects form  the nodes in the graph, and the arcs connecting the objects are known as <mark style="background: #FFB8EBA6;">links</mark>. 
 
-The object network represents relationships between data entities - Objects can be  
-created and destroyed at run-time and the  
-links between them can also be changed -  
-the structure, or topology, of the object  
-network is therefore highly dynamic,  
-changing as a program runs
+The object network represents relationships between data entities - Objects can be created and destroyed at run-time and the links between them can also be changed - the structure, or topology, of the object network is therefore highly dynamic, changing as a program runs.
