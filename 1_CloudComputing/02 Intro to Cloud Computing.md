@@ -19,18 +19,48 @@
 - Access to 3rd party functionality
 - Mobility
 
-### <mark style="background: #BABD00;">Why is it important?</mark>
 
-<mark style="background: #BABD00;">SaaS (ready to use):</mark>
+
+### <mark style="background: #BABD00;">SaaS (ready to use):</mark>
+
 - Most basic form of cloud computing
 - No dev necessary for user
 - No resources required form the user
 - Software managed from a central location
-- <mark style="background: #FF5582A6;">FINISH ^</mark>
+- Software delivered in a “one to many” model
+- Users not required to handle software upgrades and patches  
+- Application Programming Interfaces (APIs) allow for integration between different pieces of software  
+- Offer powerful tools right at web browser  
+- Requires no installation  
+- Requires no specific knowledge of user
 
-<mark style="background: #BABD00;">Platform as a Service (PaaS):</mark>
-- Provides developers with a proprietary APIs to make an application that will run in a specific environment
-- <mark style="background: #FF5582A6;">FINISH ^</mark>
+### <mark style="background: #BABD00;">SaaS examples:</mark>
+
+<mark style="background: #BABD00;">Google Docs:</mark>  
+- Productivity suite  
+- Free to use (free Google Account required)  
+- Share documents with others  
+- Try it: docs.google.com
+
+<mark style="background: #BABD00;">Dropbox:</mark>  
+- Online file storage  
+- Automatic synchronization across computers  
+- Sharing of files with other users  
+- Web access + mobile access  
+- Backup of data + restore (30 days)
+
+Salesforce (CRM)  
+- Sales cloud – automation of workflow  
+- Service cloud – customer service  
+- Chatter – collaboration tools  
+- Jigsaw – customer contact database  
+- Force.com – Salesforce platform for third party apps (PaaS)  
+- Heroku – third party ruby apps (PaaS)
+### <mark style="background: #BABD00;">Platform as a Service (PaaS):</mark>
+
+- "Provides developers with a proprietary APIs to make an application that will run in a specific environment"
+- Can be any application you can think of  
+- Is locked to the platform used for creation
 - Examples: metaverse apps, PHP, Java, Python, C#
 
 <mark style="background: #BABD00;">Benefits of PaaS?</mark>
@@ -52,12 +82,14 @@ Infrastructure for:
 - Storing
 . . . applications and data in cloud environments.
 
-<mark style="background: #FF5582A6;">FINISH ^</mark>
-
-Provides limitless storage
-
-Provides virtually limitless 
-<mark style="background: #FF5582A6;">FINISH ^</mark>
+### <mark style="background: #BABD00;">IaaS:</mark>
+- provides virtually limitless storage  
+- provides virtually limitless computing power  
+- potentially negates the need of having physical hardware at hand for doing so  
+- provides numerous Linux, Unix and Windows environments to work in  
+- provides variety of tools, services, SDKs and the like running on those OSs  
+- Usually requires specific knowledge to use APIs for creating and managing the virtual OSs in the cloud infrastructure  
+- therefore usually not user-friendly and simple to use
 
 <mark style="background: #BABD00;">IaaS provider examples:</mark>
 - AWS
@@ -69,17 +101,21 @@ Provides virtually limitless
 
 ### <mark style="background: #BABD00;">"Cloud Computing" Model Abstraction:</mark>
 
-<mark style="background: #FF5582A6;">INSERT DIAGRAM FROM SLIDES ^</mark>
+![](https://i.imgur.com/QMURBci.png)
 
-Efficiency vs. Effectiveness. Efficient systems do not make wasteful use of system resources. Effectiveness is more focused on impact.
+<mark style="background: #BABD00;">Efficiency vs. Effectiveness:</mark> Efficient systems do not make wasteful use of system resources. Effectiveness is more focused on impact.
 
 <mark style="background: #BABD00;">Cloud Repatriation:</mark> Moving from the cloud back to local data centre.
 
 ### <mark style="background: #BABD00;">How do we do cloud development?</mark>
 
-Development and Waterfall used as part
+The development process remains the same...
 
-<mark style="background: #FF5582A6;">INSERT DIAGRAM FROM SLIDES ^</mark>
+![](https://i.imgur.com/VAtSsxu.png)
+
+But where we do these tasks may change..
+
+![](https://i.imgur.com/73PMiUx.png)
 
 <mark style="background: #BABD00;">Deployment</mark> happens in the cloud.
 
@@ -90,74 +126,16 @@ The major players are:
 
 Each has their own set of tools on offer.
 
-### <mark style="background: #BABD00;">Downsides:</mark>
+![](https://i.imgur.com/R7dJhAb.png)
+
+<mark style="background: #BABD00;">Downsides:</mark>
 - Security
 - Lock-in
 - Reliability
 - Lack of control
 
-### <mark style="background: #BABD00;">Upsides:</mark>
+<mark style="background: #BABD00;">Upsides:</mark>
 - Scale and cost
 - Encapsulated change management
 - Next-generation architectures
 - Choice and agility
-
-### <mark style="background: #BABD00;">History of Distributed Systems </mark>
-
-<mark style="background: #FF5582A6;">INSERT DIAGRAM FROM SLIDES ^</mark>
-
-n-tier architecture
-
-<mark style="background: #BABD00;">CDN:</mark> Content Delivery Network
-
-<mark style="background: #BABD00;">Sharding</mark> is a concept where you have a relational database and you split it up based on parameters (e.g. for contacts storing A-F names and G-K name in separate databases to split up the load).
-
-<mark style="background: #BABD00;">CAP Theorem:</mark> Consistency, Availability and Persistence Tolerance. Can only ever have 2/3.
-
-### <mark style="background: #BABD00;">Evolution of Distributed Systems:</mark>
-
-<mark style="background: #BABD00;">Monolithic Systems (Single terms):</mark>
-- Central processing (mainframe)
-- Multiple access supported  by timesharing OSs
-- <mark style="background: #FF5582A6;">FINISH ^</mark>
-
-<mark style="background: #BABD00;">Client Server (Two tier):</mark>
-
-<mark style="background: #BABD00;">Multi-tier application:</mark>
-
-
-### <mark style="background: #BABD00;">Centralised System Characteristics:</mark>
-
-- One component with non-autonomous parts
-- Components shared by users all the time
-- All resources accessible
-- Software runs in a single process
-- Single point of control 
-- Single point of failure
-
-### <mark style="background: #BABD00;">Distributed System Characteristics:</mark>
-
-- Multiple autonomous components
-- Components not shared by all users
-- Resources may not be accessible
-- Software runs in concurrent processes on different processors
-- Multiple points of control
-- Multiple points of failure
-
-<mark style="background: #BABD00;">Parallel Processing:</mark> Multiple processes running efficiently at the same time
-
-<mark style="background: #BABD00;">Concurrent Processing:</mark> The processes run one at a time but switch very very fast. Appears similarly to parallel processing.
-
-Intel introduced multi-threading in ~2007
-
-<mark style="background: #BABD00;">Multicast:</mark> virtual group is created and a select number of computing nodes subscribes to a multicast address. The multicast address is virtual so everything subscribed to that address receives the packet.
-
-<mark style="background: #BABD00;">Anycast:</mark> used mainly by CDNs. There is an IP address that can represent multiple nodes at the same time. Nodes at different points around the world, not just locally. Delivers to the nearest physical node to the centre.
-
-<mark style="background: #BABD00;">Latency:</mark> The time it takes a packet to get from source to destination.
-
-### <mark style="background: #BABD00;">Intranets:</mark>
-
-<mark style="background: #FF5582A6;">INSERT DIAGRAM FROM SLIDES ^</mark>
-
-<mark style="background: #FF5582A6;">FINISH v</mark>
