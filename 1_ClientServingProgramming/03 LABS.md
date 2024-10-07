@@ -54,3 +54,5 @@ Machine 2: 192.168.1.12
 Connect using WinSCP
 
 Use Putty to connect.
+
+Done
