@@ -330,3 +330,142 @@ WHERE supplier_id NOT IN
 ```
 
 Run this code from the ExtraExamples.sql file.
+
+### <mark style="background: #69E772;">NULL "problem":</mark>
+
+```SQL
+Select staff_no, reports_to  
+from b2_staff;
+```
+
+![](https://i.imgur.com/hjWoBRC.png)
+
+Get the names and staff numbers of staff who have nobody reporting to them.  
+
+```SQL
+select staff_no 
+from b2_staff 
+where staff_no 
+not in (select reports_to from b2_staff);
+```  
+
+This query returns an empty set, because NOT IN cannot evaluate a column that has NULLs.
+
+### <mark style="background: #69E772;">Using aggregates in sub-queries:</mark>
+
+```SQL
+SELECT stock_code,stock_description, unit_price 
+FROM b2_stock  
+WHERE unit_price > (
+	SELECT AVG(unit_price) 
+	FROM b2_stock);
+```
+
+![](https://i.imgur.com/Pqy6U3W.png)
+
+This query returns the stock code, description and price of all stock items that cost more than the average unit price of any stock item.
+
+### <mark style="background: #69E772;">EXISTS condition:</mark>
+
+This returns a Boolean value of true or false.  
+
+The result is true if the sub-query returns a non-empty set of values i.e. it’s true that a row exists.  
+
+The sub-query is generally correlated to the outer query
+
+The ``EXISTS`` condition is met if the sub-query returns at least one row.  
+
+The syntax for the ``EXISTS`` condition is:  
+```SQL
+SELECT columns  
+FROM tables  
+WHERE EXISTS ( subquery );
+``` 
+
+The ``EXISTS`` condition can be used in any valid SQL statement - select, insert, update, or delete.
+
+e.g.  
+```SQL
+select * from b2_stock where exists (select now());  
+
+-- This is the same as  
+
+Select * from b2_stock;  
+because “select now()” returns the current date, so a value exists.```
+
+because “select now()” returns the current date, so a value exists.
+
+The following query will return no values:  
+```SQL
+select * from b2_stock where exists (  
+select now()  
+where 1 = 2);
+```  
+
+Because  
+```SQL
+select now() where 1 = 2
+```  
+
+returns no values.
+
+### <mark style="background: #69E772;">CORRELATED SUB-QUERIES:</mark>
+
+This is where the inner select statement refers to data defined in the outer select statement.
+
+<mark style="background: #69E772;">Example 1 - EXISTS:</mark>
+This select statement will return all records from the suppliers table where there is at least one record in the supplier order table with the same ``supplier_id``.  
+
+It is a <mark style="background: #69E772;">correlated sub-query</mark>.
+
+```SQL
+SELECT *  
+FROM b2_supplier s  
+WHERE EXISTS  
+	(select *  
+	from b2_sorder o  
+	where s.supplier_id = o.supplier_id);
+```
+
+![](https://i.imgur.com/8cGpCOy.png)
+
+<mark style="background: #69E772;">Example #2 - NOT EXISTS:</mark>
+
+The ``EXISTS`` condition can also be combined with the NOT operator.  
+
+For example,  
+```SQL
+SELECT *  
+FROM supplier s  
+WHERE not exists (select * from sorder o  
+where s.supplier_id = o.supplier_id);
+```
+
+<mark style="background: #69E772;">Example #3 - DELETE Statement:</mark> 
+
+The following is an example of a delete statement that utilizes the EXISTS condition:
+
+```SQL
+DELETE FROM supplier s  
+WHERE not EXISTS  
+	(select *  
+	from sorder o  
+	where s.supplier_id = o.supplier_id);
+```
+
+<mark style="background: #69E772;">Correlated sub-query:</mark>  
+
+```SQL
+SELECT stock_code, stock_description, unit_price, supplier_id  
+FROM b2_stock st  
+WHERE unit_price > (  
+SELECT AVG(unit_price) FROM b2_stock WHERE  
+supplier_id = st.supplier_id);
+```
+
+This returns the stock code, description, price and supplier id of all stock items that cost more than the average stock item supplied by that supplier.
+
+### <mark style="background: #69E772;">RELATIONAL DIVIDE:</mark>
+
+Shows rows in one table that are related to all rows in another many:many table.  
+e.g. Which students have passed ALL modules?

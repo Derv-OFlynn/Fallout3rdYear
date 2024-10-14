@@ -31,3 +31,15 @@ Attendance taken in lectures. Used to bump our grade if we fail.
 Installing Linux from scratch in a VM for lab 2.
 
 Last lecture before exam is devoted to going through exam.
+
+### <mark style="background: #BABD00;">CA 1:</mark>
+- Brightspace quiz
+- 32 questions
+- 48 minutes
+- 25% overall
+- covers mostly lectures 1-5 (incl. what was said and the required reading)
+- Week 6
+- In the lab
+- Must use a desktop computer
+- No negative marking
+- Separated in categories.

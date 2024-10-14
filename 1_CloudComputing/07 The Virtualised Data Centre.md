@@ -232,3 +232,42 @@ Allows application to be delivered in an isolated environment
 
 ### <mark style="background: #BABD00;">Economics of Cloud:</mark>
 
+Cloud has changed the economics of IT  
+
+Cloud enables to move from a CAPEX to an OPEX model  
+
+Cloud provides the following key cost savings  
+- Infrastructure cost  
+- Management cost  
+- Power and energy cost
+
+![](https://i.imgur.com/orr2QjE.png)
+
+### <mark style="background: #BABD00;">Cloud Challenges – Consumer’s Perspective</mark>
+
+<mark style="background: #BABD00;">Security and Regulation:</mark>  
+- Consumers are indecisive to transfer control of sensitive data  
+- Regulation may prevent organizations to use Cloud services  
+
+<mark style="background: #BABD00;">Network latency:</mark>  
+- Real time applications may suffer due to network latency and limited bandwidth  
+
+<mark style="background: #BABD00;">Supportability:</mark>  
+- Legacy or Custom applications may not be compatible with Cloud platform  
+
+<mark style="background: #BABD00;">Interoperability:</mark>  
+- Lack of standardization across Cloud-based platforms
+
+### <mark style="background: #BABD00;">Cloud Challenges – Provider’s Perspective:</mark>
+
+<mark style="background: #BABD00;">Service warranty and service cost:</mark>  
+- Resources must be kept ready to meet unpredictable demand  
+- Hefty penalty, if SLAs are not fulfilled  
+
+<mark style="background: #BABD00;">Huge numbers of software to manage:</mark>  
+- Huge number of applications and platform software to purchase  
+- ROI is unpredictable  
+
+<mark style="background: #BABD00;">No standard Cloud access interface:</mark>  
+- Cloud customers want open APIs  
+- Need agreement among Cloud providers for standardization
