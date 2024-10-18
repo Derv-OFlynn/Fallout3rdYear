@@ -242,3 +242,67 @@ top
 k
 1576
 ```
+
+
+# <mark style="background: #BABD00;">Lab 5 - Docker:</mark>
+
+[Source](https://training.play-with-docker.com/ops-s1-hello/)
+
+If you are familiar with VMs, you may be thinking this is pretty much just like running a virtual machine, except with a central repository of VM images. And in this simple example, that is basically true. But as you go through these exercises you will start to see important ways that Docker and containers differ from VMs. For now, the simple explanation is this:
+
+- The VM is a _hardware_ abstraction: it takes physical CPUs and RAM from a host, and divides and shares it across several smaller virtual machines. There is an OS and application running inside the VM, but the virtualization software usually has no real knowledge of that.
+- A container is an _application_ abstraction: the focus is really on the OS and the application, and not so much the hardware abstraction. Many customers actually use both VMs and containers today in their environments and, in fact, may run containers inside of VMs.
+
+First command:
+`docker container run hello-world`
+
+![](https://i.imgur.com/Wh35rNn.png)
+
+When you call `run`, the Docker client finds the image (alpine in this case), creates the container and then runs a command in that container. When you run `docker container run alpine`, you provided a command (`ls -l`), so Docker executed this command inside the container for which you saw the directory listing. After the `ls` command finished, the container shut down.
+
+![](https://i.imgur.com/7lz3DOC.png)
+
+Imagine booting up a virtual machine (VM), running a command and then killing it; it would take a minute or two just to boot the VM before running the command. A VM has to emulate a full hardware stack, boot an operating system, and then launch your app - it’s a virtualized _hardware_ environment. Docker containers function at the application layer so they skip most of the steps VMs require and just run what is required for the app. Now you know why they say containers are fast!
+
+To run an interactive terminal use the `-it` command
+```.term1
+docker container run -it alpine /bin/sh
+```
+
+![](https://i.imgur.com/Tzr0YmR.png)
+
+### <mark style="background: #BABD00;">Container Isolation:</mark>
+
+<mark style="background: #BABD00;">Container Isolation</mark> is a critical security concept in the world of Docker containers! Even though each `docker container run` command used the same alpine **_image_**, each execution was a separate, isolated **_container_**. Each container has a separate filesystem and runs in a different namespace; by default a container has no way of interacting with other containers, even those from the same image.
+
+![](https://i.imgur.com/RxSTJma.png)
+
+![](https://i.imgur.com/0H7GLnp.png)
+
+### <mark style="background: #BABD00;">Docker Terminology:</mark>
+
+<mark style="background: #BABD00;">Images:</mark> The file system and configuration of our application which are used to create containers. To find out more about a Docker image, run `docker image inspect alpine`. In the demo above, you used the `docker image pull` command to download the **alpine** image. When you executed the command `docker container run hello-world`, it also did a `docker image pull` behind the scenes to download the **hello-world** image.
+
+<mark style="background: #BABD00;">Containers:</mark> Running instances of Docker images — containers run the actual applications. A container includes an application and all of its dependencies. It shares the kernel with other containers, and runs as an isolated process in user space on the host OS. You created a container using `docker run` which you did using the alpine image that you downloaded. A list of running containers can be seen using the `docker container ls` command.
+
+<mark style="background: #BABD00;">Docker daemon:</mark> The background service running on the host that manages building, running and distributing Docker containers.
+
+<mark style="background: #BABD00;">Docker client:</mark> The command line tool that allows the user to interact with the Docker daemon.
+
+<mark style="background: #BABD00;">Docker Hub:</mark> Store is, among other things, a [registry](https://store.docker.com/) of Docker images. You can think of the registry as a directory of all available Docker images. You’ll be using this later in this tutorial.
+
+![](https://i.imgur.com/mzTsrhq.png)
+
+### <mark style="background: #BABD00;">Image creation using a Dockerfile</mark>
+
+Instead of creating a static binary image, we can use a file called a ``Dockerfile`` to create an image. The final result is essentially the same, but with a ``Dockerfile`` we are supplying the instructions for building the image, rather than just the raw binary files. This is useful because it becomes much easier to manage changes, especially as your images get bigger and more complex.
+
+For example, if a new version of figlet is released we would either have to re-create our image from scratch, or run our image and upgrade the installed version of figlet. In contrast, a ``Dockerfile`` would include the `apt-get` commands we used to install figlet so that we - or anybody using the ``Dockerfile`` - could simply recompose the image using those instructions.
+
+It is kind of like the old adage:
+
+> _Give a sysadmin an image and their app will be up-to-date for a day, give a sysadmin a ``Dockerfile`` and their app will always be up-to-date_.
+
+Ok, maybe that’s a bit of a stretch but ``Dockerfiles`` are powerful because they allow us to manage _how_ an image is built, rather than just managing binaries. In practice, ``Dockerfiles`` can be managed the same way you might manage source code: they are simply text files so almost any version control system can be used to manage ``Dockerfiles`` over time.
+
+D

@@ -467,5 +467,192 @@ This returns the stock code, description, price and supplier id of all stock ite
 
 ### <mark style="background: #69E772;">RELATIONAL DIVIDE:</mark>
 
-Shows rows in one table that are related to all rows in another many:many table.  
+Shows rows in one table that are related to all rows in another ``many:many`` table.  
 e.g. Which students have passed ALL modules?
+
+### <mark style="background: #69E772;">New Model - Student - subject:</mark>
+
+![](https://i.imgur.com/Lp2Eui7.png)
+
+<mark style="background: #69E772;">Table Contents:</mark>
+![](https://i.imgur.com/yG2x8If.png)
+
+<mark style="background: #69E772;">Reword the query:</mark> Return names of students where there does not exist a subject they haven't achieved.  
+
+This double negative is part of DeMorgan's theorem.
+
+<mark style="background: #69E772;">Who achieved everything?</mark>
+![](https://i.imgur.com/WSgtVTJ.png)
+
+```SQL
+select st_name from student a  
+where not exists (  
+	select * from subject b  
+	where not exists (  
+		select * from acheivement x  
+		where  
+		x.st_id = a.st_id and  
+		x.sb_id = b.sb_id));
+```
+
+### <mark style="background: #69E772;">Abstraction:</mark>
+
+Return a list of occurrences of A related to ONLY n occurrences of B.  
+
+Return a list of occurrences of A that are related to ALL occurrences of B  
+- Return a list of A relate to ALL B where...  
+
+Return a list of A that have no related occurrences in B.  
+
+Return details of any A that is related to an occurrence in B  
+
+Return a list of occurrences of A that are related to both occurrences B<sub>i</sub> and B<sub>j</sub> where B<sub>i</sub> , Bj<sub>j</sub> B∈  
+
+Return a list of A that are related to Bi but not B<sub>j</sub> where B<sub>i</sub> , B<sub>j</sub> B∈  
+
+Return a list of A that are related to either B<sub>i</sub> or B<sub>j</sub> but not both.
+
+![](https://i.imgur.com/Dte2cWL.png)
+
+### <mark style="background: #69E772;">Helpful hints:</mark>
+
+If you are basing your answer on SET theory, it can be helpful to create views of the sets.  
+
+E.g. List the names of customers who have bought blocks but not bought bricks. Start by creating a view:  
+```SQL
+create view boughtblock as  
+select customer_name from b2_customer  
+join b2_corder using (customer_id)  
+join b2_corderline using (corderno)  
+join b2_stock using (stock_code)  
+where lower (stock_description) like  
+'%block%'; 
+```
+
+What’s next?
+
+![](https://i.imgur.com/gVa3Qsm.png)
+
+
+<mark style="background: #69E772;">Who bought what?</mark>
+To find a list of the customer names and what they bought, I would need:
+
+![](https://i.imgur.com/J2tJWdZ.png)
+
+<mark style="background: #69E772;">How did we do that?</mark>
+
+By tracing a path through the relationships, we could see:  
+- Which attributes we wanted to show  
+- What tables they were in  
+- Which attributes we needed to join the tables  
+- Where were the attributes that we were testing in the conditions?
+
+### <mark style="background: #69E772;">Using Views:</mark>
+
+<mark style="background: #69E772;">Generalising the query:</mark> 
+- Which customers bought the item with ``stock_description`` 'Phillips screwdriver'?  
+- What did customer named ‘John Flaherty’ buy?  
+
+To do that, I can store my query in a view, and query the view.
+
+<mark style="background: #69E772;">Create the view:</mark>
+```SQL
+Create view custbought as  
+Select customer_name, stock_description  
+From b2_customer  
+Join b2_corder using (customer_id)  
+Join b2_corderline using (corderno)  
+Join b2_stock using (stock_code);
+```
+
+<mark style="background: #69E772;">Query the view:</mark>
+```SQL
+Select customer_name from custbought where   stock_description = 'Phillips screwdriver';
+```
+
+<mark style="background: #69E772;">Build the queries using views:</mark>
+
+![](https://i.imgur.com/tgM2b9o.png)
+
+![](https://i.imgur.com/Y7DYEe6.png)
+
+![](https://i.imgur.com/jYlfK73.png)
+
+### <mark style="background: #69E772;">Using views:</mark>
+
+I’d like to know :  
+- Students who passed Maths but not Geography? ``(A – B)``  
+- Students who passed Geography but not Maths? ``(B – A)``  
+- Students who passed both Geography and Maths? ``(A ∩ B)``  
+- Students who passed either Geography or Maths? ``(A U B)``  
+- Students who passed either Geography or Maths, but not both? ``A xor B (A U B) - (A ∩ B) `` 
+- Students who only passed Maths? ``(A - ¬A)``  
+- Use the ``SampleDivide.sql`` file to experiment.  
+- Add and delete rows from the achievement table to see what difference it makes.
+
+### <mark style="background: #69E772;">Transferring our skills to the builder schema:</mark>
+
+What about :  
+- Customers who bought a workbench but no timber?  ``(A – B)``  
+- Customers who bought timber but no workbench? ``(B – A)``  
+- Customers who bought both timber and a workbench? ``(A ∩ B)``  
+- Customers who bought either timber or a workbench? ``(A U B)``  
+- Customers who bought either timber or a workbench, but not both? ``A xor B (A U B) - (A ∩ B)``  
+- Customers who only bought a workbench?``(A - ¬A``
+
+### <mark style="background: #69E772;">What is the shape of our tables?</mark>
+
+ERDs start to get complex when there are many:many relationships.  
+- Students eating types of crisp  
+- Students sitting modules  
+- Customers buying stock  
+
+We can use SET theory to form a template for  common queries.
+
+![](https://i.imgur.com/KcZdxHE.png)
+
+<mark style="background: #69E772;">A trivial example:</mark>
+![](https://i.imgur.com/dJM8nMi.png)
+
+<mark style="background: #69E772;">Who ate every type of crisp?</mark>
+```SQL
+SELECT CN_NAME FROM CR_CONSUMER A  
+WHERE NOT EXISTS (  
+	SELECT * FROM CR_CRISP_TYPE B 
+	WHERE NOT EXISTS (  
+		SELECT * FROM CR_HAS_EateN X  
+		WHERE A.CONSUMERID =  X.CONSUMERID AND B.CRISPKEY = X.CRISPKEY  
+	)  
+);
+```
+
+![](https://i.imgur.com/Z1PXSoQ.png)
+
+<mark style="background: #69E772;">Helping the divide:</mark>
+If I want a list of non-key values in A for rows that are  associated with all occurrences of B:
+
+![](https://i.imgur.com/Rp4hHc5.png)
+
+![](https://i.imgur.com/JCqPou0.png)
+
+<mark style="background: #69E772;">Slightly more obscure:</mark>
+
+Who bought all the stock items supplied by Buckleys?  
+
+Where are A, X and B?  
+- A must be a table or view with the identifying key to customer name, joined to X.  
+- B must be a table or view with the identifying key to the stock items supplied by Buckleys, joined to X.  
+- X must be a weak entity, with a many:1 link to A  and to B.
+
+![](https://i.imgur.com/AR93bCU.png)
+
+<mark style="background: #69E772;">The views:</mark>
+![](https://i.imgur.com/yFLnT7L.png)
+
+![](https://i.imgur.com/jRGaGAN.png)
+
+
+<mark style="background: #69E772;">The final query:</mark>
+![](https://i.imgur.com/36nQ4lu.png)
+
+![](https://i.imgur.com/CtfBwhN.png)
