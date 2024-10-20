@@ -1,3 +1,4 @@
+#CloudComputing
 ### <mark style="background: #BABD00;">Evolution of Distributed Systems:</mark>
 
 ![](https://i.imgur.com/pqVCEWy.png)
@@ -8,7 +9,7 @@
 - Primitive User Interface
 
 <mark style="background: #BABD00;">Client/Server Database Systems (Two-Tier):</mark>
-- Centralised DBMS, often running on a Unix system:
+- Centralised DBMS, often running on a Unix system
 - Windows clients connect over a LAN.  
 - Service Logic resides on a client, for example, calculation of pay after overtime rates etc..  
 - Manual Installation of clients
@@ -46,7 +47,7 @@
 
 ### <mark style="background: #BABD00;">Examples of Distributed Systems:</mark>
 
-<mark style="background: #BABD00;">The Internet </mark> 
+#### <mark style="background: #BABD00;">The Internet </mark> 
 
 Heterogeneous network of computers and applications  
 
@@ -55,24 +56,25 @@ Implemented through the Internet Protocol Stack
 Typical configuration:
 ![](https://i.imgur.com/Set6LBr.png)
 
-<mark style="background: #BABD00;">Distributed Multimedia- Systems</mark>  
+#### <mark style="background: #BABD00;">Distributed Multimedia- Systems</mark>  
 
 Often use Internet infrastructure  
 
-Characteristics  
-- Heterogeneous data sources that need to be synchronized in real time  
+<mark style="background: #BABD00;">Characteristics:</mark>  
+- Heterogeneous data sources that need to be synchronized in real time:  
 	- Video  
 	- Audio  
 	- Text  
+	
 - Often: Distribution services  
 	- Multicast  
 
-Examples  
+<mark style="background: #BABD00;">Examples:</mark>  
 - Tele-teaching tools  
 - Video- conferencing  
 - Video and audio on demand
 
-<mark style="background: #BABD00;">Intranets:</mark>  
+#### <mark style="background: #BABD00;">Intranets:</mark>  
 - Locally administered network  
 - Usually proprietary (e. g., the University campus network)  
 - Interfaces with the Internet  
@@ -83,34 +85,34 @@ Examples
 
 ### <mark style="background: #BABD00;">Mobile and Ubiquitous Computing Systems:</mark>
 
-Cellular phone systems (e. g., GSM, UMTS)  
+<mark style="background: #BABD00;">Cellular phone systems (e. g., GSM, UMTS):</mark>  
 - Resources being shared  
 	- Radio frequencies  
 	- Transmission times on one frequency (UMTS: multiplexing)  
 	- The mobile on the move  
 
-Laptop computers  
+<mark style="background: #BABD00;">Laptop computers:</mark>  
 - Wireless LANs  
-- Handheld devices,  
-	- PDAs etc. – Bluetooth networks  
+- Handheld devices (PDAs etc. – Bluetooth networks)
 
-Wearable devices
+<mark style="background: #BABD00;">Wearable devices</mark>
 
 ![](https://i.imgur.com/v6XKXQg.png)
 
-<mark style="background: #BABD00;">Embedded systems:</mark>  
+### <mark style="background: #BABD00;">Embedded systems:</mark>  
 
-**Avionics control systems**  - Flight management systems in aircraft  
+<mark style="background: #BABD00;">Avionics control systems</mark>  - Flight management systems in aircraft  
 
-**Automotive control systems** - Mercedes S- Class cars are equipped with 50+ autonomous embedded processors  
+<mark style="background: #BABD00;">Automotive control systems</mark> - Mercedes S- Class cars are equipped with 50+ autonomous embedded processors  
 
-**Connected through proprietary bus** - like LANs  
+<mark style="background: #BABD00;">Connected through proprietary bus</mark> - like LANs  
 
-**Consumer Electronics** - Audio HiFi equipment  
+<mark style="background: #BABD00;">Consumer Electronics</mark> - Audio HiFi equipment  
 
-**Medical Devices** - Pace Makers
+<mark style="background: #BABD00;">Medical Devices</mark> - Pace Makers
 
-**Tele Surgery** - "Lindbergh Operation"
+<mark style="background: #BABD00;">Tele Surgery</mark> - "Lindbergh Operation"
+
 
 ### <mark style="background: #BABD00;">Additional Notes:</mark>
 
@@ -119,8 +121,7 @@ Wearable devices
 <mark style="background: #BABD00;">UMTS</mark> - The Universal Mobile Telecommunications System (UMTS) is a third generation mobile  
 cellular system for networks based on the GSM standard.  
 
-<mark style="background: #BABD00;">Multiplexing</mark> (sometimes contracted to muxing) is a method by which multiple analog or digital signals are combined into one signal over a shared medium. The aim is to share an expensive resource.  
+<mark style="background: #BABD00;">Multiplexing</mark> (sometimes contracted to muxing) is a method by which multiple analogue or digital signals are combined into one signal over a shared medium. The aim is to share an expensive resource.  
 
 <mark style="background: #BABD00;">The Lindbergh Operation</mark> was a complete tele-surgical operation carried out by a team of French  
-surgeons located in New York on a patient in Strasbourg, France (over a distance of several thousand miles) using telecommunications solutions based on high-speed services and sophisticated surgical robotics. The operation was performed successfully on September 7, 2001 by Professor Jacques Marescaux and his team from the IRCAD (Institute for Research into Cancer of the Digestive System). 
-This was the first time in medical history that a technical solution proved capable of reducing the  time delay inherent to long distance transmissions sufficiently to make this type of procedure possible. The name was derived from that of American aviator Charles Lindbergh, because he was the first person to fly solo across the Atlantic
+surgeons located in New York on a patient in Strasbourg, France (over a distance of several thousand miles) using telecommunications solutions based on high-speed services and sophisticated surgical robotics. The operation was performed successfully on September 7, 2001 by Professor Jacques Marescaux and his team from the IRCAD (Institute for Research into Cancer of the Digestive System). This was the first time in medical history that a technical solution proved capable of reducing the time delay inherent to long distance transmissions sufficiently to make this type of procedure possible. The name was derived from that of American aviator Charles Lindbergh, because he was the first person to fly solo across the Atlantic

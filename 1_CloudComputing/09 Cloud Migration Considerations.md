@@ -1,4 +1,6 @@
-<mark style="background: #BABD00;">Upon completion of this module, you should be able to:</mark>  
+#CloudComputing
+
+<mark style="background: #BABD00;">Upon completion of this lesson, you should be able to:</mark>  
 - Discuss the considerations for migration to Cloud  
 - Discuss the Cloud models suitable for different categories of users  
 - List the considerations for choosing applications suitable for Cloud  
@@ -129,7 +131,7 @@ Involves security advisor early in the process
 - Identify whether Cloud service provider offers the required infrastructure  
 - Identify whether an application is compatible with Cloud infrastructure  
 - Identify the dependencies of an application on other components and services  
-- Identify the component that must be local (on-premise) and components that can move to the Cloud  
+- Identify the component that must be local (on-premise) and components that can move to the Cloud 
 - Identify the latency and bandwidth requirements  
 - Estimate the effort required to migrate the application
 

@@ -1,3 +1,4 @@
+#CloudComputing
 ### <mark style="background: #BABD00;">Design Challenges of non-functional requirements:</mark>
 
 Our objective is to understand the non-functional requirements of a distributed system.  
@@ -27,8 +28,9 @@ Security implications due to many users accessing the common resources
 
 Openness is concerned with extendibility and improvability of distributed systems  
 
-Well defined and documented interfaces of components need to be published  
-- Allows other components know what services are available  
+Well defined and documented interfaces of components need to be published. 
+
+Allows other components know what services are available  
 
 System needs to adhere to recognized standards  
 
@@ -38,6 +40,7 @@ Components achieve openness by communicating using well-defined interfaces
 - Supports the integration of new components
 
 <mark style="background: #BABD00;">Coupling</mark> refers to the degree of dependency between components in a system.
+
 ### <mark style="background: #BABD00;">Concurrency:</mark>
 
 Components in distributed systems are executed in concurrent processes  

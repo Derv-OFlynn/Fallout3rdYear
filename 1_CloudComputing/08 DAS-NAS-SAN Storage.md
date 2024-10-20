@@ -1,3 +1,4 @@
+#CloudComputing
 ### <mark style="background: #BABD00;">Storage Basics:</mark>  
 
 Information (data) is constantly flowing in and out of computers.  
@@ -107,7 +108,7 @@ Designed to provide shared access to storage across a standard TCP/IP network
 
 Sharing data across TCP/IP by converting block-level SCSI commands to file sharing protocols  
 
-‘sharing protocols’ ? (Common file sharing protocols):  
+<mark style="background: #BABD00;">‘sharing protocols’ ? (Common file sharing protocols):</mark>  
 - UNIX Network File System (NFS) was developed originally for sharing files between UNIX systems across a LAN.  
 - Support expanded to include non-UNIX systems;  
 - (but most NFS clients today are computers running some flavour of UNIX/Linux.)  
@@ -124,8 +125,7 @@ Inside the NAS product (“appliance”), an operating system or OS kernel track
 
 ### <mark style="background: #BABD00;">Network Storage Possibilities:</mark>
 
-For small businesses, the solution for managing storage  
-intelligently is consolidation.  
+For small businesses, the solution for managing storage intelligently is consolidation.  
 
 Rather than dispersing data across several PCs, laptops or small servers, consolidating storage into one or two locations makes it much easier to grow, manage and protect.  
 
@@ -135,8 +135,7 @@ When storage is freed from the constraints of individual PCs and file servers, i
 
 Storage “Appliances” utilise a stripped-down OS that optimises file protocol performance  
 
-Instead of starting with a general-purpose computer and  
-configuring or removing features from that base, NAS designs begin with the bare-bones components necessary to support file transfers and add features “from the bottom up.”  
+Instead of starting with a general-purpose computer and configuring or removing features from that base, NAS designs begin with the bare-bones components necessary to support file transfers and add features “from the bottom up.”  
 
 Clients generally access a NAS over an ethernet connection. The NAS appears on the network as a single "node" that is the IP address of the head device.
 
@@ -153,6 +152,7 @@ High-performance Fibre Channel switches and Fibre Channel network protocols ensu
 A Storage Area Network (SAN) is a specialized, high-speed network that provides network access to storage devices.  
 
 SANs are typically composed of hosts, switches, storage elements, and storage devices that are interconnected using a variety of technologies, topologies, and protocols.  
+
 SANs may span multiple sites..
 
 [SAN explanation](https://www.snia.org/education/storage_networking_primer/san/what_san "https://www.snia.org/education/storage_networking_primer/san/what_san")
@@ -164,7 +164,7 @@ SANs may span multiple sites..
 - larger number of processors can be connected to the same storage device compared to typical built-in  device attachment facilities.
 
 <mark style="background: #BABD00;">Consolidation:</mark> 
-- Replacement of multiple independent storage devices by fewer devices that support capacity sharing —disk and tape pooling.  
+- Replacement of multiple independent storage devices by fewer devices that support capacity sharing - disk and tape pooling.  
 - SANs provide the ultimate in scalability - software can allow multiple SAN devices to appear as a single pool of storage accessible to all processors on the SAN.  
 - Storage on a SAN can be managed from a single point of control. Controls over which hosts can see which storage (called zoning and LUN masking) can be implemented.
 
@@ -178,9 +178,9 @@ SANs may span multiple sites..
 
 Multiple technologies can be used when building a SAN  
 
-Traditionally the dominant technology is Fiber Channel, but IP based solutions are also quite popular for specific applications (due to costs!)  
+Traditionally the dominant technology is Fibre Channel, but IP based solutions are also quite popular for specific applications (due to costs!)  
   
-The concept of SAN is also independent from the devices that are attached to it.  
+The concept of SAN is also independent from the devices that are attached to it:
 - Can be disks, tapes, RAIDs, file servers, or other!  
 - Yes, Magnetic Tape storage is still used in 2024: Often cheaper than alternative, can last 30 years or more (if kept clean, dry and protected) which is excellent for compliance with industry-specific storage regulations.
 

@@ -1,3 +1,4 @@
+#CloudComputing
 ### <mark style="background: #BABD00;">Load Balancing:</mark>
 
 All inbound traffic to a web role passes through a stateless load balancer, which distributes client requests among the role instances.  

@@ -1,4 +1,6 @@
-Transforming a Classic Data Centre (CDC) into a Virtualized Data Centre (VDC) requires virtualizing the core elements of the data centre.
+#CloudComputing
+
+Transforming a <mark style="background: #BABD00;">Classic Data Centre (CDC)</mark> into a <mark style="background: #BABD00;">Virtualised Data Centre (VDC)</mark> requires virtualising the core elements of the data centre.
 
 Using a phased approach to a virtualized infrastructure enables smoother transition to virtualize core elements.
 
@@ -6,17 +8,16 @@ Using a phased approach to a virtualized infrastructure enables smoother transit
 
 ### <mark style="background: #BABD00;">Compute Virtualisation:</mark>
 
-Compute Virtualisation: It is a technique of masking or abstracting the physical compute hardware and enabling multiple operating systems (OSs) to run concurrently on a single or clustered physical machine(s).
+<mark style="background: #BABD00;">Compute Virtualisation:</mark> It is a technique of masking or abstracting the physical compute hardware and enabling multiple operating systems (OSs) to run concurrently on a single or clustered physical machine(s).
 
 Enables creation of multiple virtual machines (VMs), each running an OS and application  
 - VM is a logical entity that looks and behaves like physical machine  
-- Virtualization layer resides between hardware and VMs -> Also known as hypervisor  
+- Virtualisation layer resides between hardware and VMs -> Also known as hypervisor  
 - VMs are provided with standardized hardware resources
 
 ![](https://i.imgur.com/lL4unw0.png)
 
-### <mark style="background: #BABD00;">Benefits of Compute Virtualisation:</mark>
-
+<mark style="background: #BABD00;">Benefits of Compute Virtualisation:</mark>
 - Server consolidation  
 - Isolation  
 - Encapsulation  
@@ -31,6 +32,7 @@ Enables creation of multiple virtual machines (VMs), each running an OS and appl
 - Controls utilization of resources  
 - Prevents VMs from monopolizing resources  
 - Allocates resources based on relative priority of VMs  
+
 Resources must be pooled to manage them centrally
 
 ### <mark style="background: #BABD00;">Resource Pool:</mark>
@@ -93,8 +95,7 @@ Virtualization layer abstracts the identity of physical storage devices: Creates
 
 Virtual volumes are created from the storage pools and are assigned to the compute system.
 
-### <mark style="background: #BABD00;">Benefits of storage virtualisation:</mark>
-
+<mark style="background: #BABD00;">Benefits of storage virtualisation:</mark>
 - Adds or removes storage without any downtime  
 - Increases storage utilization thereby reducing TCO  
 - Provides non-disruptive data migration between storage devices  
@@ -109,7 +110,7 @@ VMs are stored as set of files on storage space available to hypervisor
 
 Size of virtual disk file represents storage space allocated to virtual disk  
 
-VMs remain unaware of:
+<mark style="background: #BABD00;">VMs remain unaware of:</mark>
 - Total space available to the hypervisor  
 - Underlying storage technologies
 
@@ -123,8 +124,7 @@ Hypervisor allocates storage space to the virtual disk only when VM requires sto
 
 ![](https://i.imgur.com/cFT9boD.png)
 
-### <mark style="background: #BABD00;">Virtual Provisioning Benefits:</mark>  
-
+<mark style="background: #BABD00;">Virtual Provisioning Benefits:</mark>  
 - Reduces administrative overhead  
 - Improves capacity utilization  
 - Reduces cost  
@@ -148,16 +148,18 @@ Enables functional grouping of nodes in a virtual network
 
 Involves virtualizing physical and VM networks.
 
-<mark style="background: #BABD00;">Physical Network:</mark>
-- Consists of following physical components: Network adapters, switches, routers, bridges, repeaters, and hubs  
-- Provides connectivity  
-	- Among physical servers running hypervisor  
-	- Between physical servers and clients  
-	- Between physical servers and storage systems
+#### <mark style="background: #BABD00;">Physical Network:</mark>
+
+Consists of following physical components: Network adapters, switches, routers, bridges, repeaters, and hubs  
+
+<mark style="background: #BABD00;">Provides connectivity:</mark>  
+- Among physical servers running hypervisor  
+- Between physical servers and clients  
+- Between physical servers and storage systems
 
 ![](https://i.imgur.com/kJY6wcy.png)
 
-<mark style="background: #BABD00;">VM Network:</mark>
+#### <mark style="background: #BABD00;">VM Network:</mark>
 - Resides inside physical server  
 - Consists of logical switches called “virtual switches”  
 - Provides connectivity among VMs inside a physical server  
@@ -192,8 +194,7 @@ Enables organizations to host and centrally manage desktops:
 
 ![](https://i.imgur.com/vJMn1zC.png)
 
-<mark style="background: #BABD00;">Connection Broker:</mark> It is responsible for  
-establishing and managing the connection between the endpoint device and the desktop VM
+<mark style="background: #BABD00;">Connection Broker:</mark> It is responsible for establishing and managing the connection between the endpoint device and the desktop VM
 
 ![](https://i.imgur.com/WxkCRcm.png)
 
@@ -236,7 +237,7 @@ Cloud has changed the economics of IT
 
 Cloud enables to move from a CAPEX to an OPEX model  
 
-Cloud provides the following key cost savings  
+<mark style="background: #BABD00;">Cloud provides the following key cost savings:</mark>  
 - Infrastructure cost  
 - Management cost  
 - Power and energy cost
@@ -249,14 +250,11 @@ Cloud provides the following key cost savings
 - Consumers are indecisive to transfer control of sensitive data  
 - Regulation may prevent organizations to use Cloud services  
 
-<mark style="background: #BABD00;">Network latency:</mark>  
-- Real time applications may suffer due to network latency and limited bandwidth  
+<mark style="background: #BABD00;">Network latency:</mark> Real time applications may suffer due to network latency and limited bandwidth  
 
-<mark style="background: #BABD00;">Supportability:</mark>  
-- Legacy or Custom applications may not be compatible with Cloud platform  
+<mark style="background: #BABD00;">Supportability:</mark> Legacy or Custom applications may not be compatible with Cloud platform  
 
-<mark style="background: #BABD00;">Interoperability:</mark>  
-- Lack of standardization across Cloud-based platforms
+<mark style="background: #BABD00;">Interoperability:</mark> Lack of standardization across Cloud-based platforms
 
 ### <mark style="background: #BABD00;">Cloud Challenges – Provider’s Perspective:</mark>
 
@@ -270,4 +268,4 @@ Cloud provides the following key cost savings
 
 <mark style="background: #BABD00;">No standard Cloud access interface:</mark>  
 - Cloud customers want open APIs  
-- Need agreement among Cloud providers for standardization
+- Need agreement among Cloud providers for standardisation

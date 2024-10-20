@@ -1,4 +1,6 @@
-<mark style="background: #BABD00;">Virtualisation</mark> The separation of a resource or request for a service from the underlying physical delivery of that service.
+#CloudComputing
+
+<mark style="background: #BABD00;">Virtualisation:</mark> The separation of a resource or request for a service from the underlying physical delivery of that service.
 
 ### <mark style="background: #BABD00;">Buffering:</mark>
 
@@ -34,11 +36,8 @@ Caching allows you to efficiently reuse previously retrieved or computed data.
 <mark style="background: #BABD00;">Redis:</mark> an open source, in-memory data store used by millions of developers as a database, cache, streaming engine, and message broker  
 - https://redis.io/ (source-available from March 2024)  
 - https://valkey.io/ (open-source alternative to redis)  
-<mark style="background: #BABD00;">Memcached:</mark> open source, high-performance,  
-distributed memory object caching system,  
-generic in nature, but intended for use in speeding  
-up dynamic web applications by alleviating  
-database load.  
+
+<mark style="background: #BABD00;">Memcached:</mark> open source, high-performance, distributed memory object caching system, generic in nature, but intended for use in speeding up dynamic web applications by alleviating database load.  
 https://memcached.org/
 
 ### <mark style="background: #BABD00;">Difference between buffering and caching:</mark>
@@ -88,10 +87,9 @@ The Java Virtual Machine allows Java code to be portable between various hardwar
 
 <mark style="background: #BABD00;">Desktop virtualisation</mark> is a technology which enables detachment of the user state, the Operating System (OS), and the applications from endpoint devices.
 
-Enables organizations to host and centrally manage desktops  
-- Desktops run as virtual machines within the data centre and accessed over a network  
+Enables organizations to host and centrally manage desktops. Desktops run as virtual machines within the data centre and accessed over a network  
 
-Desktop virtualization benefits  
+<mark style="background: #BABD00;">Desktop virtualization benefits:</mark>  
 - Flexibility of access due to enablement of thin clients  
 - Improved data security  
 - Simplified data backup and PC maintenance
@@ -114,9 +112,9 @@ This blend of virtualisation technologies - or <mark style="background: #BABD00;
 
 ![](https://i.imgur.com/v73HTjX.png)
 
-Server virtualization runs multiple virtual servers on a physical server
+Server virtualisation runs multiple virtual servers on a physical server
 
-Network virtualization runs multiple virtual networks on a physical network.
+Network virtualisation runs multiple virtual networks on a physical network.
 
 ### <mark style="background: #BABD00;">Virtualised Infrastructure:</mark>
 

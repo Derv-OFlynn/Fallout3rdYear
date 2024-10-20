@@ -1,4 +1,4 @@
-
+#CloudComputing
 ### <mark style="background: #BABD00;">What is Cloud Computing?</mark>
 
 <mark style="background: #BABD00;">A customer-oriented definition:</mark>
@@ -18,8 +18,6 @@
 - Scalable
 - Access to 3rd party functionality
 - Mobility
-
-
 
 ### <mark style="background: #BABD00;">SaaS (ready to use):</mark>
 

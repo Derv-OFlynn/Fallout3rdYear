@@ -1,3 +1,5 @@
+#CloudComputing 
+
 Snapshots (or Checkpoints) is like capturing an image of your virtual machine at a moment in time
 
 Easier when machine is powered off, like downloading a file.
@@ -29,8 +31,7 @@ Two types of checkpoints:
 
 ### <mark style="background: #BABD00;">Why Snapshots?</mark>
 
-Keep multiple captures of a single virtual machine  
-over time  
+Keep multiple captures of a single virtual machine over time  
 
 Could snapshot a virtual machine with just the operating system, service pack, and patches.  
 
@@ -76,7 +77,7 @@ When all the components support VSS, you can use them to back up your applicatio
 
 VSS coordinates the actions that are required to create a consistent shadow copy (also known as a snapshot or a point-in-time copy) of the data that is to be backed up.
 
-The shadow copy can be used as-is, or it can be used in scenarios such as the following  
+The shadow copy can be used as-is, or it can be used in scenarios such as the following:  
 - You want to back up application data and system state information, including archiving data to another hard disk drive, to tape, or to other removable media.  
 - You're data mining.  
 - You're performing disk-to-disk backups.  
@@ -84,8 +85,7 @@ The shadow copy can be used as-is, or it can be used in scenarios such as the fo
 
 ### <mark style="background: #BABD00;">How are snapshots stored?</mark>
 
-When you take a snapshot of a running VM, Hyper-V briefly pauses the VM to create a new automatic virtual hard disk (AVHD) which is <mark style="background: #BABD00;">essentially a differencing disk</mark>, attaches it to the VM to store changes to the VM data, saves the processor state into a file (.bin), then resumes the  
-VM.  
+When you take a snapshot of a running VM, Hyper-V briefly pauses the VM to create a new automatic virtual hard disk (AVHD) which is <mark style="background: #BABD00;">essentially a differencing disk</mark>, attaches it to the VM to store changes to the VM data, saves the processor state into a file (.bin), then resumes the VM.  
 
 Hyper-V also makes a copy of the VM configuration file, and saves the contents of the VM memory and processor state.  
 
@@ -105,7 +105,7 @@ Do not delete .avhd files directly from the storage location. Instead, use Hyper
 
 <mark style="background: #BABD00;">VHD:</mark> A native format from Microsoft (Hyper-V and Microsoft Virtual PC)
 
-<mark style="background: #BABD00;">VHDX:</mark> Next Generation VHD.
+<mark style="background: #BABD00;">VHDX:</mark> Next Generation VHD:
 - VHDX has 64TB disk limit; VHD has 2TB disk limit.  
 - VHDX supports large block sizes (sometimes better performance)  
 - VHDX protects against file corruption, VHD does not.  

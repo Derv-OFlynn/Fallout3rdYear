@@ -1,4 +1,6 @@
-<mark style="background: #BABD00;">Upon completion of this module, you should be able to:</mark>  
+#CloudComputing 
+
+<mark style="background: #BABD00;">Upon completion of this lesson, you should be able to:</mark>  
 - Describe RAID implementation methods  
 - Describe the three RAID techniques  
 - Describe commonly used RAID levels  
@@ -21,9 +23,9 @@ An individual drive has a certain life expectancy and is measured in MTBF (Mean 
 
 RAID was introduced to mitigate these problems
 
-# <mark style="background: #BABD00;">RAID Implementation Methods</mark>  
+### <mark style="background: #BABD00;">RAID Implementation Methods</mark>  
 
-### <mark style="background: #BABD00;">Software RAID implementation</mark>  
+#### <mark style="background: #BABD00;">Software RAID implementation</mark>  
 
 Uses host-based software to provide RAID functionality  
 
@@ -32,10 +34,9 @@ Uses host-based software to provide RAID functionality
 - Support limited RAID levels  
 - RAID software and OS can be upgraded only if they are compatible  
 
-### <mark style="background: #BABD00;">Hardware RAID Implementation</mark>  
+#### <mark style="background: #BABD00;">Hardware RAID Implementation</mark>  
 
 Uses a specialized hardware controller installed either on a host or on an array
-
 
 ### <mark style="background: #BABD00;">RAID Array Components:</mark>
 
@@ -48,8 +49,7 @@ Uses a specialized hardware controller installed either on a host or on an array
 <mark style="background: #BABD00;">Mirroring:</mark>  whatever you write to one drive, gets written simultaneously to another. Thus, you always have an exact duplicate of your data on the  
 second drive.  
 
-<mark style="background: #BABD00;">Parity:</mark> RAID controller adds a parity (extra) byte of data tacked onto the actual data being written to the array. Added by the RAID controller to equal either an even or an odd number.  
-- By analysing this value, the controller can determine whether the information has been compromised in any way. If it has, it can replace the data automatically with data from the other drive.
+<mark style="background: #BABD00;">Parity:</mark> RAID controller adds a parity (extra) byte of data tacked onto the actual data being written to the array. Added by the RAID controller to equal either an even or an odd number. By analysing this value, the controller can determine whether the information has been compromised in any way. If it has, it can replace the data automatically with data from the other drive.
 
 ### <mark style="background: #BABD00;">RAID Technique – Striping:</mark>
 
@@ -93,9 +93,9 @@ Also called "stripe" mode.
 
 Operations on the array will be split across the devices e.g. a large write could be split up as 4 kB to disk 0, 4 kB to disk 1, 4 kB to disk 2, then 4 kB to disk 0 again, and so on.  
 
-Pro: parallel writing increase speed nX where n = no. of partitions, x speed on single drive  
+<mark style="background: #BABD00;">Pro:</mark> parallel writing increase speed nX where n = no. of partitions, x speed on single drive  
 
-Con: No Redundancy, inefficient use of disk space: no savings!  
+<mark style="background: #BABD00;">Con:</mark> No Redundancy, inefficient use of disk space: no savings!  
 
 RAID 0 provides no redundancy, and as such, should never be used for  applications where data is critical.
 
@@ -130,6 +130,7 @@ Also called Nested RAID
 - Data is striped (at the byte level) across multiple disks. The parity information is sent to a dedicated parity disk, but the failure of any disk in the array can be tolerated.  
 - Pros: delivers good performance and fault tolerance.  
 - Cons: dedicated parity disk does slow down write speeds because the parity info has to be written to the parity drive whenever a write occurs  
+
 ![](https://i.imgur.com/JlJ8OEY.png)
 
 ![](https://i.imgur.com/RAsCHIW.png)
@@ -147,7 +148,7 @@ Most popular member of the RAID family - combines block level striping with dist
 - fault tolerance  
 - storage efficiency.  
 
-Distributing parity stripes over a series of hard drives:  
+<mark style="background: #BABD00;">Distributing parity stripes over a series of hard drives:</mark> 
 - Minimizes write bottlenecks of RAID levels 3 and 4  
 - Provides relief to the concentration of write activity on a single drive, which in turn enhances overall system performance.  
 
