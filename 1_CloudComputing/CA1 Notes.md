@@ -49,13 +49,14 @@
 - Web access + mobile access  
 - Backup of data + restore (30 days)
 
-Salesforce (CRM)  
+<mark style="background: #BABD00;">Salesforce (CRM):</mark>  
 - Sales cloud – automation of workflow  
 - Service cloud – customer service  
 - Chatter – collaboration tools  
 - Jigsaw – customer contact database  
 - Force.com – Salesforce platform for third party apps (PaaS)  
 - Heroku – third party ruby apps (PaaS)
+
 ### <mark style="background: #BABD00;">Platform as a Service (PaaS):</mark>
 
 - "Provides developers with a proprietary APIs to make an application that will run in a specific environment"
@@ -68,7 +69,6 @@ Salesforce (CRM)
 - Pay per use - good for users, not the best for providers
 - Vendor lock-in difficult due to lack of standards. Containers can combat vendor lock-in.
 - Why are companies offering PaaS environments?
-
 - Key Benefit: DATA. "We're (IT companies) not Google's customers; we're Google's product that they sell to their customers" - Bruce Schneier
 
 <mark style="background: #BABD00;">Linking? Infrastructure as a Service:</mark>
@@ -76,7 +76,7 @@ Salesforce (CRM)
 - Most important asset cloud computing can provide is processing data
 - Solution to processing vast amounts of data quickly can be found in IaaS
 
-Infrastructure for:
+<mark style="background: #BABD00;">Infrastructure for:</mark>
 - Developing
 - Running
 - Storing
@@ -277,7 +277,7 @@ Our objective is to understand the non-functional requirements of a distributed 
 
 These are concerned with the <mark style="background: #BABD00;">quality</mark> of the system  
 
-Certain requirements are common to many distributed systems:  
+<mark style="background: #BABD00;">Certain requirements are common to many distributed systems: </mark> 
 - Resource Sharing  
 - Openness  
 - Concurrency  
@@ -291,8 +291,8 @@ Ability to use any hardware, software or data anywhere in the system
 
 Cost effective for sharing expensive resources  
 
-Security implications due to many users accessing the common resources  
-- How do control/restrict access? Resource manager components  
+<mark style="background: #BABD00;">Security implications due to many users accessing the common resources</mark>  
+- How to control/restrict access? Resource manager components  
 - Resource manager controls access, provides naming scheme and controls concurrency  
 - Client-server v n-tier architecture (distributed objects)
 
@@ -306,7 +306,7 @@ Allows other components know what services are available
 
 System needs to adhere to recognized standards  
 
-Components achieve openness by communicating using well-defined interfaces  
+<mark style="background: #BABD00;">Components achieve openness by communicating using well-defined interfaces:</mark>  
 - supports changing functional requirements as an organisation grows  
 - Helps preserve the investment  
 - Supports the integration of new components
@@ -319,7 +319,7 @@ Components in distributed systems are executed in concurrent processes
 
 Components access and update shared resources (e.g. variables, databases, device drivers)  
 
-Integrity of the system may be violated if concurrent updates are not coordinated  
+<mark style="background: #BABD00;">Integrity of the system may be violated if concurrent updates are not coordinated:</mark>  
 - Lost updates  
 - Inconsistent analysis (Non-Repeatable Read)
 
@@ -387,7 +387,7 @@ A component can be relocated without users or clients noticing it (i.e. allows t
 - Example: Web Pages
 
 <mark style="background: #BABD00;">Replication Transparency:</mark>
-- A replica is a component copy that remains synchronized with its original.  
+- A replica is a component copy that remains synchronised with its original.  
 - Users or application programs have no knowledge of the replica.  
 - Example: Distributed DBMS  
 - Example: Mirroring Web Pages.
@@ -396,7 +396,7 @@ A component can be relocated without users or clients noticing it (i.e. allows t
 - Users and programmers are unaware that components request services concurrently.  
 - Enables several processes to operate concurrently using shared information objects without interference between them.  
 - Example: NFS  
-- Example: Automatic teller machine network  
+- Example: Automatic teller machine (ATM) network  
 - Example: Database management system
 
 <mark style="background: #BABD00;">Scalability Transparency:</mark>
@@ -424,7 +424,7 @@ A component can be relocated without users or clients noticing it (i.e. allows t
 
 <mark style="background: #BABD00;">Migration</mark> - A component can be relocated without users or clients noticing it  
 
-<mark style="background: #BABD00;">Replication</mark> - A replica is a component copy that remains synchronized with its original.  
+<mark style="background: #BABD00;">Replication</mark> - A replica is a component copy that remains synchronised with its original.  
 
 <mark style="background: #BABD00;">Concurrency</mark> - Enables several processes to operate concurrently using shared information objects without interference between them.  
 
@@ -581,7 +581,7 @@ The Java Virtual Machine allows Java code to be portable between various hardwar
 
 <mark style="background: #BABD00;">Desktop virtualisation</mark> is a technology which enables detachment of the user state, the Operating System (OS), and the applications from endpoint devices.
 
-Enables organizations to host and centrally manage desktops. Desktops run as virtual machines within the data centre and accessed over a network  
+Enables organisations to host and centrally manage desktops. Desktops run as virtual machines within the data centre and accessed over a network  
 
 <mark style="background: #BABD00;">Desktop virtualization benefits:</mark>  
 - Flexibility of access due to enablement of thin clients  
@@ -723,8 +723,7 @@ Resources must be pooled to manage them centrally
 
 ### <mark style="background: #BABD00;">Resource Pool:</mark>
 
-<mark style="background: #BABD00;">Resource Pool:</mark> It is a logical abstraction of aggregated physical resources that are managed  
-centrally.
+<mark style="background: #BABD00;">Resource Pool:</mark> It is a logical abstraction of aggregated physical resources that are managed centrally.
 
 Created from a physical machine or cluster  
 
@@ -763,7 +762,7 @@ Hypervisors support multi-core, hyper-threading, and CPU load-balancing features
 
 Provides ability to manage physical machines running hypervisor  
 
-Enables centralized management of resources from a management server  
+Enables centralised management of resources from a management server  
 
 Enables pooling of resources and allocates capacity to VMs: Communicates with hypervisors to perform management  
 
@@ -773,11 +772,11 @@ Provides operational automation
 
 ### <mark style="background: #BABD00;">Storage Virtualisation:</mark>
 
-<mark style="background: #BABD00;">Storage virtualization:</mark> It is the process of masking the underlying complexity of physical storage resources and presenting the logical view of these resources to compute systems.
+<mark style="background: #BABD00;">Storage virtualisation:</mark> It is the process of masking the underlying complexity of physical storage resources and presenting the logical view of these resources to compute systems.
 
 Logical to physical storage mapping is performed by virtualization layer.  
 
-Virtualization layer abstracts the identity of physical storage devices: Creates a storage pool from multiple, heterogeneous storage arrays.  
+Virtualisation layer abstracts the identity of physical storage devices: Creates a storage pool from multiple, heterogeneous storage arrays.  
 
 Virtual volumes are created from the storage pools and are assigned to the compute system.
 
@@ -816,9 +815,9 @@ Hypervisor allocates storage space to the virtual disk only when VM requires sto
 - Reduces cost  
 - Reduces downtime
 
-### <mark style="background: #BABD00;">Network Virtualization:</mark> 
+### <mark style="background: #BABD00;">Network Virtualisation:</mark> 
 
-<mark style="background: #BABD00;">Network Virtualization:</mark> It is a process of logically segmenting or grouping physical network(s) and making them operate as single or multiple independent network(s) called “Virtual Network(s)”.  
+<mark style="background: #BABD00;">Network Virtualisation:</mark> It is a process of logically segmenting or grouping physical network(s) and making them operate as single or multiple independent network(s) called “Virtual Network(s)”.  
  
 Enables virtual networks to share network resources  
 
@@ -832,7 +831,7 @@ Enables functional grouping of nodes in a virtual network
 
 ### <mark style="background: #BABD00;">Network Virtualisation in VDC:</mark>
 
-Involves virtualizing physical and VM networks.
+Involves virtualising physical and VM networks.
 
 #### <mark style="background: #BABD00;">Physical Network:</mark>
 
@@ -840,7 +839,7 @@ Consists of following physical components: Network adapters, switches, routers, 
 
 <mark style="background: #BABD00;">Provides connectivity:</mark>  
 - Among physical servers running hypervisor  
-- Between physical servers and clients  
+- Between physical servers and clients
 - Between physical servers and storage systems
 
 ![](https://i.imgur.com/kJY6wcy.png)
@@ -862,11 +861,11 @@ Consists of following physical components: Network adapters, switches, routers, 
 
 ![](https://i.imgur.com/BqjNl27.png)
 
-### <mark style="background: #BABD00;">Desktop Virtualization</mark>
+### <mark style="background: #BABD00;">Desktop Virtualisation</mark>
 
-<mark style="background: #BABD00;">Desktop Virtualization:</mark> Technology which enables detachment of the user state, the Operating System (OS), and the applications from endpoint devices.
+<mark style="background: #BABD00;">Desktop Virtualisation:</mark> Technology which enables detachment of the user state, the Operating System (OS), and the applications from endpoint devices.
 
-Enables organizations to host and centrally manage desktops:
+Enables organisations to host and centrally manage desktops:
 - Desktops run as virtual machines within the VDC, They may be accessed over LAN/WAN  
 - Endpoint devices may be thin clients or PCs
 
@@ -889,7 +888,7 @@ Enables organizations to host and centrally manage desktops:
 <mark style="background: #BABD00;">Application Virtualisation:</mark>  It is the technique of presenting an application to an end user without any installation, integration, or dependencies on the underlying computing platform
 
 Allows application to be delivered in an isolated environment
-- Aggregates Operating System (OS) resources and the application into a virtualized container  
+- Aggregates Operating System (OS) resources and the application into a virtualised container  
 - Ensures integrity of Operating System (OS) and applications  
 - Avoids conflicts between different applications or different versions of the same application
 
@@ -923,6 +922,8 @@ Cloud has changed the economics of IT
 
 Cloud enables to move from a CAPEX to an OPEX model  
 
+There are a variety of costs and expenses that companies have to pay to continue running their businesses. The most common are capital expenditures (<mark style="background: #BABD00;">CapEx</mark>) and operating expenses (<mark style="background: #BABD00;">OpEx</mark>). Capital expenditures are major purchases that a company makes, which are used over the long term. Operating expenses, on the other hand, are the day-to-day expenses that a company incurs to keep its business running.
+
 <mark style="background: #BABD00;">Cloud provides the following key cost savings:</mark>  
 - Infrastructure cost  
 - Management cost  
@@ -934,13 +935,13 @@ Cloud enables to move from a CAPEX to an OPEX model
 
 <mark style="background: #BABD00;">Security and Regulation:</mark>  
 - Consumers are indecisive to transfer control of sensitive data  
-- Regulation may prevent organizations to use Cloud services  
+- Regulation may prevent organisations using Cloud services  
 
 <mark style="background: #BABD00;">Network latency:</mark> Real time applications may suffer due to network latency and limited bandwidth  
 
 <mark style="background: #BABD00;">Supportability:</mark> Legacy or Custom applications may not be compatible with Cloud platform  
 
-<mark style="background: #BABD00;">Interoperability:</mark> Lack of standardization across Cloud-based platforms
+<mark style="background: #BABD00;">Interoperability:</mark> Lack of standardisation across Cloud-based platforms
 
 ### <mark style="background: #BABD00;">Cloud Challenges – Provider’s Perspective:</mark>
 
@@ -964,7 +965,7 @@ Information (data) is constantly flowing in and out of computers.
 
 Data coming in is either stored in memory for quick access (non-permanent storage) or written to disk so that it can be retrieved later.  
 
-How this information is stored depends on several issues:  
+<mark style="background: #BABD00;">How this information is stored depends on several issues:</mark>  
 - How will it be stored (what will it be stored ON)?  
 - What is the protocol by which this data will be transferred?  
 - What devices will it pass through on the way to being stored?
@@ -975,13 +976,15 @@ Single disk drive (self explanatory)
 
 <mark style="background: #BABD00;">Volume:</mark> a “logical” disk drive. A concatenation of drives. When one fills up, it goes to the next one. No RAID, no striping. To the OS, a logical volume looks like one disk drive.  
 
-<mark style="background: #BABD00;">Storage Array:</mark>Also a group of more than one disk joined together – but can do striping and/or redundancy. Implies some type of RAID  
+<mark style="background: #BABD00;">Storage Array:</mark> Also a group of more than one disk joined together – but can do striping and/or redundancy. Implies some type of RAID. 
 
 <mark style="background: #BABD00;">SCSI:</mark> SCSI stands for Small Computer System Interface. It is a means of attaching additional storage to a computer. For example, a typical RAID Controller is a SCSI device that allows connection to an external storage enclosure with multiple drives.  
 
-<mark style="background: #BABD00;">NAS:</mark> Network Attached Storage. Rather than simply attaching storage to one machine, it is attached to the computer network. Multiple machines can now access the storage. A file protocol must be used to communicate across the network.
+<mark style="background: #BABD00;">ISCSI:</mark> Internet/SCSI protocol. Another approach to offering storage on a network. Rather then using file protocols to communicate across a TCP/IP network, native SCSI commands are “encapsulated” in TCP/IP packets. 
 
-<mark style="background: #BABD00;">ISCSI:</mark> Internet/SCSI protocol. Another approach to offering storage on a network. Rather then using file protocols to communicate across a TCP/IP network, native SCSI commands are “encapsulated” in TCP/IP packets.  
+<mark style="background: #BABD00;">NAS:</mark> Network Attached Storage. Rather than simply attaching storage to one machine, it is attached to the computer network. Multiple machines can now access the storage. A file protocol must be used to communicate across the network. 
+
+<mark style="background: #BABD00;">DAS:</mark> Direct Attached Storage is a type of storage that is attached directly to a computer without going through a network. The storage might be connected internally or externally. Only the host computer can access the data directly.
 
 <mark style="background: #BABD00;">SAN:</mark> Storage Area Network. Whereas a NAS is storage that is attached to a network, SAN is a storage network in and of itself that can be attached to multiple machines.  
 - SAN is an industry-wide term for both the storage and the switching network. A SAN does not have the protocol conversion overhead of NAS or ISCSI, and tends to offer better performance. A SAN may require a higher initial investment in infrastructure.  
@@ -1006,6 +1009,7 @@ The Hard Drive - basic storage element
 Made of complex devices composed of platters, heads, cylinders and tracks  
 
 Logical Block Addressing (LBA) addresses the sector within the disk. Modern drives have 4 kilo-byte sectors  
+
 File systems arrange files into sectors so that they can be stored and retrieved  
 
 The File system usually deals with clusters of blocks and uses a File Allocation Table to map a file to the sectors.
@@ -1033,7 +1037,7 @@ Direct Attached Storage -RAID controller is internal to the computer system, and
 ### <mark style="background: #BABD00;">I/O Transfer:</mark>
 
 <mark style="background: #BABD00;">RAID Controller:</mark>  
--  Contains the “smarts”  
+-  Contains the "smarts"  
 - Determines how the data will be written (striping, mirroring, RAID 10, RAID 5, etc.)  
 
 <mark style="background: #BABD00;">Host Bus Adapter (HBA):</mark>  
@@ -1047,13 +1051,13 @@ Direct Attached Storage (DAS)
 
 Storage is captive ‘behind’ the server  
 
-Server CPU must handle user I/O requests, but also:  
+<mark style="background: #BABD00;">Server CPU must handle user I/O requests, but also:</mark>  
 - User-database inquiries  
 - User file/print serving  
 - Data-integrity checking  
 - Communication with other devices  
 
-Data access is file system and platform dependant  
+Data access is file system and platform dependent  
 
 Costly to scale; complex to manage
 
@@ -1139,7 +1143,7 @@ Multiple technologies can be used when building a SAN
 
 Traditionally the dominant technology is Fibre Channel, but IP based solutions are also quite popular for specific applications (due to costs!)  
   
-The concept of SAN is also independent from the devices that are attached to it:
+<mark style="background: #BABD00;">The concept of SAN is also independent from the devices that are attached to it:</mark>
 - Can be disks, tapes, RAIDs, file servers, or other!  
 - Yes, Magnetic Tape storage is still used in 2024: Often cheaper than alternative, can last 30 years or more (if kept clean, dry and protected) which is excellent for compliance with industry-specific storage regulations.
 
@@ -1175,10 +1179,10 @@ Installation is relatively quick, and storage capacity is automatically assigned
 
 ### <mark style="background: #BABD00;">NAS Costs?</mark>
 
-NAS will generally cost more than DAS (because of its built-in file sharing intelligence), but has the following potential advantages:  
-- distance (because it is attached over a network), large number of users being able to access the same storage device  
-- capacity pooling within the NAS appliance (sharing capacity among all hosts using the NAS)  
-- file sharing (as opposed to data transfer or multiple copies on distributed hosts).
+NAS will generally cost more than DAS (because of its built-in file sharing intelligence), but has the following potential advantages:
+- <mark style="background: #BABD00;">distance</mark> (because it is attached over a network), large number of users being able to access the same storage device  
+- <mark style="background: #BABD00;">capacity pooling</mark> within the NAS appliance (sharing capacity among all hosts using the NAS)  
+- <mark style="background: #BABD00;">file sharing</mark> (as opposed to data transfer or multiple copies on distributed hosts).
 
 ### <mark style="background: #BABD00;">Summary:</mark>
 
@@ -1203,7 +1207,7 @@ NAS will generally cost more than DAS (because of its built-in file sharing inte
 ### <mark style="background: #BABD00;">Cloud Migration – Key Questions</mark>  
 
 <mark style="background: #BABD00;">CIOs/IT Managers seeking to move to Cloud face several questions.</mark>
-- How does Cloud fit into the organization’s requirements? (Financial advantage, convenience, etc. )
+- How does Cloud fit into the organisation’s requirements? (Financial advantage, convenience, etc. )
 - Which are the applications suitable for Cloud?  
 - How do I choose the Cloud Vendor?  
 - Is the Cloud infrastructure capable of providing the required Quality of Service (QoS)?(Performance, availability, and security)  
@@ -1214,7 +1218,7 @@ NAS will generally cost more than DAS (because of its built-in file sharing inte
 
 Current infrastructure and requirements: Consider from application, network, and security perspectives.  
 
-‘Risk vs. Convenience’ profile: Based on this profile, choose ‘Cloud model’ for your organization.
+‘Risk vs. Convenience’ profile: Based on this profile, choose ‘Cloud model’ for your organisation.
 
 ![](https://i.imgur.com/qq4VTWs.png)
 
@@ -1226,21 +1230,21 @@ Current infrastructure and requirements: Consider from application, network, and
 
 <mark style="background: #BABD00;">Proprietary and mission-critical application:</mark>  
 - Proprietary applications provide competitive advantage  
-- Organization perceives high risk to move this application to Cloud  
+- Organisation perceives high risk to move this application to Cloud  
 - These applications are typically maintained in-house  
 
 <mark style="background: #BABD00;">Non-proprietary but mission-critical application:</mark>  
-- Organization perceives high risk to move this application to Cloud  
-- It can be moved to Cloud if the organization does not have adequate resources to maintain the application  
+- Organisation perceives high risk to move this application to Cloud  
+- It can be moved to Cloud if the organisation does not have adequate resources to maintain the application  
 
 <mark style="background: #BABD00;">Non-proprietary and non-mission critical application:</mark>  
-- Perceived as good candidate for Cloud, unless it is performance sensitive
+- Perceived as good candidate for Cloud, unless it is performance sensitive.
 
 ### <mark style="background: #BABD00;">Selecting a Cloud Service Provider:</mark>  
 
 <mark style="background: #BABD00;">Some key questions to ask before selecting a Cloud Service provider:</mark>  
 - How long has the provider been providing the services?  
-- How well does the provider meet the organization’s current and future requirements?  
+- How well does the provider meet the organisation’s current and future requirements?  
 - How easy is it to relinquish resources not in use and to reduce cost?  
 - What tools does the provider offer (like virtual machine images) that would make it easy to move to another provider when required?  
 - How easy is it to add/remove services?  
@@ -1304,28 +1308,28 @@ Requires cost consideration of the following elements:
 
 Involves security advisor early in the process  
 
-<mark style="background: #BABD00;">Enables organizations to:</mark>  
+<mark style="background: #BABD00;">Enables organisations to:</mark>  
 - Identify risk tolerance and security threats for an application  
 - Understand regulatory/contractual obligations to store data in specific jurisdictions  
-- Explore whether the Cloud vendor offers: Choice of selecting geographic location to store the data. Guarantee that data does not move unless organization decides to move 
+- Explore whether the Cloud vendor offers: Choice of selecting geographic location to store the data. Guarantee that data does not move unless organisation decides to move 
 - Explore options to retrieve all data back from the Cloud when required  
 - Identify the download or delete option of data, if required  
 - Identify the choice of encryption of data when in transit and at rest
 
 ### <mark style="background: #BABD00;">Technical Assessment:</mark>
 
-<mark style="background: #BABD00;">Enables organizations to:</mark>  
-- Identify whether Cloud service provider offers the required infrastructure  
-- Identify whether an application is compatible with Cloud infrastructure  
-- Identify the dependencies of an application on other components and services  
-- Identify the component that must be local (on-premise) and components that can move to the Cloud 
-- Identify the latency and bandwidth requirements  
-- Estimate the effort required to migrate the application
+<mark style="background: #BABD00;">Enables organisations to identify:</mark>  
+- Whether Cloud service provider offers the required infrastructure  
+- Whether an application is compatible with Cloud infrastructure  
+- The dependencies of an application on other components and services  
+- The component that must be local (on-premise) and components that can move to the Cloud 
+- The latency and bandwidth requirements  
+- The effort required to migrate the application
 
 ### <mark style="background: #BABD00;">Assessment of License Issues:</mark>  
 
 <mark style="background: #BABD00;">Use existing license:</mark>  
-- Identify whether the organization can move its existing licensed software into the Cloud  
+- Identify whether the organisation can move its existing licensed software into the Cloud  
 - Cloud providers have partnered with software vendors to permit the use of existing software license in the Cloud  
 
 <mark style="background: #BABD00;">Use SaaS based Cloud service:</mark>  
@@ -1336,7 +1340,7 @@ Involves security advisor early in the process
 
 Goal of this phase is to verify that an application runs as expected in the Cloud  
 
-<mark style="background: #BABD00;">Proof of Concept enables organizations to:</mark>  
+<mark style="background: #BABD00;">Proof of Concept enables organisations to:</mark>  
 - Explore the capabilities of the Cloud  
 - Explore the different business continuity and disaster recovery options offered by the Cloud vendor  
 - Estimate the effort required to roll out the application  
@@ -1350,7 +1354,7 @@ Goal of this phase is to verify that an application runs as expected in the Clou
 
 Test the application after migration is complete  
 
-Understand the usage pattern and optimize resource consumption  
+Understand the usage pattern and optimise resource consumption  
 
 Relinquish idle resources
 
@@ -1363,7 +1367,7 @@ Relinquish idle resources
 - Phases to adopt the Cloud
 
 ### <mark style="background: #BABD00;">Check Your Knowledge:</mark>  
-1. What are the key concerns that organizations have while adopting the Cloud?  
+1. What are the key concerns that organisations have while adopting the Cloud?  
 2. Describe the guidelines for choosing the right application for the Cloud.  
 3. What are the two options available for migrating licensed software to the Cloud?  
 4. Describe the two migration strategies.  
@@ -1408,7 +1412,7 @@ Uses host-based software to provide RAID functionality
 
 #### <mark style="background: #BABD00;">Hardware RAID Implementation</mark>  
 
-Uses a specialized hardware controller installed either on a host or on an array
+Uses a specialised hardware controller installed either on a host or on an array.
 
 ### <mark style="background: #BABD00;">RAID Array Components:</mark>
 
@@ -1418,8 +1422,7 @@ Uses a specialized hardware controller installed either on a host or on an array
 
 <mark style="background: #BABD00;">Striping:</mark>  Striping is a technique which offers the best performance of any RAID configuration. In a striped array, data is interleaved across all the drives in the array.  
 
-<mark style="background: #BABD00;">Mirroring:</mark>  whatever you write to one drive, gets written simultaneously to another. Thus, you always have an exact duplicate of your data on the  
-second drive.  
+<mark style="background: #BABD00;">Mirroring:</mark> whatever you write to one drive, gets written simultaneously to another. Thus, you always have an exact duplicate of your data on the second drive.  
 
 <mark style="background: #BABD00;">Parity:</mark> RAID controller adds a parity (extra) byte of data tacked onto the actual data being written to the array. Added by the RAID controller to equal either an even or an odd number. By analysing this value, the controller can determine whether the information has been compromised in any way. If it has, it can replace the data automatically with data from the other drive.
 
@@ -1469,7 +1472,7 @@ Operations on the array will be split across the devices e.g. a large write coul
 
 <mark style="background: #BABD00;">Con:</mark> No Redundancy, inefficient use of disk space: no savings!  
 
-RAID 0 provides no redundancy, and as such, should never be used for  applications where data is critical.
+RAID 0 provides no redundancy, and as such, should never be used for applications where data is critical.
 
 ![](https://i.imgur.com/d6U6m0l.png)
 
@@ -1500,8 +1503,8 @@ Also called Nested RAID
 - Similar to RAID 2 which uses byte level striping and a dedicated parity disk  
 - BUT RAID 3 uses simple (&fast) XOR algorithm to generate parity.  
 - Data is striped (at the byte level) across multiple disks. The parity information is sent to a dedicated parity disk, but the failure of any disk in the array can be tolerated.  
-- Pros: delivers good performance and fault tolerance.  
-- Cons: dedicated parity disk does slow down write speeds because the parity info has to be written to the parity drive whenever a write occurs  
+- <mark style="background: #BABD00;">Pros:</mark> delivers good performance and fault tolerance.  
+- <mark style="background: #BABD00;">Cons:</mark> dedicated parity disk does slow down write speeds because the parity info has to be written to the parity drive whenever a write occurs  
 
 ![](https://i.imgur.com/JlJ8OEY.png)
 
@@ -1645,19 +1648,18 @@ The data usually needs to be backed up while the applications that produce the d
 
 If the data set is large, it can be difficult to back up all of it at one time  
 
-Correctly performing backup and restore operations requires close coordination between  
-- between the backup applications,  
-- and the line-of-business applications that are being backed up,  
-- and the storage management hardware and software.
+<mark style="background: #BABD00;">Correctly performing backup and restore operations requires close coordination between</mark>  
+- the backup applications,  
+- the line-of-business applications that are being backed up,  
+- the storage management hardware and software.
 
-Volume Shadow Copy Service (VSS) facilitates the  
-conversation between these components to allow them to work better together.  
+Volume Shadow Copy Service (VSS) facilitates the conversation between these components to allow them to work better together.  
 
 When all the components support VSS, you can use them to back up your application data without taking the applications offline.  
 
 VSS coordinates the actions that are required to create a consistent shadow copy (also known as a snapshot or a point-in-time copy) of the data that is to be backed up.
 
-The shadow copy can be used as-is, or it can be used in scenarios such as the following:  
+<mark style="background: #BABD00;">The shadow copy can be used as-is, or it can be used in scenarios such as the following:</mark>  
 - You want to back up application data and system state information, including archiving data to another hard disk drive, to tape, or to other removable media.  
 - You're data mining.  
 - You're performing disk-to-disk backups.  
@@ -1781,7 +1783,7 @@ Export the virtual machine.
 
 Takes some time, but you can make an importable copy of many virtual machines at once by using the Hyper-V Manager. What you end up with is a set of files that can be copied to a new location and easily imported.  
 
-Use PowerShell and it’s support of WMI to administer Hyper-V. So, a script could automate:  
+<mark style="background: #BABD00;">Use PowerShell and it’s support of WMI to administer Hyper-V. So, a script could automate:</mark>  
 - Shutting down the virtual machine  
 - Exporting the virtual machine and/or Copy the .VHD files  
 - Starting the virtual machine  
@@ -1863,7 +1865,6 @@ Containers have similar resource isolation and allocation benefits as VMs but a 
 ![](https://i.imgur.com/OW9QmZP.png)
 
 <mark style="background: #BABD00;">Containers:</mark>
-
 ![](https://i.imgur.com/7ukDqSv.png)
 
 ### <mark style="background: #BABD00;">What are the basics of the Docker system?</mark>
@@ -1896,7 +1897,7 @@ Docker creates a common framework for developers and sysadmins to work together 
 
 <mark style="background: #BABD00;">Distribute and share content:</mark>
 - Store, distribute and manage your Docker images in your Docker Hub with your team  
-- Image updates, changes and history are automatically shared across your organization.  
+- Image updates, changes and history are automatically shared across your organisation.  
 
 <mark style="background: #BABD00;">Simply share your application with others:</mark>  
 - Ship your containers to others without worrying about different environment dependencies creating issues with your application.  
@@ -1961,7 +1962,7 @@ This cloud model is composed of five essential characteristics, three service mo
 
 <mark style="background: #BABD00;">Rapid elasticity.</mark> Capabilities can be elastically provisioned and released, in some cases automatically, to scale rapidly outward and inward commensurate with demand. To the consumer, the capabilities available for provisioning often appear to be unlimited and can be appropriated in any quantity at any time.  
 
-<mark style="background: #BABD00;">Measured service.</mark> Cloud systems automatically control and optimize resource use by leveraging a metering capability<sup>1</sup> at some level of abstraction appropriate to the type of service (e.g., storage, processing, bandwidth, and active user accounts). Resource usage can be monitored, controlled, and reported, providing transparency for both the provider and consumer of the utilized service.  
+<mark style="background: #BABD00;">Measured service.</mark> Cloud systems automatically control and optimise resource use by leveraging a metering capability<sup>1</sup> at some level of abstraction appropriate to the type of service (e.g., storage, processing, bandwidth, and active user accounts). Resource usage can be monitored, controlled, and reported, providing transparency for both the provider and consumer of the utilized service.  
 
 #### <mark style="background: #BABD00;">Service Models:</mark>  
 
@@ -1973,11 +1974,11 @@ This cloud model is composed of five essential characteristics, three service mo
 
 #### <mark style="background: #BABD00;">Deployment Models:</mark>  
 
-<mark style="background: #BABD00;">Private cloud.</mark> The cloud infrastructure is provisioned for exclusive use by a single organization comprising multiple consumers (e.g., business units). It may be owned, managed, and operated by the organization, a third party, or some combination of them, and it may exist on or off premises.
+<mark style="background: #BABD00;">Private cloud.</mark> The cloud infrastructure is provisioned for exclusive use by a single organisation comprising multiple consumers (e.g., business units). It may be owned, managed, and operated by the organisation, a third party, or some combination of them, and it may exist on or off premises.
 
-<mark style="background: #BABD00;">Community cloud.</mark> The cloud infrastructure is provisioned for exclusive use by a specific community of consumers from organizations that have shared concerns (e.g., mission, security requirements, policy, and compliance considerations). It may be owned, managed, and operated by one or more of the organizations in the community, a third party, or some combination of them, and it may exist on or off premises.  
+<mark style="background: #BABD00;">Community cloud.</mark> The cloud infrastructure is provisioned for exclusive use by a specific community of consumers from organisations that have shared concerns (e.g., mission, security requirements, policy, and compliance considerations). It may be owned, managed, and operated by one or more of the organisations in the community, a third party, or some combination of them, and it may exist on or off premises.  
 
-<mark style="background: #BABD00;">Public cloud.</mark> The cloud infrastructure is provisioned for open use by the general public. It may be owned, managed, and operated by a business, academic, or government organization, or some combination of them. It exists on the premises of the cloud provider.  
+<mark style="background: #BABD00;">Public cloud.</mark> The cloud infrastructure is provisioned for open use by the general public. It may be owned, managed, and operated by a business, academic, or government organisation, or some combination of them. It exists on the premises of the cloud provider.  
 
 <mark style="background: #BABD00;">Hybrid cloud.</mark> The cloud infrastructure is a composition of two or more distinct cloud infrastructures (private, community, or public) that remain unique entities, but are bound together by standardized or proprietary technology that enables data and application portability (e.g., cloud bursting for load balancing between clouds).
 
@@ -2001,13 +2002,13 @@ A properly configured CDN may also help protect websites against some common mal
 
 While a CDN does not host content and can’t replace the need for proper web hosting, it does help [cache](https://www.cloudflare.com/learning/cdn/what-is-caching/) content at the [network edge](https://www.cloudflare.com/learning/serverless/glossary/what-is-edge-computing/), which improves website performance. Many websites struggle to have their [performance](https://www.cloudflare.com/learning/cdn/performance/) needs met by traditional hosting services, which is why they opt for CDNs.
 
-By utilizing caching to reduce hosting bandwidth, [helping to prevent interruptions in service](https://www.cloudflare.com/learning/cdn/cdn-load-balance-reliability/), and [improving security](https://www.cloudflare.com/learning/cdn/cdn-ssl-tls-security/), CDNs are a popular choice to relieve some of the major pain points that come with traditional web hosting.
+By utilising caching to reduce hosting bandwidth, [helping to prevent interruptions in service](https://www.cloudflare.com/learning/cdn/cdn-load-balance-reliability/), and [improving security](https://www.cloudflare.com/learning/cdn/cdn-ssl-tls-security/), CDNs are a popular choice to relieve some of the major pain points that come with traditional web hosting.
 
 #### <mark style="background: #BABD00;">What are the benefits of using a CDN?</mark>
 
 Although the benefits of using a CDN vary depending on the size and needs of an Internet property, the primary benefits for most users can be broken down into four different components:
 
-1. <mark style="background: #BABD00;">Improving website load times</mark> - By distributing content closer to website visitors by using a nearby CDN server (among other optimizations), visitors experience faster page loading times. As visitors are more inclined to click away from a slow-loading site, a CDN can reduce bounce rates and increase the amount of time that people spend on the site. In other words, a faster a website means more visitors will stay and stick around longer.
+1. <mark style="background: #BABD00;">Improving website load times</mark> - By distributing content closer to website visitors by using a nearby CDN server (among other optimisations), visitors experience faster page loading times. As visitors are more inclined to click away from a slow-loading site, a CDN can reduce bounce rates and increase the amount of time that people spend on the site. In other words, a faster a website means more visitors will stay and stick around longer.
 
 2. <mark style="background: #BABD00;">Reducing bandwidth costs</mark> - Bandwidth consumption costs for website hosting is a primary expense for websites. Through caching and other optimizations, CDNs are able to reduce the amount of data an origin server must provide, thus reducing hosting costs for website owners.
 
@@ -2037,7 +2038,7 @@ When it comes to websites loading content, users drop off quickly as a site slow
 
 #### <mark style="background: #BABD00;">Reliability and redundancy - How does a CDN keep a website always online?</mark>
 
-Uptime is a critical component for anyone with an Internet property. Hardware failures and spikes in traffic, as a result of either malicious attacks or just a boost in popularity, have the potential to bring down a web server and prevent users from accessing a site or service. A well-rounded CDN has several features that will minimize downtime:
+Uptime is a critical component for anyone with an Internet property. Hardware failures and spikes in traffic, as a result of either malicious attacks or just a boost in popularity, have the potential to bring down a web server and prevent users from accessing a site or service. A well-rounded CDN has several features that will minimise downtime:
 
 - Load balancing distributes network traffic evenly across several servers, making it easier to scale rapid boosts in traffic.
 - Intelligent failover provides uninterrupted service even if one or more of the CDN servers go offline due to hardware malfunction; the failover can redistribute the traffic to the other operational servers.
@@ -2077,7 +2078,7 @@ Application development is generally split into two realms: the frontend and the
 
 ![](https://i.imgur.com/yZlc8Zm.png)
 
-For example, let’s imagine a website that sells concert tickets. When a user types a website address into the browser window, the browser sends a request to the backend server, which responds with the website data. The user will then see the frontend of the website, which can include content such as text, images, and form fields for the user to fill out. The user can then interact with one of the form fields on the frontend to search for their favorite musical act. When the user clicks on ‘submit’, this will trigger another request to the backend. The backend code checks its database to see if a performer with this name exists, and if so, when they will be playing next, and how many tickets are available. The backend will then pass that data back to the frontend, and the frontend will display the results in a way that makes sense to the user. Similarly, when the user creates an account and enters financial information to buy the tickets, another back-and-forth communication between the frontend and backend will occur.
+For example, let’s imagine a website that sells concert tickets. When a user types a website address into the browser window, the browser sends a request to the backend server, which responds with the website data. The user will then see the frontend of the website, which can include content such as text, images, and form fields for the user to fill out. The user can then interact with one of the form fields on the frontend to search for their favourite musical act. When the user clicks on ‘submit’, this will trigger another request to the backend. The backend code checks its database to see if a performer with this name exists, and if so, when they will be playing next, and how many tickets are available. The backend will then pass that data back to the frontend, and the frontend will display the results in a way that makes sense to the user. Similarly, when the user creates an account and enters financial information to buy the tickets, another back-and-forth communication between the frontend and backend will occur.
 
 #### <mark style="background: #BABD00;">What kind of backend services can serverless computing provide?</mark>
 
@@ -2110,7 +2111,7 @@ Typically when a particular serverless function has not been called in a while, 
 
 Once the function is up and running it will be served much more rapidly on subsequent requests (warm starts), but if the function is not requested again for a while, the function will once again go dormant. This means the next user to request that function will experience a cold start. Up until fairly recently, cold starts were considered a necessary trade-off of using serverless functions.
 
-Cloudflare Workers has addressed this problem by spinning up serverless functions in advance, during the [TLS handshake](https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake/). Since Workers functions spin up at the edge in a very short amount of time, even shorter than the time required to complete the handshake, the result is an [FaaS platform with zero cold starts](https://blog.cloudflare.com/eliminating-cold-starts-with-cloudflare-workers/). To get started with Cloudflare Workers, see our [Developer documentation](https://developers.cloudflare.com/workers/).
+Cloudflare Workers has addressed this problem by spinning up serverless functions in advance, during the [TLS handshake](https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake/). Since Workers functions spin up at the edge in a very short amount of time, even shorter than the time required to complete the handshake, the result is an [FaaS platform with zero cold starts](https://blog.cloudflare.com/eliminating-cold-starts-with-cloudflare-workers/).
 
 As more and more of the drawbacks of using serverless get addressed and the popularity of edge computing grows, we can expect to see serverless architecture becoming more widespread.
 
@@ -2235,7 +2236,7 @@ Netscape gave control of SSL protocol to the IETF: Internet Engineering Task For
 
 SSL was renamed to <mark style="background: #BABD00;">TLS:</mark> Transport Layer Security.
 
-<mark style="background: #BABD00;">A certificate authority (CA) is a third-party organization with 3 main objectives:</mark>
+<mark style="background: #BABD00;">A certificate authority (CA) is a third-party organisation with 3 main objectives:</mark>
 1. Issuing certificates.
 2. Confirming the identity of the certificate owner.
 3. Providing proof that the certificate is valid.
@@ -2246,7 +2247,7 @@ Apple, Windows, and Mozilla run their own root stores that they pre-install in y
 
 <mark style="background: #BABD00;">Three types of CA:</mark>
 - <mark style="background: #BABD00;">Domain validated:</mark> The certificate just verifies the domain name, and nothing else. 
-- <mark style="background: #BABD00;">Organization validated:</mark> The certificate requires the validation and manual verification of the organization behind the certificate.
+- <mark style="background: #BABD00;">organisation validated:</mark> The certificate requires the validation and manual verification of the organisation behind the certificate.
 - <mark style="background: #BABD00;">Extended validation.</mark> The certificate requires an exhaustive verification of the business.
 
 All valid certificates result in the browser displaying a secure badge in the browser bar. EV certificates generally display the company name as well.
@@ -2265,7 +2266,7 @@ It’s common for servers to have multiple storage devices. A logical unit numbe
 
 #### <mark style="background: #BABD00;">What Is a LUN in Storage?</mark>
 
-A LUN (logical unit number) is a unique identifier that defines a storage partition in a [storage area network (SAN)](https://www.purestorage.com/knowledge/what-is-storage-area-network.html) environment for data organization and access. It’s important to note that a LUN is a component in storage organization and not a type of storage device itself. A LUN is a numeric value that points to a physical disk or a logical set of disks. Storage LUNs can also point to a logical set of partitions.
+A LUN (logical unit number) is a unique identifier that defines a storage partition in a [storage area network (SAN)](https://www.purestorage.com/knowledge/what-is-storage-area-network.html) environment for data organisation and access. It’s important to note that a LUN is a component in storage organisation and not a type of storage device itself. A LUN is a numeric value that points to a physical disk or a logical set of disks. Storage LUNs can also point to a logical set of partitions.
 
 The purpose of a LUN is for clients to make requests from storage space and retrieve data. Usually, LUNs refer to SAN storage, so client computers can map network drives, request data from network storage, or store data on the SAN. Users do not address a LUN when mapping a drive, so only administrators manage LUN identifiers.
 
@@ -2289,9 +2290,9 @@ Unless you use older [SCSI technology](https://blog.purestorage.com/purely-techn
 
 Although a LUN represents some or all of a disk’s storage capacity, it does not always represent a single disk. LUN management software lets administrators choose LUN values for specific disks or volumes, but counting the number of LUN storage values does not represent the total number of disks. The operating system on the remote computer using the LUN can mount it as a drive, so the storage can be given a user-friendly name, usually a letter (e.g., Z drive or X drive).
 
-LUN management lets administrators better control SAN disks and capacity. Enterprise networks use several large-capacity drives to hold petabytes of data, and a LUN lets a workstation mount a single LUN as a user-friendly drive letter. These drive letters often have logical organization (e.g., storage for accounting or sharing documents company-wide) with user-friendly volume letters that most employees know when they transfer documents to network drives.
+LUN management lets administrators better control SAN disks and capacity. Enterprise networks use several large-capacity drives to hold petabytes of data, and a LUN lets a workstation mount a single LUN as a user-friendly drive letter. These drive letters often have logical organisation (e.g., storage for accounting or sharing documents company-wide) with user-friendly volume letters that most employees know when they transfer documents to network drives.
 
-Although a LUN enables mounting drives and resource sharing on a local device, it does not offer any security. Administrators are still responsible for creating user groups and assigning appropriate permissions to each user group for data access control. Most organizations assign a different drive letter to each user group so there’s no confusion for employees about the purpose of each mounted drive. For example, the X drive might be used for sharing files with anyone within the organization, while the Z drive might represent a link to personal file spaces that only a single employee can access.
+Although a LUN enables mounting drives and resource sharing on a local device, it does not offer any security. Administrators are still responsible for creating user groups and assigning appropriate permissions to each user group for data access control. Most organisations assign a different drive letter to each user group so there’s no confusion for employees about the purpose of each mounted drive. For example, the X drive might be used for sharing files with anyone within the organisation, while the Z drive might represent a link to personal file spaces that only a single employee can access.
 
 #### <mark style="background: #BABD00;">Potential Downsides of a LUN</mark>
 
