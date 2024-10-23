@@ -688,7 +688,7 @@ Get the most out of your existing infrastructure.
 
 Transforming a <mark style="background: #BABD00;">Classic Data Centre (CDC)</mark> into a <mark style="background: #BABD00;">Virtualised Data Centre (VDC)</mark> requires virtualising the core elements of the data centre.
 
-Using a phased approach to a virtualized infrastructure enables smoother transition to virtualize core elements.
+Using a phased approach to a virtualised infrastructure enables smoother transition to virtualize core elements.
 
 ![](https://i.imgur.com/SWp1MUx.png)
 
@@ -712,11 +712,11 @@ Enables creation of multiple virtual machines (VMs), each running an OS and appl
 
 ### <mark style="background: #BABD00;">Resource Management:</mark>
 
-<mark style="background: #BABD00;">Resource management:</mark> A process of allocating resources from physical machine or clustered physical machines to virtual machines (VMs) to optimize the utilization of resources.
+<mark style="background: #BABD00;">Resource management:</mark> A process of allocating resources from physical machine or clustered physical machines to virtual machines (VMs) to optimise the utilisation of resources.
 
 <mark style="background: #BABD00;">Goals of resource management:</mark>  
-- Controls utilization of resources  
-- Prevents VMs from monopolizing resources  
+- Controls utilisation of resources  
+- Prevents VMs from monopolising resources  
 - Allocates resources based on relative priority of VMs  
 
 Resources must be pooled to manage them centrally
@@ -774,7 +774,7 @@ Provides operational automation
 
 <mark style="background: #BABD00;">Storage virtualisation:</mark> It is the process of masking the underlying complexity of physical storage resources and presenting the logical view of these resources to compute systems.
 
-Logical to physical storage mapping is performed by virtualization layer.  
+Logical to physical storage mapping is performed by virtualisation layer.  
 
 Virtualisation layer abstracts the identity of physical storage devices: Creates a storage pool from multiple, heterogeneous storage arrays.  
 
@@ -782,7 +782,7 @@ Virtual volumes are created from the storage pools and are assigned to the compu
 
 <mark style="background: #BABD00;">Benefits of storage virtualisation:</mark>
 - Adds or removes storage without any downtime  
-- Increases storage utilization thereby reducing TCO  
+- Increases storage utilisation thereby reducing TCO  
 - Provides non-disruptive data migration between storage devices  
 - Supports heterogeneous, multi-vendor storage platforms  
 - Simplifies storage management
@@ -811,7 +811,7 @@ Hypervisor allocates storage space to the virtual disk only when VM requires sto
 
 <mark style="background: #BABD00;">Virtual Provisioning Benefits:</mark>  
 - Reduces administrative overhead  
-- Improves capacity utilization  
+- Improves capacity utilisation  
 - Reduces cost  
 - Reduces downtime
 
@@ -1112,7 +1112,7 @@ High-performance Fibre Channel switches and Fibre Channel network protocols ensu
 
 ![](https://i.imgur.com/pjgA2ZE.png)
 
-A Storage Area Network (SAN) is a specialized, high-speed network that provides network access to storage devices.  
+A Storage Area Network (SAN) is a specialised, high-speed network that provides network access to storage devices.  
 
 SANs are typically composed of hosts, switches, storage elements, and storage devices that are interconnected using a variety of technologies, topologies, and protocols.  
 
@@ -1174,7 +1174,7 @@ NAS systems also commonly employ HTTPS as an access protocol for Web-based admin
 Installation is relatively quick, and storage capacity is automatically assigned to users on demand.  
 
 <mark style="background: #BABD00;">SAN</mark> is optimised for performance and scalability.  
-- Major potential benefits include support for high-speed Fibre Channel media which is optimised for storage traffic, managing multiple disk and tape devices as a shared pool with a single point of control, specialised backup facilities that can reduce server and LAN utilization and wide industry support.  
+- Major potential benefits include support for high-speed Fibre Channel media which is optimised for storage traffic, managing multiple disk and tape devices as a shared pool with a single point of control, specialised backup facilities that can reduce server and LAN utilisation and wide industry support.  
 - Cost savings can be obtained over TCP/IP using iSCSI (later).
 
 ### <mark style="background: #BABD00;">NAS Costs?</mark>
@@ -1524,7 +1524,7 @@ Most popular member of the RAID family - combines block level striping with dist
 - storage efficiency.  
 
 <mark style="background: #BABD00;">Distributing parity stripes over a series of hard drives:</mark> 
-- Minimizes write bottlenecks of RAID levels 3 and 4  
+- Minimises write bottlenecks of RAID levels 3 and 4  
 - Provides relief to the concentration of write activity on a single drive, which in turn enhances overall system performance.  
 
 RAID 5 is often used as an all-purpose RAID solution, but it is also used for database and file server applications.  
@@ -1632,7 +1632,7 @@ Two types of checkpoints
 
 <mark style="background: #BABD00;">Production Checkpoints:</mark>  
 - Use backup technology in the Guest OS to create data-consistent checkpoints that do not include information about running applications.  
-- uses Volume Shadow Copy Service or File System Freeze on a Linux virtual machine to create a data-consistent backup of the virtual machine. No snapshot of the virtual machine memory state is taken.  
+- uses Volume Shadow Copy Service or File System Freeze on a Linux virtual machine to create a data-consistent backup of the virtual machine. No snapshot of the virtual machine memory state is taken. 
 
 <mark style="background: #BABD00;">Standard Checkpoints:</mark>
 - Creates application-consistent checkpoints that capture the current state of the applications.  
