@@ -1890,7 +1890,6 @@ Containers have similar resource isolation and allocation benefits as VMs but a 
 - By packaging up the application with its configs and dependencies together and shipping as a container, the application will always work as designed locally, on another machine, in test or production  
 - No more worries about having to install the same configs into a different environment
 
-
 ### <mark style="background: #BABD00;">Easily Share and Collaborate on Applications:</mark>
 
 Docker creates a common framework for developers and sysadmins to work together on distributed applications.
@@ -1983,7 +1982,7 @@ This cloud model is composed of five essential characteristics, three service mo
 <mark style="background: #BABD00;">Hybrid cloud.</mark> The cloud infrastructure is a composition of two or more distinct cloud infrastructures (private, community, or public) that remain unique entities, but are bound together by standardized or proprietary technology that enables data and application portability (e.g., cloud bursting for load balancing between clouds).
 
 <mark style="background: #BABD00;">Footnotes:</mark>
-1. 1 Typically this is done on a pay-per-use or charge-per-use basis.  
+1. Typically this is done on a pay-per-use or charge-per-use basis.  
 2. A cloud infrastructure is the collection of hardware and software that enables the five essential characteristics of cloud computing. The cloud infrastructure can be viewed as containing both a physical layer and an abstraction layer. The physical layer consists of the hardware resources that are necessary to support the cloud services being provided, and typically includes server, storage and network components. The abstraction layer consists of the software deployed across the physical layer, which manifests the essential cloud characteristics. Conceptually the abstraction layer sits above the physical layer.
 3. This capability does not necessarily preclude the use of compatible programming languages, libraries, services, and tools from other sources.
 
@@ -2024,13 +2023,13 @@ These [Internet exchange points (IXPs)](https://www.cloudflare.com/learning/cdn/
 
 ![](https://i.imgur.com/p4FOzjp.png)
 
-Beyond placement of servers in IXPs, a CDN makes a number of optimizations on standard client/server data transfers. CDNs place Data Centres at strategic locations across the globe, enhance security, and are designed to survive various types of failures and Internet congestion.
+Beyond placement of servers in IXPs, a CDN makes a number of optimisations on standard client/server data transfers. CDNs place Data Centres at strategic locations across the globe, enhance security, and are designed to survive various types of failures and Internet congestion.
 
 #### <mark style="background: #BABD00;">Latency - How does a CDN improve website load times?</mark>
 
 When it comes to websites loading content, users drop off quickly as a site slows down. CDN services can help to reduce load times in the following ways:
 - The globally distributed nature of a CDN means reduce distance between users and website resources. Instead of having to connect to wherever a website’s [origin server](https://www.cloudflare.com/learning/cdn/glossary/origin-server/) may live, a CDN lets users connect to a geographically closer [data centre](https://www.cloudflare.com/learning/cdn/glossary/internet-exchange-point-ixp/). Less travel time means faster service.
-- Hardware and software optimizations such as efficient load balancing and solid-state hard drives can help data reach the user faster.
+- Hardware and software optimisations such as efficient load balancing and solid-state hard drives can help data reach the user faster.
 - CDNs can reduce the amount of data that’s transferred by reducing file sizes using tactics such as [minification](https://www.cloudflare.com/learning/performance/why-minify-javascript-code/) and file compression. Smaller file sizes mean quicker load times.
 - CDNs can also speed up sites which use [TLS](https://www.cloudflare.com/learning/ssl/transport-layer-security-tls/)/[SSL](https://www.cloudflare.com/learning/ssl/what-is-ssl/) certificates by optimizing connection reuse and enabling TLS false start.
 
@@ -2119,11 +2118,11 @@ As more and more of the drawbacks of using serverless get addressed and the popu
 
 ### <mark style="background: #BABD00;">Network Physical Components:</mark>
 
-<mark style="background: #BABD00;">Network Adapter:</mark> A network adapter is the component of a computer’s internal hardware that is used for communicating over a network with another computer. It enable a computer to connect with another computer, server or any networking device over an LAN connection. A network adapter can be used over a wired or wireless network.  
+<mark style="background: #BABD00;">Network Adapter:</mark> A network adapter is the component of a computer’s internal hardware that is used for communicating over a network with another computer. It enables a computer to connect with another computer, server or any networking device over an LAN connection. A network adapter can be used over a wired or wireless network.  
 
 <mark style="background: #BABD00;">Network Router:</mark> Resides at the Network Layer. Data Transmission Form is a Packet. Uses IP address. Used for connecting two or more networks. A router is a networking device that connects a local network to other local networks. Routers connect two or more logical subnets, which do not necessarily map one-to-one to the physical interfaces of the router.  
 
-<mark style="background: #BABD00;">Network Bridge:</mark> A network bridge is a computer networking device that creates a single  aggregate network from multiple communication networks or network segments. This function is called network bridging. Bridging is distinct from routing. Routing allows multiple networks to communicate independently and yet remain separate, whereas bridging connects two separate networks as if they were a single network. In the OSI model, bridging is performed in the data link layer (layer 2).  
+<mark style="background: #BABD00;">Network Bridge:</mark> A network bridge is a computer networking device that creates a single aggregate network from multiple communication networks or network segments. This function is called network bridging. Bridging is distinct from routing. Routing allows multiple networks to communicate independently and yet remain separate, whereas bridging connects two separate networks as if they were a single network. In the OSI model, bridging is performed in the data link layer (layer 2).  
 
 <mark style="background: #BABD00;">Network Switch:</mark> Resides at the Data Link Layer. Data transmission form is a Frame. Uses MAC address. Used for connecting two or more nodes in the same network (L2) or different network (L3). A network switch is a computer networking device that is used to connect many devices together on a computer network. A switch is considered more advanced than a hub because a switch will send on a msg to device that needs or request it. Allow connections to multiple devices, manage ports, manage VLAN security settings.  
 
@@ -2188,7 +2187,7 @@ When you browse to a website without HTTPS, anyone on your network can sniff you
 
 Integrity is needed so that your traffic cannot be changed by malicious actors. This is often called a man-in-the-middle attack. Integrity means that the message is not manipulated on the way to its destination.
 
-Identification means that I can check that this message is coming from the correct entity. A digital signature attached to a message can identify the sender.
+Identification means it can be checked that a message is coming from the correct entity. A digital signature attached to a message can identify the sender.
 
 And when you are browsing the web, identification means that the site that you are visiting is indeed the one you think it is.
 
@@ -2308,4 +2307,4 @@ Logical unit numbers (LUNs) play an indispensable role in the realm of block sto
 
 Administrators working with enterprise solutions might find themselves working with LUN management, typically in a large SAN environment. For systems that use SCSI RAID environments, LUN assignment is a component in mounting drives on servers and client workstations. 
 
-Understanding LUNs is just one piece of knowledge crucial for anyone involved in storage administration or data management as it provides the foundational knowledge required for efficient storage utilization and data retrieval. The management and support of your storage infrastructure can consume precious IT resources. Learn how [Pure Professional Services](https://www.purestorage.com/services.html) can help reduce the administrative overhead of managing your storage arrays.
+Understanding LUNs is just one piece of knowledge crucial for anyone involved in storage administration or data management as it provides the foundational knowledge required for efficient storage utilisation and data retrieval. The management and support of your storage infrastructure can consume precious IT resources. Learn how [Pure Professional Services](https://www.purestorage.com/services.html) can help reduce the administrative overhead of managing your storage arrays.
