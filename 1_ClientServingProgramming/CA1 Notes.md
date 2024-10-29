@@ -369,11 +369,11 @@ These form the basis for many of today’s <mark style="background: #FF5582A6;">
 
 1. <mark style="background: #FF5582A6;">Preparing the data.</mark> The application protocol prepares a block of data for transmission. For example, an email message (SMTP). a file (FTP). a block of user input (TELNET).
 2. <mark style="background: #FF5582A6;">Using a common syntax.</mark> If necessary, data is converted to a form expected by the destination. This may include a different character code, the use of encryption. and/or compression.
-3. <mark style="background: #FF5582A6;">Segmenting the data.</mark> TCP may break data block into a number of segments. keeping track of their sequence. Each TCP segment includes a header containing a sequence number and a frame check sequence to detect errors.
-4. <mark style="background: #FF5582A6;">Duplicating segments.</mark> A copy is made of each TCP segment, in case the loss or damage of a segment necessitates retransmission When an acknowledgment is received from the other TCP entity. a segment is erased.
+3. <mark style="background: #FF5582A6;">Segmenting the data.</mark> TCP may break data block into a number of segments, keeping track of their sequence. Each TCP segment includes a header containing a sequence number and a frame check sequence to detect errors.
+4. <mark style="background: #FF5582A6;">Duplicating segments.</mark> A copy is made of each TCP segment, in case the loss or damage of a segment necessitates retransmission. When an acknowledgment is received from the other TCP entity, a segment is erased.
 5. <mark style="background: #FF5582A6;">Fragmenting the segments.</mark> IP may break a TCP segment into a number of datagrams to meet size requirements of intervening networks. Each datagram includes a header containing a destination address, a frame check sequence, and other control information.
-6. <mark style="background: #FF5582A6;">Framing.</mark> An ATM header is added to each IP datagram to form an ATM cell. The header contains a connection identifier and a header error control field
-7. <mark style="background: #FF5582A6;">Transmission</mark>. Each cell is transmitted over the medium as a sequence of bits.
+6. <mark style="background: #FF5582A6;">Framing.</mark> An ATM header is added to each IP datagram to form an ATM cell. The header contains a connection identifier and a header error control field.
+7. <mark style="background: #FF5582A6;">Transmission.</mark> Each cell is transmitted over the medium as a sequence of bits.
 
  <mark style="background: #FF5582A6;">Peer-to-peer dialogue.</mark> 
  1. Before data is sent, the sending and receiving applications agree on format and encoding, then agree to exchange data
@@ -850,7 +850,7 @@ Even though both layers are referencing the same entity – the ``socket``, the 
 - The <mark style="background: #FF5582A6;">listening</mark> socket and,
 - The <mark style="background: #FF5582A6;">connected</mark> socket.
 
-Referencing the connected socket from within the application is straightforward:
+<mark style="background: #FF5582A6;">Referencing the connected socket from within the application is straightforward:</mark>
 - A separate and unique ``int`` descriptor is returned,
 - All interactions with the listening and connected sockets are obvious.
 
@@ -867,10 +867,10 @@ Referencing the connected socket from within the application is straightforward:
 - This returns details of active TCP connections within the host OS.
 
 <mark style="background: #FF5582A6;">An explanation of the flags:</mark>
-- ``‘n’`` reveals IP addresses in dotted-decimal notation, 
-- ``‘t’`` filters on TCP addresses only, 
-- ``‘a’`` shows all connections,
-- ``‘p’`` reveals the process id details for each connection.
+- ``‘n’`` reveals IP addresses in dotted-decimal **n**otation, 
+- ``‘t’`` filters on **T**CP addresses only, 
+- ``‘a’`` shows **a**ll connections,
+- ``‘p’`` reveals the **p**rocess id details for each connection.
 
 The following slide shows a sample output when the  <mark style="background: #FF5582A6;">netstat</mark> command is used.
 
@@ -895,7 +895,7 @@ Notice how TCP refers to a <mark style="background: #FF5582A6;">socket</mark> us
 <mark style="background: #FF5582A6;">Each row in the output from netstat relates to a connection:</mark>
 - A TCP connection can be considered as a connection between two sockets; a <mark style="background: #FF5582A6;">local</mark> socket and a <mark style="background: #FF5582A6;">remote</mark> socket. 
 - The columns labelled <mark style="background: #FF5582A6;">Local Address</mark> and <mark style="background: #FF5582A6;">Remote Address</mark> contain details of the socket at <mark style="background: #FF5582A6;">each</mark> end of a connection.
-- Notice how TCP refers to a <mark style="background: #FF5582A6;">socket</mark> using a NSAP:TSAP combination.
+- Notice how TCP refers to a <mark style="background: #FF5582A6;">socket</mark> using a ``NSAP:TSAP`` combination.
 
 The combination of <mark style="background: #FF5582A6;">Local Address</mark> and <mark style="background: #FF5582A6;">Remote Address</mark> is the <mark style="background: #FF5582A6;">identifier</mark> for a connection:
 - It is known as a <mark style="background: #FF5582A6;">Socket Pair</mark>.
@@ -909,7 +909,7 @@ Using socket-pair identifiers enables TCP to separately and unique identify a se
 
 This is important when incoming data (incoming to the TCP layer) needs to be passed to a local socket.
 
-How connections are established from a Socket Pair perspective: It assumes the following primitive calls have been made within each of the client an server applications:
+How connections are established from a Socket Pair perspective: It assumes the following primitive calls have been made within each of the client an server applications.
 
 ![](https://i.imgur.com/sVKDmN8.png)
 
@@ -977,7 +977,7 @@ struct sockaddr_in
 - Socket address structures are always passed by <mark style="background: #FF5582A6;">reference</mark>.
 
 When used with the <mark style="background: #FF5582A6;">socket primitives</mark>, the structures are adaptable as they can be used with many protocol families, not just TCP/IP:
-- Ordinarily this adaptability would be provided for by the use of the <mark style="background: #FF5582A6;">generic pointer type</mark> (void \*) in the socket primitive definitions.
+- Ordinarily this adaptability would be provided for by the use of the <mark style="background: #FF5582A6;">generic pointer type</mark> (`void *`) in the socket primitive definitions.
 - However, the socket primitives pre-date the <mark style="background: #FF5582A6;">generic</mark> pointer type.
 - Consequently, a different approach was used
 
