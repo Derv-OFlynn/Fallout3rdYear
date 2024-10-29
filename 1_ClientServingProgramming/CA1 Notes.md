@@ -380,7 +380,7 @@ These form the basis for many of today’s <mark style="background: #FF5582A6;">
  2. The two TCP entities agree to a connection.
  3. Each IP datagram is forwarded through networks and routers to the destination system.
  4. Each cell is forwarded through the ATM network
-
+ 5. <mark style="background: #FF5582A6;">Peer-to-Peer dialogue.</mark> The router will pass this datagram onto another router or to destination system.
 
 <mark style="background: #FF5582A6;">Operation of TCP/IP Router and Receiver:</mark>
 ![](https://i.imgur.com/21zWJiZ.png)
@@ -388,8 +388,8 @@ These form the basis for many of today’s <mark style="background: #FF5582A6;">
 
 8. <mark style="background: #FF5582A6;">Arriving at router.</mark> The incoming signal is received over the transmission medium and interpreted as a cell of bits.
 9. <mark style="background: #FF5582A6;">Processing the cell.</mark> the ATM layer removes the cell header and processes it. The header error control system is used for detection. The connection number identifies the source.
-10. <mark style="background: #FF5582A6;">Routing the packet.</mark> IP examines the IP header and makes a routing decision. It determines which outgoing link is to be used and then passes datagram back to the link layer for transmission on that link. <mark style="background: #FF5582A6;">Peer-to-Peer dialogue.</mark> The router will pass this datagram onto another router or to destination system.
-11. <mark style="background: #FF5582A6;">Forming LLC PDU</mark>. An LLC header is added to each IP datagram to form an LLC PDU. The header contains sequence number and address information. The trailer contains a frame sequence check.
+10. <mark style="background: #FF5582A6;">Routing the packet.</mark> IP examines the IP header and makes a routing decision. It determines which outgoing link is to be used and then passes datagram back to the link layer for transmission on that link.
+11. <mark style="background: #FF5582A6;">Forming LLC PDU</mark>. An LLC (Logical Link Control) header is added to each IP datagram to form an LLC PDU. The header contains sequence number and address information. The trailer contains a frame sequence check.
 12. <mark style="background: #FF5582A6;">Framing.</mark> A MAC header and trailer is added to each LLC PDU, forming a MAC frame. The header contains address information and the trailer contains a frame check sequence. Data
 13. <mark style="background: #FF5582A6;">Transmission.</mark> Each frame is transmitted over the medium as a sequence of bits.
 14. <mark style="background: #FF5582A6;">Arriving at destination.</mark> The incoming signal is received over the transmission medium and interpreted as a frame of bits.
@@ -596,7 +596,7 @@ Before explaining the sequence of primitive calls it is important to understand 
 
 Recall from previous discussions on HDLC that there are generally three phases of communication associated with a connection-oriented service:
 - <mark style="background: #FF5582A6;">Phase 1:</mark> Connection Establishment,
-- <mark style="background: #FF5582A6;">Phase 2:</mark> Data Transfer, and,
+- <mark style="background: #FF5582A6;">Phase 2:</mark> Data Transfer,
 - <mark style="background: #FF5582A6;">Phase 3:</mark> Connection Release.
 
 During each phase a variety of PDUs are exchanged between the <mark style="background: #FF5582A6;">client</mark> and <mark style="background: #FF5582A6;">server</mark>:
@@ -650,7 +650,7 @@ When ``open`` is first called a <mark style="background: #FF5582A6;">descriptor<
 
 Applications that need to use the TCP/IP protocols to communicate must request the OS to create a <mark style="background: #FF5582A6;">socket</mark>: This is an abstract concept which will be explained in detail later.
 
-Similar to File I/O the OS returns a descriptor that uniquely identifies the socket. As with File I/O this descriptor must be used in all interactions with the socket.
+Similar to File I/O, the OS returns a descriptor that uniquely identifies the socket. As with File I/O this descriptor must be used in all interactions with the socket.
 
 The following slides lists the Socket API primitives and illustrates an example of how these primitives are used by a client and server application
 
@@ -664,12 +664,14 @@ The following slides lists the Socket API primitives and illustrates an example 
 ### <mark style="background: #FF5582A6;">The Socket Primitives - Explained:</mark>
 
 <mark style="background: #FF5582A6;">The following primitives are executed by servers:</mark>
-- <mark style="background: #FF5582A6;">SOCKET:</mark> This primitive creates a new <mark style="background: #FF5582A6;">end point</mark> within the Transport Entity:
+- <mark style="background: #FF5582A6;">SOCKET:</mark> 
+	- This primitive creates a new <mark style="background: #FF5582A6;">end point</mark> within the Transport Entity:
 	- Table space is allocated within the transport entity,
 	- A file descriptor is returned which is used in all future calls
 - <mark style="background: #FF5582A6;">BIND:</mark> This primitive binds a socket to a network address. This allows remote clients to connect to it
 - <mark style="background: #FF5582A6;">LISTEN:</mark> This primitive allocates a queuing space within the transport entity for incoming call requests.
-- <mark style="background: #FF5582A6;">ACCEPT:</mark> This primitive blocks the server waiting for an incoming connection:
+- <mark style="background: #FF5582A6;">ACCEPT:</mark> 
+	- This primitive blocks the server waiting for an incoming connection:
 	- Upon receipt of a connection request the <mark style="background: #FF5582A6;">transport entity</mark> creates a <mark style="background: #FF5582A6;">new</mark> socket identical to the original one and returns a file descriptor to the server.
 	- The server <mark style="background: #FF5582A6;">forks off</mark> a new process or service thread to handle the <mark style="background: #FF5582A6;">connection</mark> on the new socket
 	- The server <mark style="background: #FF5582A6;">also</mark> continues to wait for more connections on the original socket.
@@ -687,7 +689,7 @@ servers:</mark>
 
 In most systems the socket functions are part of the OS.
 
-Some systems, however, require a socket library to provide the interface to the transport entity:
+<mark style="background: #FF5582A6;">Some systems, however, require a socket library to provide the interface to the transport entity:</mark>
 - These operate differently to a native socket API, 
 - The code for the library socket procedures are linked into the application program and resides in its address space, 
 - Calls to a socket library pass control to the library routine as opposed to the OS.
@@ -738,7 +740,7 @@ Refer to the Daytime server code presented in class.
 
 Having explored the <mark style="background: #FF5582A6;">Daytime</mark> application, the next application to examine is the <mark style="background: #FF5582A6;">Echo</mark> Client and Server.
 
-The essence of this application is as follows:
+<mark style="background: #FF5582A6;">The essence of this application is as follows:</mark>
 - The Client application sends (``send()``) a string (from the command-line) to the server across an open connection,
 - The Server application reads (``recv()``) the string and returns it to the Client application (``send()``)exactly as it came in,
 - Both applications call for the connection to be closed (``close()``).
@@ -755,7 +757,7 @@ while ((numBytes = recv(sock, recvbuffer, BUFSIZE - 1, 0)) >0)
 }
 ```
 
-The while loop is necessary as the data may not arrive across the connection in a single transfer:
+<mark style="background: #FF5582A6;">The while loop is necessary as the data may not arrive across the connection in a single transfer:</mark>
 - Recall that data arriving from the remote socket is stored in the RECV-Q buffer within the local TCP entity,
 - Repeated calls to ``recv()`` are needed to transfer this data from TCP (the Transport layer) into the application (the Application layer).
 
@@ -796,15 +798,14 @@ With potentially many applications residing in the Application layer, how does t
 Recall that transport protocols such as TCP provide services to the application layer.
 
 To ensure unambiguous (unique) addressing of individual applications, the Transport layer provides its own addressing schema separate to the IP layer:
-- These are generally known as Transport Service Access Points (TSAPs),
+- These are generally known as <mark style="background: #FF5582A6;">Transport Service Access Points (TSAPs)</mark>,
 - These TSAPs uniquely identify entities in the Transport layer known as end points,
-- In TCP parlance these end points are known as <mark style="background: #FF5582A6;">port numbers</mark> or more simply <mark style="background: #FF5582A6;">ports</mark>.
+- In TCP parlance, these end points are known as <mark style="background: #FF5582A6;">port numbers</mark> or more simply <mark style="background: #FF5582A6;">ports</mark>.
 
 <mark style="background: #FF5582A6;">Port numbers are used by:</mark>
 - Server applications to advertise their services and, to listen for Connection Requests,
 - Client applications to uniquely identify a Server application when making a Connection Request.
-- The <mark style="background: #FF5582A6;">network layer</mark> also defines <mark style="background: #FF5582A6;">end points</mark>. These are known as Network Service Access Points (NSAPs):
-- IP addresses are examples of NSAPs.
+- The <mark style="background: #FF5582A6;">network layer</mark> also defines <mark style="background: #FF5582A6;">end points</mark>. These are known as Network Service Access Points (NSAPs). IP addresses are examples of NSAPs.
 
 The following slide illustrates the relationship between the NSAPs, TSAPs and transport connections.
 
@@ -820,8 +821,7 @@ This creates a port number address space comprising approx. 65K addresses (16 bi
 
 ![](https://i.imgur.com/bkuGzrP.png)
 
-<mark style="background: #FF5582A6;">Reserved</mark> addresses are for well known applications such as HTTP (port 80), FTP (ports 20 and 21), Telnet (port 23) etc.
-- These can only be allocated by users with SU privileges.
+<mark style="background: #FF5582A6;">Reserved</mark> addresses are for well known applications such as HTTP (port 80), FTP (ports 20 and 21), Telnet (port 23) etc. These can only be allocated by users with SU privileges.
 
 <mark style="background: #FF5582A6;">Ephemeral</mark> addresses are allocated by TCP to <mark style="background: #FF5582A6;">Client</mark> applications:
 - It is not immediately obvious that Client applications require a port number,
@@ -846,7 +846,7 @@ From a TCP layer perspective, a ``socket`` is identified by a combination of an 
 
 Even though both layers are referencing the same entity – the ``socket``, the descriptors used are very different.
 
-This difference is further complicated by the fact that the call to ``accept()`` returns a new socket:
+<mark style="background: #FF5582A6;">This difference is further complicated by the fact that the call to accept() returns a new socket:</mark>
 - The <mark style="background: #FF5582A6;">listening</mark> socket and,
 - The <mark style="background: #FF5582A6;">connected</mark> socket.
 
@@ -854,7 +854,7 @@ Referencing the connected socket from within the application is straightforward:
 - A separate and unique ``int`` descriptor is returned,
 - All interactions with the listening and connected sockets are obvious.
 
-Referencing the <mark style="background: #FF5582A6;">connected</mark> socket from within the TCP layer is complicated:
+<mark style="background: #FF5582A6;">Referencing the connected socket from within the TCP layer is complicated:</mark>
 - Each of the sockets will use the same NSAP:TSAP combination.
 - To differentiate between the sockets, the <mark style="background: #FF5582A6;">socket-pair</mark> needs to be considered.
 
@@ -862,11 +862,11 @@ Referencing the <mark style="background: #FF5582A6;">connected</mark> socket fro
 
 <mark style="background: #FF5582A6;">Socket-pairs</mark> are used to identify TCP connections:
 
-TCP connections can be viewed using the netstat utility:
+<mark style="background: #FF5582A6;">TCP connections can be viewed using the netstat utility:</mark>
 - From the command-line prompt type: ``netstat –ntap``
 - This returns details of active TCP connections within the host OS.
 
-An explanation of the flags:
+<mark style="background: #FF5582A6;">An explanation of the flags:</mark>
 - ``‘n’`` reveals IP addresses in dotted-decimal notation, 
 - ``‘t’`` filters on TCP addresses only, 
 - ``‘a’`` shows all connections,
@@ -882,7 +882,7 @@ The following slide shows a sample output when the  <mark style="background: #FF
 <mark style="background: #FF5582A6;">From the client end:</mark>
 ![](https://i.imgur.com/9E4LwEe.png)
 
-This shows:
+<mark style="background: #FF5582A6;">This shows:</mark>
 - A server with listening and connected sockets on port 1022, 
 - A client on an ephemeral port 4136.
 
@@ -892,16 +892,16 @@ Notice how TCP refers to a <mark style="background: #FF5582A6;">socket</mark> us
 
 ### <mark style="background: #FF5582A6;">Socket Pairs:</mark>
 
-Each row in the output from <mark style="background: #FF5582A6;">netstat</mark> relates to a connection:
+<mark style="background: #FF5582A6;">Each row in the output from netstat relates to a connection:</mark>
 - A TCP connection can be considered as a connection between two sockets; a <mark style="background: #FF5582A6;">local</mark> socket and a <mark style="background: #FF5582A6;">remote</mark> socket. 
 - The columns labelled <mark style="background: #FF5582A6;">Local Address</mark> and <mark style="background: #FF5582A6;">Remote Address</mark> contain details of the socket at <mark style="background: #FF5582A6;">each</mark> end of a connection.
 - Notice how TCP refers to a <mark style="background: #FF5582A6;">socket</mark> using a NSAP:TSAP combination.
 
 The combination of <mark style="background: #FF5582A6;">Local Address</mark> and <mark style="background: #FF5582A6;">Remote Address</mark> is the <mark style="background: #FF5582A6;">identifier</mark> for a connection:
 - It is known as a <mark style="background: #FF5582A6;">Socket Pair</mark>.
-- An example socket pair: {147.252.30.9:1022, 147.252.234.34:4136}
+- An example socket pair: {``147.252.30.9:1022``, ``147.252.234.34:4136``}
 
-<mark style="background: #FF5582A6;">Socket Pairs</mark> are how TCP views connections:
+<mark style="background: #FF5582A6;">Socket Pairs</mark> are how TCP views connections.
 
 For each connection, the detail contained in each row is reversed depending on which end of the connection the ``netstat`` command is run.
 
@@ -933,13 +933,13 @@ The following slide shows the socket pairs relating to the connection after Conn
 
 Very often there is a need to exchange addressing information between the Application layer and the TCP layer.
 
-Both the client and server need to do this after the socket has been created.
+<mark style="background: #FF5582A6;">Both the client and server need to do this after the socket has been created.</mark>
 - The client needs to pass the contact details for the server before the Connect Primitive is called.
 - The server needs to inform the TCP of the address that it wants to listen on. This is used by the Bind Primitive.
 
 Occasionally, there is a need to pass information in the reverse direction i.e. TCP to Application layer. This will be looked at another time.
 
-All addressing information, regardless of direction, must be:
+<mark style="background: #FF5582A6;">All addressing information, regardless of direction, must be:</mark>
 - Of the correct byte order (discussed shortly) and,
 - Only be passed by <mark style="background: #FF5582A6;">reference</mark> through a standardised address structure.
 
@@ -966,13 +966,13 @@ struct sockaddr_in
 };
 ```
 
-Only concerned with three members in the structure:
+<mark style="background: #FF5582A6;">Only concerned with three members in the structure:</mark>
 - ``sin_family``, ``sin_addr``, and ``sin-port``.
 - The ``sin_zero`` member pads the structure to at least 16 bytes in size
 
 ### <mark style="background: #FF5582A6;">Socket Address Structures:</mark>
 
-Key features of socket address structures are that:
+<mark style="background: #FF5582A6;">Key features of socket address structures are that:</mark>
 - They are of local significance only i.e. they are <mark style="background: #FF5582A6;">not</mark> communicated between different hosts and,
 - Socket address structures are always passed by <mark style="background: #FF5582A6;">reference</mark>.
 
@@ -1029,23 +1029,30 @@ TCP/IP has defined its own byte order, known as <mark style="background: #FF5582
 
 The addressing information stored in members of a socket address structure must be converted from <mark style="background: #FF5582A6;">host byte order</mark> to <mark style="background: #FF5582A6;">network byte order</mark>.
 
-Depending on the level of conversion, there are two sets of functions that can be used;
+<mark style="background: #FF5582A6;">Depending on the level of conversion, there are two sets of functions that can be used:</mark>
 - <mark style="background: #FF5582A6;">Byte Ordering Functions</mark> are the simplest in that they deal with string-to-numeric-to-string conversion,
 - <mark style="background: #FF5582A6;">Byte Manipulation Functions</mark> are more complex in that they deal with more complicated string manipulation i.e. from dotted-decimal notation-to-numeric-to-dotted-decimal notation.
 
 ### <mark style="background: #FF5582A6;">Byte Ordering Functions:</mark>
 
-There are four byte ordering functions to consider:
+<mark style="background: #FF5582A6;">There are four byte ordering functions to consider:</mark>
 - ``htons()`` – converts host 16-bit value to network byte order 
 - ``htonl()`` – converts host 32-bit value to network byte order
 - ``ntohs()`` – converts 16-bit network value to host byte order
 - ``ntohl()`` – converts 32-bit network value to host byte order
 
+``ht`` - host (if at the beginning)
+`h` - host (if at the end)
+`nt` - network (if at the beginning)
+`n` - network (if at the end)
+``s`` - short (i.e. 16 bits)
+`l` - long (i.e. 32 bits)
+
 ### <mark style="background: #FF5582A6;">Byte Manipulation Functions:</mark>
 
 There are two byte manipulation functions to consider:
 - ``inet_pton`` - This function takes an ASCII string (<mark style="background: #FF5582A6;">presentation</mark>) that represents the destination address (in dotted-decimal notation) and converts it to a binary value (<mark style="background: #FF5582A6;">numeric</mark>) for inputting to a socket address structure (i.e. <mark style="background: #FF5582A6;">network byte order</mark>)
-- ``inet_ntop`` - This function does the reverse conversion, i.e. from a ``numeric`` binary value to an ASCII string representation (<mark style="background: #FF5582A6;">presentation</mark>) i.e. <mark style="background: #FF5582A6;">dotted-decimal notation</mark>
+- ``inet_ntop`` - This function does the reverse conversion, i.e. from a <mark style="background: #FF5582A6;">numeric</mark> binary value to an ASCII string representation (<mark style="background: #FF5582A6;">presentation</mark>) i.e. <mark style="background: #FF5582A6;">dotted-decimal notation</mark>
 
 Both functions work with IPv4 and IPv6 addresses:
 ```C
@@ -1093,13 +1100,11 @@ Notice the second and third arguments to the accept primitive.
 ### <mark style="background: #FF5582A6;">The accept() Primitive – Client addresses:</mark>
 
 <mark style="background: #FF5582A6;">accept returns up to three values:</mark>
-- An integer return code that is either a new socket descriptor or an error indication,
+- An integer returns code that is either a new socket descriptor or an error indication,
 - The protocol address of the client process (through the ``cliaddr`` pointer)
 - The size of this address (through the ``addrlen`` pointer)
 
-The ``cliaddr`` and ``addrlen`` arguments are used to return the protocol address of the client process:
-- Before the call to accept is made:
-- ``*addrlen`` is set to the size of the client address structure (``cliaddr``),
+The ``cliaddr`` and ``addrlen`` arguments are used to return the protocol address of the client process. Before the call to accept is made, ``*addrlen`` is set to the size of the client address structure (``cliaddr``),
 
 On return this integer value contains the actual number of bytes stored by the kernel in the socket address structure.
 
@@ -1129,7 +1134,7 @@ sizeof(clntName)), ntohs(cliaddr.sin_port)); //print out client address
 
 The Web is a <mark style="background: #FF5582A6;">distributed hypermedia</mark> system that supports interactive access to Hypermedia documents (aka <mark style="background: #FF5582A6;">Resources</mark>).
 
-<mark style="background: #FF5582A6;">Hypermedia</mark> (as opposed to <mark style="background: #FF5582A6;">Hypertext</mark>) Resources potentially contain:
+<mark style="background: #FF5582A6;">Hypermedia</mark> (as opposed to <mark style="background: #FF5582A6;">Hypertext</mark>) resources potentially contain:
 - Different types of information including: text, pictures, graphics, audio etc. Examples include: HTML files, image files, query results etc.
 - <mark style="background: #FF5582A6;">Hyperlinks</mark> to other Resources,
 
@@ -1139,30 +1144,30 @@ From a Network Programming perspective these Resources are treated as <mark styl
 
 The distributed nature of the Web means that the Resources/Data are potentially spread across a number of computers across the Internet.
 
-This lends itself well to the Client-server paradigm as follows:
+<mark style="background: #FF5582A6;">This lends itself well to the Client-server paradigm as follows:</mark>
 - <mark style="background: #FF5582A6;">On the Client-side:</mark> Here sits the consumer of the Resources/Data i.e. the end-users. They typically interact with a client application known as a Browser.
 - <mark style="background: #FF5582A6;">On the Server-side:</mark> Here is where the resource repositories are located i.e. on a remote server-class machine. Access to these Resources is typically controlled by a Web server.
 
 ### <mark style="background: #FF5582A6;">Problems to be addressed:</mark>
 
-However, this distribution of Resources also introduces a number of potential problems:
-- The Resources may be updated, moved or removed without notification to the client applications,
-- Accessing Resources on remote host machines has implications for network bandwidth usage.
+<mark style="background: #FF5582A6;">However, this distribution of Resources also introduces a number of potential problems:</mark>
+- The resources may be updated, moved or removed without notification to the client applications,
+- Accessing resources on remote host machines has implications for network bandwidth usage.
 - These problems can affect the end-user experience and the network.
 
 ### <mark style="background: #FF5582A6;">Client-server interaction - HTTP:</mark>
 
 Browsers and servers interact with each other using the <mark style="background: #FF5582A6;">HyperText Transfer Protocol</mark> (<mark style="background: #FF5582A6;">HTTP</mark>).
 
-This is a <mark style="background: #FF5582A6;">network protocol</mark> used to deliver virtually all Resources on the Web:
+<mark style="background: #FF5582A6;">This is a network protocol used to deliver virtually all Resources on the Web:</mark>
 - The Browser client sends <mark style="background: #FF5582A6;">HTTP Request</mark> messages to a Web Server. These messages typically (but not always) contain requests for a Resource,
 - The Web server returns <mark style="background: #FF5582A6;">HTTP Response</mark> messages to the clients. These messages typically contain Resources/Data (but not always).
 
 ### <mark style="background: #FF5582A6;">Operation of Web Browsers and Servers:</mark>
 
-In order to appreciate the potential problems to be addressed when developing Browsers and Web servers it is important to understand their operation.
+In order to appreciate the potential problems to be addressed when developing Browsers and Web servers, it is important to understand their operation.
 
-Web Servers perform a straightforward task over and over again:
+<mark style="background: #FF5582A6;">Web Servers perform a straightforward task over and over again:</mark>
 - Accept connection requests from clients,
 - Accept and parse incoming HTTP Requests,
 - Retrieve and return HTTP Responses indicating success or failure.
@@ -1172,7 +1177,7 @@ Web Servers perform a straightforward task over and over again:
 
 Web browsers are much more complex in their operation. This can best seen from their architecture (see next slide).
 
-The functions of a Browser include:
+<mark style="background: #FF5582A6;">The functions of a Browser include:</mark>
 - Rendering and displaying disparate (different types) resources to the user,
 - User interaction the user,
 - Initiating interaction with Web servers to retrieve resources or in some instances to upload resources.
@@ -1181,10 +1186,14 @@ The Browser provides these services seamlessly using a number of software compon
 
 ![](https://i.imgur.com/Pr4NDCf.png)
 
-Specifically, a browser consists of the following components:
+<mark style="background: #FF5582A6;">Specifically, a browser consists of the following components:</mark>
 - A set of clients for uploading/retrieving Resources,
 - A set of interpreters for displaying/rendering Resources,
-- A Controller to manage them all. The Controller is responsible for: Interpreting user input via the keyboard and mouse clicks and invoking interpreter and client components at the appropriate time.
+- A Controller to manage them all. 
+
+<mark style="background: #FF5582A6;">The Controller is responsible for:</mark> 
+- Interpreting user input via the keyboard and mouse clicks
+- Invoking interpreter and client components at the appropriate time.
 
 All browsers minimally contain a basic HTTP client, a basic HTML interpreter and a Controller.
 
@@ -1205,7 +1214,7 @@ An example client is the <mark style="background: #FF5582A6;">HTTP client</mark>
 
 From a Network Programming perspective we are interested in the HTTP client and its interaction with HTTP servers.
 
-This interaction consists of an exchange of HTTP Requests and Responses:
+<mark style="background: #FF5582A6;">This interaction consists of an exchange of HTTP Requests and Responses:</mark>
 - These are typically sent as plain-text encoded in ASCII i.e. in English, 
 - This means that when viewed with a protocol analyser such as Wireshark, the Application Data field can be easily read and understood.
 
@@ -1213,16 +1222,16 @@ This interaction consists of an exchange of HTTP Requests and Responses:
 
 HTTP Requests originate from the HTTP client.
 
-They support a number of operations through a set of methods:
-- GET, HEAD, POST, OPTIONS, PUT, DELETE, TRACE and CONNECT.
-- For the purposes of this module we shall restrict ourselves to the GET and HEAD methods,
+<mark style="background: #FF5582A6;">They support a number of operations through a set of methods:</mark>
+- ``GET``, ``HEAD``, ``POST``, ``OPTIONS``, ``PUT``, ``DELETE``, ``TRACE`` and ``CONNECT``.
+- For the purposes of this module we shall restrict ourselves to the ``GET`` and ``HEAD`` methods,
 - These two methods should adequately demonstrate the problems to be addressed.
 
 ### <mark style="background: #FF5582A6;">HTTP Responses:</mark>
 
 HTTP Responses originate from the HTTP server.
 
-Recall the problems previously outlined in relation to broken links, re-located Resources and Bandwidth limitations:
+<mark style="background: #FF5582A6;">Recall the problems previously outlined in relation to broken links, re-located Resources and Bandwidth limitations:</mark>
 - HTTP includes a lot of functionality to address these problems,
 - The server typically sends additional information with each transfer of data,
 - This additional information allows the HTTP client to call an appropriate interpreter to display/render the Resource data, to infer an error condition etc.
@@ -1231,17 +1240,20 @@ Recall the problems previously outlined in relation to broken links, re-located 
 
 Recall that each layer of the Protocol Hierarchy specifies a “framing-type” structure known as a <mark style="background: #FF5582A6;">Protocol Data Unit (PDU)</mark>:
 
-Examples include: a Data Link Frame, an IP Datagram/Packet, a TCP segment etc.
+<mark style="background: #FF5582A6;">Examples include:</mark> 
+- a Data Link Frame, 
+- an IP Datagram/Packet, 
+- a TCP segment etc.
 
-HTTP is also a protocol:
+<mark style="background: #FF5582A6;">HTTP is also a protocol:</mark>
 - It exists in the Application layer,
 - There are many other protocols that exist in the Application layer.
 
 When talking about Application layer protocols the term PDU has no real meaning.
 
-This is because Application layer protocols typically follow a request-response or command-response model of interaction:
-- Clients typically request something from the server or, issue a command to the server,
-- Servers typically respond to the Client with an indication of success or failure,
+<mark style="background: #FF5582A6;">This is because Application layer protocols typically follow a request-response or command-response model of interaction:</mark>
+- <mark style="background: #FF5582A6;">Clients</mark> typically <mark style="background: #FF5582A6;">request</mark> something from the server or, issue a command to the server,
+- <mark style="background: #FF5582A6;">Servers</mark> typically <mark style="background: #FF5582A6;">respond</mark> to the Client with an indication of success or failure,
 - However, sometimes servers issue requests and commands, but more on that later.
 
 Application layer protocols are more usefully described in terms of <mark style="background: #FF5582A6;">Syntax</mark> and <mark style="background: #FF5582A6;">Semantics</mark>.
@@ -1258,7 +1270,7 @@ Application layer protocols are more usefully described in terms of <mark style=
 
 HTTP Messages have a particular structure or format.
 
-The format of the Requests and Responses messages are similar. Both consist of:
+<mark style="background: #FF5582A6;">The format of the Requests and Responses messages are similar. Both consist of:</mark>
 - An initial line,
 - Zero or more Header Lines,
 - A blank line, and
@@ -1277,19 +1289,19 @@ data>
 
 Initial lines and headers should end in CRLF - Specifically CR and LF here mean ASCII values 13 and 10 respectively.
 
-This structure can more usefully described in terms of a Protocol Box Diagram:
+This structure can more usefully be described in terms of a Protocol Box Diagram:
 
 ![](https://i.imgur.com/vhY7K8g.png)
 
 ### <mark style="background: #FF5582A6;">Initial Request Line:</mark>
 
-The initial line for a Request line has three parts, separated by spaces:
+<mark style="background: #FF5582A6;">The initial line for a Request line has three parts, separated by spaces</mark>:
 - a method name
 - the local path of the requested resource
 - the version of HTTP being used.
 
-A typical request line is:
-```
+<mark style="background: #FF5582A6;">A typical request line is:</mark>
+```HTTP
 GET /path/to/file/index.html HTTP/1.0
 ```
 
@@ -1301,12 +1313,12 @@ GET /path/to/file/index.html HTTP/1.0
 
 ### <mark style="background: #FF5582A6;">Initial Response Line:</mark>
 
-The initial response line also has three parts separated by spaces:
+<mark style="background: #FF5582A6;">The initial response line also has three parts separated by spaces:</mark>
 - The HTTP version,
 - A response status code that gives the result of the request,
 - An English reason phrase describing the status code.
 
-Typical status lines are:
+<mark style="background: #FF5582A6;">Typical status lines are:</mark>
 - HTTP/1.0 200 OK
 - HTTP/1.0 404 Not Found
 
@@ -1319,7 +1331,7 @@ Typical status lines are:
 
 Header lines provide information about the <mark style="background: #FF5582A6;">request</mark> or <mark style="background: #FF5582A6;">response</mark>, or about the Resource sent in the message body.
 
-The header lines are in a particular format
+<mark style="background: #FF5582A6;">The header lines are in a particular format:</mark>
 - One line per header, of the form "Header-Name: value", ending with CRLF.
 - This is a similar format used for email and is defined in RFC 822.
 - The header name is <mark style="background: #FF5582A6;">not</mark> case-sensitive (although the value may be).
@@ -1338,16 +1350,16 @@ The header lines are in a particular format
 
 ### <mark style="background: #FF5582A6;">Header Lines - Net-politeness:</mark>
 
-Consider including the following headers in <mark style="background: #FF5582A6;">client</mark> requests:
-- A <mark style="background: #FF5582A6;">From</mark>: header gives the email address of the person making the request or running the program. (This must be user-configurable, for privacy concerns.)
-- A <mark style="background: #FF5582A6;">User-Agent</mark>: header identifies the program that's making the request, in the form <mark style="background: #FF5582A6;">"Program-name/x.xx"</mark>, where x.xx is the (mostly) alphanumeric version of the program.
+<mark style="background: #FF5582A6;">Consider including the following headers in client requests:</mark>
+- A `From`: header gives the email address of the person making the request or running the program. (This must be user-configurable, for privacy concerns.)
+- A `User-Agent`: header identifies the program that's making the request, in the form <mark style="background: #FF5582A6;">"Program-name/x.xx"</mark>, where x.xx is the (mostly) alphanumeric version of the program.
 - e.g. Netscape 3.0 sends the header "User-agent: Mozilla/3.0Gold".
 
-Consider including the following headers in server responses:
-- A <mark style="background: #FF5582A6;">Server</mark>: header. Similar to the <mark style="background: #FF5582A6;">User-Agent</mark>: header: it identifies the server software in the form "<mark style="background: #FF5582A6;">Program-name/x.xx</mark>".
+<mark style="background: #FF5582A6;">Consider including the following headers in server responses:</mark>
+- A `Server`: header. Similar to the <mark style="background: #FF5582A6;">User-Agent</mark>: header: it identifies the server software in the form "<mark style="background: #FF5582A6;">Program-name/x.xx</mark>".
 - e.g. An Apache server might return "Server: Apache/1.2b3-dev".
-- The <mark style="background: #FF5582A6;">Last-Modified</mark>: header gives the modification date (in GMT) of the resource that's being returned. It is used in caching.
-- e.g. <mark style="background: #FF5582A6;">Last-Modified: Fri, 31 Dec 1999 23:59:59 GMT</mark>
+- The `Last-Modified`: header gives the modification date (in GMT) of the resource that's being returned. It is used in caching.
+- e.g. `Last-Modified: Fri, 31 Dec 1999 23:59:59 GMT`
 
 ### <mark style="background: #FF5582A6;">The Message Body:</mark>
 
@@ -1360,27 +1372,25 @@ A HTTP <mark style="background: #FF5582A6;">message</mark> may have a <mark styl
 <mark style="background: #FF5582A6;">In a request:</mark>
 - This is where form data or uploaded files are sent to the server.
 
-If a HTTP message includes a body, there are usually header lines in the message that describe the body. In particular,
-- The <mark style="background: #FF5582A6;">Content-Type</mark>: header gives the MIME-type of the data in the body, such as text/html or image/gif.
-- The <mark style="background: #FF5582A6;">Content-Length</mark>: header gives the number of bytes in the body.
+<mark style="background: #FF5582A6;">If a HTTP message includes a body, there are usually header lines in the message that describe the body. In particular,</mark>
+- The `Content-Type`: header gives the MIME-type of the data in the body, such as text/html or image/gif.
+- The `Content-Length`: header gives the number of bytes in the body.
 
 ### <mark style="background: #FF5582A6;">Other HTTP Methods - HEAD and POST:</mark>
 
-Two other commonly used methods are HEAD and POST.
+Two other commonly used methods are ``HEAD`` and ``POST``.
 
-The HEAD Method
-- Similar to a GET request, except it asks the server to return the response headers only, not the actual resource (i.e. no message body).
+<mark style="background: #FF5582A6;">The HEAD Method</mark>
+- Similar to a ``GET`` request, except it asks the server to return the response headers only, not the actual resource (i.e. no message body).
 - Useful for checking characteristics of a resource without actually downloading it.
-- The response to a HEAD request must never contain a <mark style="background: #FF5582A6;">message</mark> body.
-
-### <mark style="background: #FF5582A6;">Other HTTP Methods - HEAD and POST:</mark>
+- The response to a ``HEAD`` request must never contain a <mark style="background: #FF5582A6;">message</mark> body.
 
 <mark style="background: #FF5582A6;">The POST Method</mark>
 
-A POST request is used to send data to the server to be processed in some way, like by a CGI script.
+A ``POST`` request is used to send data to the server to be processed in some way, like by a CGI script.
 
-It differs from a GET request in the following ways:
-- There's a block of data sent with the request, in the message body. There are usually extra headers to describe this message body, like <mark style="background: #FF5582A6;">Content-Type:</mark> and <mark style="background: #FF5582A6;">Content-Length</mark>:
+<mark style="background: #FF5582A6;">It differs from a GET request in the following ways:</mark>
+- There's a block of data sent with the request, in the message body. There are usually extra headers to describe this message body, like `Content-Type` and `Content-Length`:
 - The request URI is not a resource to retrieve; it's usually a program to handle the data you're sending.
 
 ### <mark style="background: #FF5582A6;">Sample Document Transfer with HTTP:</mark>
@@ -1420,7 +1430,7 @@ X-Powered-By: ASP.NET
 
 As mentioned there are two versions of HTTP: HTTP/1.0 and HTTP/1.1
 
-There are some key differences between the two in the following areas (not all are listed):
+<mark style="background: #FF5582A6;">There are some key differences between the two in the following areas (not all are listed):</mark>
 - Persistent connections,
 - Multi-hosting
 - More efficient cache control.
@@ -1429,7 +1439,7 @@ There are some key differences between the two in the following areas (not all a
 
 With HTTP 1.0 the connection between the server and the client is closed by the server immediately after the HTTP Response is transmitted.
 
-Consider a simple HTML page containing five image tags:
+<mark style="background: #FF5582A6;">Consider a simple HTML page containing five image tags:</mark>
 - Downloading and rendering this page requires six connection establishments and cessations,
 - One for the HTML page and one for each of the images. The images are downloaded separately on a separate connection.
 
@@ -1439,9 +1449,9 @@ Consider a simple HTML page containing five image tags:
 
 ### <mark style="background: #FF5582A6;">HTTP/1.1 Persistent Connections:</mark>
 
-With HTTP 1.1, the connection between the server and the client remains open by default:
+<mark style="background: #FF5582A6;">With HTTP 1.1, the connection between the server and the client remains open by default:</mark>
 - This allows for multiple HTTP Requests to be submitted across a single connection,
-- This default behaviour is not always required and it can be overridden using the Connection: header as follows: ``Connection: close\r\n``
+- This default behaviour is not always required and it can be overridden using the ``Connection``: header as follows: ``Connection: close\r\n``
 - This is an instruction to the server to close the connection after the Resource has been returned.
 
 ### <mark style="background: #FF5582A6;">Multi-hosting:</mark>
@@ -1450,5 +1460,5 @@ With HTTP 1.1, the connection between the server and the client remains open by 
 - Multiple webservers sharing a single IP address,
 - The problem is that each server is listening on Port 80,
 - This causes problems for TCP determining which server should receive an incoming HTTP Request,
-- The problem is solved using the <mark style="background: #FF5582A6;">Host</mark>: header as follows: ``Host: www.tudublin.ie``
+- The problem is solved using the `Host`: header as follows: ``Host: www.tudublin.ie``
 - Its inclusion is mandatory in all HTTP/1.1 Requests.
