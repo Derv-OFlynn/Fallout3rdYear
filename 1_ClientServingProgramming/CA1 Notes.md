@@ -35,9 +35,9 @@ Each layer is said to offer <mark style="background: #FF5582A6;">services</mark>
 
 <mark style="background: #FF5582A6;">Protocol/Protocol Entity:</mark> A software module that performs one sub-task such as: frame transmission/reception etc.
 
-<mark style="background: #FF5582A6;">Protocol suites/stack:</mark> A number of such software modules that work together to perform all of the tasks required to enable two hosts communicate.
+<mark style="background: #FF5582A6;">Protocol suites/stack:</mark> A number of such software modules that work together to perform all of the tasks required to enable two hosts to communicate.
 
-<mark style="background: #FF5582A6;">Protocol Architectures/Model:</mark> A model by which we can categorize or view the different protocol layers.
+<mark style="background: #FF5582A6;">Protocol Architectures/Model:</mark> A model by which we can categorise or view the different protocol layers.
 
 The OSI model deals with connecting open systems, i.e. systems that are open for communication with other systems regardless of who built them or how they were manufactured.
 
@@ -87,7 +87,7 @@ There are certain design issues to address such as: the <mark style="background:
 
 Concerned with the successful transmission of data across an individual link:
 
-Its purpose is to transforms a <mark style="background: #FF5582A6;">raw</mark> transmission facility into a <mark style="background: #FF5582A6;">data communications channel</mark> that <mark style="background: #FF5582A6;">appears</mark> free of transmission errors.
+Its purpose is to transform a <mark style="background: #FF5582A6;">raw</mark> transmission facility into a <mark style="background: #FF5582A6;">data communications channel</mark> that <mark style="background: #FF5582A6;">appears</mark> free of transmission errors.
 
 Primarily it deals with matters such as the transmission/reception of <mark style="background: #FF5582A6;">data frames</mark>. 
 
@@ -98,7 +98,7 @@ There are certain design issues to address such as: the creation of localised un
 
 ### <mark style="background: #FF5582A6;">The Network Layer:</mark>
 
-Concerned with the successful delivery of data between hosts across complex network infrastructures:
+Concerned with the successful delivery of data between hosts across complex network infrastructures.
 
 Its purpose is to control the operation of the <mark style="background: #FF5582A6;">sub-networks</mark> to achieve host-to-host delivery.
 
@@ -120,7 +120,11 @@ Its purpose is to provide a reliable data transport service to applications.
 
 Primarily it deals with interfacing with applications for the purpose of exchanging data between applications across a network.
 
-There are certain design issues to address such as: multiplexing data streams from/to remote applications, data loss, network latency etc
+<mark style="background: #FF5582A6;">There are certain design issues to address, such as:</mark>
+- multiplexing data streams from/to remote applications, 
+- data loss,
+- network latency, 
+- etc
 
 ### <mark style="background: #FF5582A6;">Data Flows:</mark>
 
@@ -140,11 +144,20 @@ The following slide shows how the complete set of layers are implemented on the 
 
 ### <mark style="background: #FF5582A6;">Repeater Implementation:</mark>
 
+<mark style="background: #FF5582A6;">Repeater:</mark>
 ![](https://i.imgur.com/F4nJIkE.png)
 
+<mark style="background: #FF5582A6;">Bridge:</mark>
 ![](https://i.imgur.com/Wk7RgyN.png)
 
+<mark style="background: #FF5582A6;">Router:</mark>
 ![](https://i.imgur.com/KmI9XwZ.png)
+
+The <mark style="background: #FF5582A6;">repeater</mark> deals only with the physical layer.
+
+The <mark style="background: #FF5582A6;">bridge</mark> deals with the data link and physical layer.
+
+The <mark style="background: #FF5582A6;">router</mark> deals with the network, data link and physical layer.
 
 # <mark style="background: #FF5582A6;">02 Revision - IP</mark>
 
@@ -164,7 +177,7 @@ It can carry a <mark style="background: #FF5582A6;">single</mark> octet of data 
 
 Recall that a router makes its routing decision based on the <mark style="background: #FF5582A6;">destination IP address</mark>.
 
-Routing information is stored in a <mark style="background: #FF5582A6;">routing table</mark>. This table must be <mark style="background: #FF5582A6;">initialised</mark> on boot-up and updated if the topology changes:
+Routing information is stored in a <mark style="background: #FF5582A6;">routing table</mark>. This table must be <mark style="background: #FF5582A6;">initialised on boot-up</mark> and <mark style="background: #FF5582A6;">updated</mark> if the topology changes:
 
 The next three slides show example <mark style="background: #FF5582A6;">Routing Tables</mark>:
 - The first slide recalls a high-level <mark style="background: #FF5582A6;">Routing Table</mark> from previous discussions,
@@ -218,16 +231,14 @@ The size of the frame header may vary as it traverses different network technolo
 - Other protocols include FTP, E-mail etc.
 
 <mark style="background: #FF5582A6;">The Presentation Layer:</mark> 
-- Concerned with the <mark style="background: #FF5582A6;">syntax</mark> and semantics of the information transmitted
+- Concerned with the <mark style="background: #FF5582A6;">syntax</mark> and <mark style="background: #FF5582A6;">semantics</mark> of the information transmitted
 - Facilitates communication between <mark style="background: #FF5582A6;">big-endian</mark> computers e.g. Sun Sparcs and <mark style="background: #FF5582A6;">little-endian</mark> computers e.g. Windows machines
 
 <mark style="background: #FF5582A6;"> The Session Layer:</mark>  
 - Facilitates the use of sessions between end stations. During a session the user and the computer system engage in a <mark style="background: #FF5582A6;">dialogue</mark>
 - The session layer establishes and maintains dialogues
-
-It also determines: 
-- The type of control to be used i.e. two-way simultaneous communication, two-way alternate comm. or one-way comm.
-- <mark style="background: #FF5582A6;">Re-synchronisation</mark> of the dialogue after a crash
+- It also determines the type of control to be used i.e. two-way simultaneous communication, two-way alternate comm. or one-way comm.
+- It facilitates <mark style="background: #FF5582A6;">re-synchronisation</mark> of the dialogue after a crash
 
 <mark style="background: #FF5582A6;">The Transport Layer:</mark> 
 - This is a key layer. It is a true <mark style="background: #FF5582A6;">end-to-end</mark> layer
@@ -249,7 +260,7 @@ It also determines:
 <mark style="background: #FF5582A6;">The Physical Layer:</mark> 
 - Concerned with transmitting <mark style="background: #FF5582A6;">raw</mark> bits over a <mark style="background: #FF5582A6;">communication channel</mark>. Must ensure that when a binary 1 is sent it is received as such by the <mark style="background: #FF5582A6;">receiver</mark>
 - Deals with voltage levels used, bit duration etc. 
-- Design issues deal with <mark style="background: #FF5582A6;">mechanical</mark>, <mark style="background: #FF5582A6;">electrical</mark>, and <mark style="background: #FF5582A6;">timing interface</mark>s, and the physical <mark style="background: #FF5582A6;">transmission medium</mark>
+- Design issues deal with <mark style="background: #FF5582A6;">mechanical</mark>, <mark style="background: #FF5582A6;">electrical</mark>, and <mark style="background: #FF5582A6;">timing interfaces</mark>, and the physical <mark style="background: #FF5582A6;">transmission medium</mark>
 
 ![](https://i.imgur.com/XBAKdJr.png)
 
@@ -259,7 +270,7 @@ It also determines:
 ![](https://i.imgur.com/VYOqIHX.png)
 
 The protocols upon which this model is based (<mark style="background: #FF5582A6;">TCP and IP</mark>) fuelled the early growth of the <mark style="background: #FF5582A6;">Internet</mark>:
-- TCP and IP were adapted because there were available 
+- TCP and IP were adapted because they were available 
 - The ISO protocols on the other hand were still being developed
 
 The <mark style="background: #FF5582A6;">TCP/IP Reference Model</mark> was developed <mark style="background: #FF5582A6;">after</mark> the protocols. 
@@ -268,9 +279,10 @@ Specific design goals of this <mark style="background: #FF5582A6;">Reference Mod
 - Ability to survive the loss of subnet hardware
 - Ability to handle multiple types of data including files and real-time speech
 
-These requirement led to the adoption of a connectionless packet-switching network within the <mark style="background: #FF5582A6;">internet</mark> layer
+These requirements led to the adoption of a connectionless packet-switching network within the <mark style="background: #FF5582A6;">internet</mark> layer
 
-<mark style="background: #FF5582A6;">The Internet Layer:</mark> This layer is key to the whole architecture
+<mark style="background: #FF5582A6;">The Internet Layer:</mark> 
+- This layer is key to the whole architecture
 - It facilitates hosts injecting packets into any network 
 - It ensures correct routing of packets to the Destination station 
 
@@ -295,6 +307,98 @@ These lower two layers are not well defined within the TCP/IP reference model
 ### <mark style="background: #FF5582A6;">Relationship between TCP, UDP and IP</mark>
 
 ![](https://i.imgur.com/w1mpP9I.png)
+
+### <mark style="background: #FF5582A6;">A comparison of OSI and TCP/IP Reference Models:</mark>
+
+<mark style="background: #FF5582A6;">Both models are similar in many ways:</mark>
+- Both use the concept of a stack of independent protocols
+- Both transport layers provide an end-to-end, network-independent transport service to applications
+
+However, there are some notable differences as follows:
+
+<mark style="background: #FF5582A6;">Number of layers:</mark> 
+- OSI model has 7 layers, 
+- TCP/IP has 5 layers
+
+<mark style="background: #FF5582A6;">Services versus Interfaces/Protocols:</mark>
+- OSI clearly defines what each layer does using service definitions
+- TCP/IP did not originally clearly distinguish between service, interface and protocol. This hindered switching-out protocols to facilitate technological change.
+
+<mark style="background: #FF5582A6;">Timing:</mark>
+- OSI model was developed before the protocols were created.
+- With TCP/IP the protocols came first and then the model.
+
+### <mark style="background: #FF5582A6;">Conceptual vs Realistic view of Protocol layering</mark>
+
+![](https://i.imgur.com/CLCo2Cc.png)
+
+### <mark style="background: #FF5582A6;">The Layers in Operation:</mark>
+
+<mark style="background: #FF5582A6;">Application and presentation:</mark>
+![](https://i.imgur.com/iRZbLBI.png)
+
+![](https://i.imgur.com/sRQWR6h.png)
+
+<mark style="background: #FF5582A6;">The session layer:</mark>
+![](https://i.imgur.com/3kPSoAP.png)
+
+<mark style="background: #FF5582A6;">Transport and Network:</mark>
+![](https://i.imgur.com/qVEqlGQ.png)
+![](https://i.imgur.com/ZuNppS9.png)
+
+<mark style="background: #FF5582A6;">Data Link and Physical:</mark>
+![](https://i.imgur.com/YFiiU0b.png)
+
+![](https://i.imgur.com/bBVBrS3.png)
+
+### <mark style="background: #FF5582A6;">Design Issues for Layered Software:</mark>
+
+There are a number of key design issues common to several layers:
+- <mark style="background: #FF5582A6;">Addressing</mark> – Each layer needs to be able to identify senders and receivers. Some form of addressing is required
+- <mark style="background: #FF5582A6;">Error control</mark> - The receiver must be able to tell the sender which messages have been correctly received and which have not
+- <mark style="background: #FF5582A6;">Sequencing</mark> - The protocol software on the the receiver must be able to re-sequence incoming messages
+- <mark style="background: #FF5582A6;">Flow Control</mark> – The receiver must be able to control the flow of information from the sender
+
+The following are two examples of network <mark style="background: #FF5582A6;">models</mark>, namely the <mark style="background: #FF5582A6;">OSI</mark> and <mark style="background: #FF5582A6;">TCP/IP</mark> reference models
+
+These form the basis for many of today’s <mark style="background: #FF5582A6;">network architectures</mark>
+
+<mark style="background: #FF5582A6;">Operation of TCP/IP - Sender:</mark>
+![](https://i.imgur.com/VNiWUzl.png)
+
+
+1. <mark style="background: #FF5582A6;">Preparing the data.</mark> The application protocol prepares a block of data for transmission. For example, an email message (SMTP). a file (FTP). a block of user input (TELNET).
+2. <mark style="background: #FF5582A6;">Using a common syntax.</mark> If necessary, data is converted to a form expected by the destination. This may include a different character code, the use of encryption. and/or compression.
+3. <mark style="background: #FF5582A6;">Segmenting the data.</mark> TCP may break data block into a number of segments. keeping track of their sequence. Each TCP segment includes a header containing a sequence number and a frame check sequence to detect errors.
+4. <mark style="background: #FF5582A6;">Duplicating segments.</mark> A copy is made of each TCP segment, in case the loss or damage of a segment necessitates retransmission When an acknowledgment is received from the other TCP entity. a segment is erased.
+5. <mark style="background: #FF5582A6;">Fragmenting the segments.</mark> IP may break a TCP segment into a number of datagrams to meet size requirements of intervening networks. Each datagram includes a header containing a destination address, a frame check sequence, and other control information.
+6. <mark style="background: #FF5582A6;">Framing.</mark> An ATM header is added to each IP datagram to form an ATM cell. The header contains a connection identifier and a header error control field
+7. <mark style="background: #FF5582A6;">Transmission</mark>. Each cell is transmitted over the medium as a sequence of bits.
+
+ <mark style="background: #FF5582A6;">Peer-to-peer dialogue.</mark> 
+ 1. Before data is sent, the sending and receiving applications agree on format and encoding, then agree to exchange data
+ 2. The two TCP entities agree to a connection.
+ 3. Each IP datagram is forwarded through networks and routers to the destination system.
+ 4. Each cell is forwarded through the ATM network
+
+
+<mark style="background: #FF5582A6;">Operation of TCP/IP Router and Receiver:</mark>
+![](https://i.imgur.com/21zWJiZ.png)
+![](https://i.imgur.com/odytNcZ.png)
+
+8. <mark style="background: #FF5582A6;">Arriving at router.</mark> The incoming signal is received over the transmission medium and interpreted as a cell of bits.
+9. <mark style="background: #FF5582A6;">Processing the cell.</mark> the ATM layer removes the cell header and processes it. The header error control system is used for detection. The connection number identifies the source.
+10. <mark style="background: #FF5582A6;">Routing the packet.</mark> IP examines the IP header and makes a routing decision. It determines which outgoing link is to be used and then passes datagram back to the link layer for transmission on that link. <mark style="background: #FF5582A6;">Peer-to-Peer dialogue.</mark> The router will pass this datagram onto another router or to destination system.
+11. <mark style="background: #FF5582A6;">Forming LLC PDU</mark>. An LLC header is added to each IP datagram to form an LLC PDU. The header contains sequence number and address information. The trailer contains a frame sequence check.
+12. <mark style="background: #FF5582A6;">Framing.</mark> A MAC header and trailer is added to each LLC PDU, forming a MAC frame. The header contains address information and the trailer contains a frame check sequence. Data
+13. <mark style="background: #FF5582A6;">Transmission.</mark> Each frame is transmitted over the medium as a sequence of bits.
+14. <mark style="background: #FF5582A6;">Arriving at destination.</mark> The incoming signal is received over the transmission medium and interpreted as a frame of bits.
+15. <mark style="background: #FF5582A6;">Processing the frame.</mark> MAC layer removes the header and trailer and processes them. The frame check sequence is used for error detection.
+16. <mark style="background: #FF5582A6;">Processing the LLC PDU.</mark> The LLC layer removes the header and processes it. The sequence number is used for flow and error control.
+17. <mark style="background: #FF5582A6;">Processing the IP datagram.</mark> IP removes the header. The frame check sequence and other control information are processed.
+18. <mark style="background: #FF5582A6;">Processing the TCP segment.</mark> TCP removes the header. It checks the frame check sequence and acknowledges if there is a match and discards for mismatch. Flow control is also performed.
+19. <mark style="background: #FF5582A6;">Reassembling user data.</mark> If TCP has broken the user data into multiple segments. these are reassembled and the block is passed up to the application.
+20. <mark style="background: #FF5582A6;">Delivering the data.</mark> The application performs any needed transformations, including decompression and decryption. and directs the data to the appropriate file or other destination.
 
 # <mark style="background: #FF5582A6;">05 Client Server:</mark>
 
@@ -331,7 +435,7 @@ How does an application know when a message has arrived?
 
 The protocol software examines incoming messages and passes <mark style="background: #FF5582A6;">matching</mark> messages to the application.
 
-The application that is continuously running, passively  waiting for contact from other applications is called a <mark style="background: #FF5582A6;">server</mark>.
+The application that is continuously running, passively waiting for contact from other applications is called a <mark style="background: #FF5582A6;">server</mark>.
 
 The application that actively initiates contact with a server is called a <mark style="background: #FF5582A6;">client</mark>.
 
@@ -352,7 +456,7 @@ This is known as the <mark style="background: #FF5582A6;">client-server</mark> p
 <mark style="background: #FF5582A6;">In general, server software has the following characteristics:</mark>
 - It is a special-purpose, <mark style="background: #FF5582A6;">privileged</mark> program dedicated to providing one <mark style="background: #FF5582A6;">service</mark>
 - It can handle multiple remote clients simultaneously 
-- It invoked automatically upon boot-up, and executes through many sessions
+- It is invoked automatically upon boot-up, and executes through many sessions
 - It runs on a shared computer 
 - It passively waits for and accepts contact from <mark style="background: #FF5582A6;">arbitrary</mark> remote clients
 - It requires powerful hardware and a sophisticated operating system
@@ -404,7 +508,7 @@ The next slide shows how the Transport Layer views the lower network interface l
 ### <mark style="background: #FF5582A6;">Services:</mark>
 
 Each layer of the reference model provides a set of functionality to the layer immediately above:
-- This set of functionality is known as <mark style="background: #FF5582A6;">The Services</mark>.
+- This set of functionalities is known as <mark style="background: #FF5582A6;">the Services</mark>.
 - The layer below is known as the <mark style="background: #FF5582A6;">Service Provider</mark> and the layer above is known as the <mark style="background: #FF5582A6;">Service User</mark>
 
 The Services are accessed through the interface between the layers.
@@ -413,7 +517,7 @@ The Services are accessed through the interface between the layers.
 
 <mark style="background: #FF5582A6;">Protocols</mark>, on the other hand, are how the Services are implemented.
 
-Typically a Protocol specifies a <mark style="background: #FF5582A6;">framing structure</mark> which will include a number of fields containing  Control data:
+Typically a Protocol specifies a <mark style="background: #FF5582A6;">framing structure</mark> which will include a number of fields containing Control data:
 - Generically this framing structure is known as a Protocol Data Unit (<mark style="background: #FF5582A6;">PDU</mark>)
 - Examples include Data Link Frame, IP Datagram etc.
 
@@ -426,20 +530,19 @@ The Protocol will also specify how data in the Control Fields are to be interpre
 ### <mark style="background: #FF5582A6;">The TCP Transport Service Offering:</mark>
 
 <mark style="background: #FF5582A6;">The TCP Transport Service has the following characteristics:</mark>
-- <mark style="background: #FF5582A6;">Connection Orientation:</mark> Before two applications entities can communicate they must first establish a connection.
+- <mark style="background: #FF5582A6;">Connection Orientation:</mark> Before two applications' entities can communicate they must first establish a connection.
 - <mark style="background: #FF5582A6;">Point-To-Point Communication:</mark> Each TCP connection has exactly two endpoints. 
 - <mark style="background: #FF5582A6;">Complete Reliability:</mark> TCP guarantees that the data will be delivered exactly as sent i.e. no data missing or out of sequence 
-- <mark style="background: #FF5582A6;">Full Duplex Communication:</mark> A TCP connection allows data to flow in either direction
+- <mark style="background: #FF5582A6;">Full Duplex Communication:</mark> 
+	- A TCP connection allows data to flow in either direction
 	- TCP buffers outgoing and incoming data 
 	- This allows applications to continue executing other code whilst the data is being transferred
-
-<mark style="background: #FF5582A6;">Stream Interface:</mark> The <mark style="background: #FF5582A6;">source</mark> application sends a continuous sequence of octets across a connection
-- The data is passed en-bloc to TCP for delivery
-- TCP does not guarantee to deliver the data in the same size pieces that it was transferred by the source application.
-
-<mark style="background: #FF5582A6;">Reliable Connection Startup:</mark> TCP both applications to <mark style="background: #FF5582A6;">agree</mark> to any new connection
-
-<mark style="background: #FF5582A6;">Graceful Connection Shutdown:</mark> Either can request a connection to be shut down. TCP guarantees to deliver all the data reliably before closing the connection.
+- <mark style="background: #FF5582A6;">Stream Interface:</mark> 
+	- The <mark style="background: #FF5582A6;">source</mark> application sends a continuous sequence of octets across a connection
+	- The data is passed en-bloc to TCP for delivery
+	- TCP does not guarantee to deliver the data in the same size pieces that it was transferred by the source application.
+- <mark style="background: #FF5582A6;">Reliable Connection Startup:</mark> TCP both applications to <mark style="background: #FF5582A6;">agree</mark> to any new connection
+- <mark style="background: #FF5582A6;">Graceful Connection Shutdown:</mark> Either can request a connection to be shut down. TCP guarantees to deliver all the data reliably before closing the connection.
 
 ### <mark style="background: #FF5582A6;">The Transport Service:</mark>
 
@@ -644,7 +747,7 @@ The essence of this application is as follows:
 
 To complete this task it is necessary to understand the operation of the ``recv()`` primitive.
 
-```JAVA
+```C
 while ((numBytes = recv(sock, recvbuffer, BUFSIZE - 1, 0)) >0) 
 {
 	recvbuffer[numBytes] = '\0'; 
@@ -728,7 +831,7 @@ Non-privileged addresses are for any other applications: This is the range that 
 
 It is important to note that the Ephemeral and <mark style="background: #FF5582A6;">Non-privileged</mark> ranges differ on different OS’s:
 - Your home host may use different ranges depending on the OS used.
-- On the Virtual Machines used in the labs, us the following command to view the range:
+- On the Virtual Machines used in the labs, use the following command to view the range:
 - ``sudo sysctl net.ipv4.ip_local_port_range``
 
 ### <mark style="background: #FF5582A6;">Socket Identifiers:</mark>
@@ -834,7 +937,7 @@ Both the client and server need to do this after the socket has been created.
 - The client needs to pass the contact details for the server before the Connect Primitive is called.
 - The server needs to inform the TCP of the address that it wants to listen on. This is used by the Bind Primitive.
 
-Occasional there is a need to pass information in the reverse direction i.e. TCP to Application layer. This will be looked at another time.
+Occasionally, there is a need to pass information in the reverse direction i.e. TCP to Application layer. This will be looked at another time.
 
 All addressing information, regardless of direction, must be:
 - Of the correct byte order (discussed shortly) and,
@@ -959,7 +1062,7 @@ const char *inet_ntop(int family, const void *addrptr, char *strptr, size_t len)
 
 ### <mark style="background: #FF5582A6;">Byte Manipulation Functions:</mark>
 
-The ``family`` argument for both functions is AF_INET: We are only concerned with IPv4 addresses.
+The ``family`` argument for both functions is ``AF_INET``: We are only concerned with IPv4 addresses.
 
 The ``len`` argument is the <mark style="background: #FF5582A6;">size</mark> of the destination buffer: It is passed to prevent the function from overflowing the buffer.
 
@@ -1026,8 +1129,7 @@ sizeof(clntName)), ntohs(cliaddr.sin_port)); //print out client address
 
 The Web is a <mark style="background: #FF5582A6;">distributed hypermedia</mark> system that supports interactive access to Hypermedia documents (aka <mark style="background: #FF5582A6;">Resources</mark>).
 
-<mark style="background: #FF5582A6;">Hypermedia</mark> (as opposed to <mark style="background: #FF5582A6;">Hypertext</mark>) Resources
-potentially contain:
+<mark style="background: #FF5582A6;">Hypermedia</mark> (as opposed to <mark style="background: #FF5582A6;">Hypertext</mark>) Resources potentially contain:
 - Different types of information including: text, pictures, graphics, audio etc. Examples include: HTML files, image files, query results etc.
 - <mark style="background: #FF5582A6;">Hyperlinks</mark> to other Resources,
 
@@ -1046,7 +1148,7 @@ This lends itself well to the Client-server paradigm as follows:
 However, this distribution of Resources also introduces a number of potential problems:
 - The Resources may be updated, moved or removed without notification to the client applications,
 - Accessing Resources on remote host machines has implications for network bandwidth usage.
-- These problems can affect the end-user experience and, the network.
+- These problems can affect the end-user experience and the network.
 
 ### <mark style="background: #FF5582A6;">Client-server interaction - HTTP:</mark>
 
@@ -1083,7 +1185,8 @@ Specifically, a browser consists of the following components:
 - A set of clients for uploading/retrieving Resources,
 - A set of interpreters for displaying/rendering Resources,
 - A Controller to manage them all. The Controller is responsible for: Interpreting user input via the keyboard and mouse clicks and invoking interpreter and client components at the appropriate time.
-All browsers minimally contain a basic HTTP client, a basic HTML interpreter and, a Controller.
+
+All browsers minimally contain a basic HTTP client, a basic HTML interpreter and a Controller.
 
 Modern Browsers contain much more.
 
@@ -1191,7 +1294,7 @@ GET /path/to/file/index.html HTTP/1.0
 ```
 
 <mark style="background: #FF5582A6;">Notes:</mark>
-- GET is the most common HTTP method -it says “fetch me this resource"
+- GET is the most common HTTP method - it says “fetch me this resource"
 - Method names are always uppercase.
 - The path is the part of the URL after the host name.
 - The HTTP version always takes the form "HTTP/x.x", uppercase.
