@@ -390,14 +390,14 @@ These form the basis for many of today’s <mark style="background: #FF5582A6;">
 9. <mark style="background: #FF5582A6;">Processing the cell.</mark> the ATM layer removes the cell header and processes it. The header error control system is used for detection. The connection number identifies the source.
 10. <mark style="background: #FF5582A6;">Routing the packet.</mark> IP examines the IP header and makes a routing decision. It determines which outgoing link is to be used and then passes datagram back to the link layer for transmission on that link.
 11. <mark style="background: #FF5582A6;">Forming LLC PDU</mark>. An LLC (Logical Link Control) header is added to each IP datagram to form an LLC PDU. The header contains sequence number and address information. The trailer contains a frame sequence check.
-12. <mark style="background: #FF5582A6;">Framing.</mark> A MAC header and trailer is added to each LLC PDU, forming a MAC frame. The header contains address information and the trailer contains a frame check sequence. Data
+12. <mark style="background: #FF5582A6;">Framing.</mark> A MAC header and trailer is added to each LLC PDU, forming a MAC frame. The header contains address information and the trailer contains a frame check sequence.
 13. <mark style="background: #FF5582A6;">Transmission.</mark> Each frame is transmitted over the medium as a sequence of bits.
 14. <mark style="background: #FF5582A6;">Arriving at destination.</mark> The incoming signal is received over the transmission medium and interpreted as a frame of bits.
 15. <mark style="background: #FF5582A6;">Processing the frame.</mark> MAC layer removes the header and trailer and processes them. The frame check sequence is used for error detection.
 16. <mark style="background: #FF5582A6;">Processing the LLC PDU.</mark> The LLC layer removes the header and processes it. The sequence number is used for flow and error control.
 17. <mark style="background: #FF5582A6;">Processing the IP datagram.</mark> IP removes the header. The frame check sequence and other control information are processed.
 18. <mark style="background: #FF5582A6;">Processing the TCP segment.</mark> TCP removes the header. It checks the frame check sequence and acknowledges if there is a match and discards for mismatch. Flow control is also performed.
-19. <mark style="background: #FF5582A6;">Reassembling user data.</mark> If TCP has broken the user data into multiple segments. these are reassembled and the block is passed up to the application.
+19. <mark style="background: #FF5582A6;">Reassembling user data.</mark> If TCP has broken the user data into multiple segments, these are reassembled and the block is passed up to the application.
 20. <mark style="background: #FF5582A6;">Delivering the data.</mark> The application performs any needed transformations, including decompression and decryption. and directs the data to the appropriate file or other destination.
 
 # <mark style="background: #FF5582A6;">05 Client Server:</mark>

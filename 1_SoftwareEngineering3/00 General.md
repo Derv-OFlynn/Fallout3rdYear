@@ -19,3 +19,7 @@ CA:
 - Analysis/Design/Implementation Assignment
 	- First Assignment: Analysis and design models (submission)
 	- Second Assignment: Lab test
+
+USEFUL DIAGRAM:
+
+![](https://i.imgur.com/VvbOluC.png)
