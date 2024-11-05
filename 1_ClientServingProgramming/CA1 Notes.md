@@ -927,6 +927,10 @@ The following slide shows the socket pairs relating to the connection after Conn
 
 ![](https://i.imgur.com/LDPmYOB.png)
 
+{0.0.0.0:80,0.0.0.0:\*}
+{``serverip``:``serverport``, ``clientip``:``clientport``}
+{``localIP``:``localPort``,``remoteIP``:``remotePort``}
+
 # <mark style="background: #FF5582A6;">08 Addressing Structures</mark>
 
 ### <mark style="background: #FF5582A6;">Addressing Infromation:</mark>

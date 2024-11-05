@@ -139,3 +139,69 @@ Array<String> mMovies = { "Bill and Ted's Excellent Adventures", "Teen Wolf", "H
 Lets look at how the ``ArrayAdapter`` class does the following:  
 1. Creates list item Views  
 2. Recycles list item Views
+
+### <mark style="background: #AD21D9;">How an adapter works:</mark>
+
+```Kotlin
+Array<String> mMovies = { "Bill and Ted's Excellent Adventures", "Teen Wolf", "Honey I shrunk the kids", "Texas Chainsaw Massacre", "Puppet Master" }
+```
+
+![](https://i.imgur.com/jYnO4jA.png)
+
+![](https://i.imgur.com/ixlx7cK.png)
+
+![](https://i.imgur.com/pxr4yKu.png)
+
+![](https://i.imgur.com/FtJFByg.png)
+
+![](https://i.imgur.com/Gwr9PJT.png)
+
+### <mark style="background: #AD21D9;">Implementing your own adapter:</mark>
+
+The default look and feel of the Android ``ListView`` is not very attractive.  
+
+Also, remember the default action of an ``ArrayAdapter`` is to call the ``toString()`` method on the data object it contains.  
+
+This means your list will change the text on the list item and nothing else.
+
+<mark style="background: #AD21D9;">Getting creative with Custom Adapters:</mark>  
+- With Custom Adapters, you can use your own layout to make lists more interesting.  
+- You can make the list items look any way you want.  
+- You can make the list item have more data than just simple text.
+
+<mark style="background: #AD21D9;">Steps for create a custom adapter:</mark>  
+1. Extend an existing Adapter class  
+2. Define a constructor  
+3. @Override the Adapter’s ``getView()`` method.  
+	- Use this to inflate custom list items  
+	- Use this to populate the item with more data than just what comes from ``toString()``
+
+<mark style="background: #AD21D9;">Extend an existing Adapter:</mark>
+- Create a class that extends  
+	1. BaseAdapter  
+	2. ArrayAdapter  
+	3. SimpleCursorAdapter  
+- You’ll want to extend an existing adapter because they provide quite a bit of  functionality that we don’t want to rewrite ourselves.
+
+### <mark style="background: #AD21D9;">Recycler view overview:</mark>
+
+Recycler view is a robust list drawing library that provides a fixed size window we can use to load a large dataset into.  
+
+It recycles the views it creates as we scroll (or the views go out of scope) and then if there is a need, it reuses them to make it seem as if the views were never offloaded.  
+
+They appear to the user to be present outside the window.  
+
+This makes Recycler view exceptional for displaying data collections whose elements change at runtime based on user action or network events.
+
+``RecyclerView`` supports three types of lists using ``RecyclerView.LayoutManager``.  
+- ``StaggeredGridLayoutManager``  
+- ``GridLayoutManager``  
+- ``LinearLayoutManager``
+
+``RecyclerViews`` are generally used to show a scrolling list of items in either a list or grid format.  
+
+As items in a list or grid can look different in different applications or even in different activities belonging to the same application.  
+
+You’ll be required to not only add in a recycler view but also to tell the recycler view how to add in and display items.  
+
+``RecyclerViews`` take a bit of work to get up and running because of this but they are highly flexible and adaptable as a result.
