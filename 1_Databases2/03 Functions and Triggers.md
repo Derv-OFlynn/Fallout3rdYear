@@ -615,3 +615,227 @@ Granting all privileges on CREATE USER:
 ### <mark style="background: #69E772;">Locking and concurrency:</mark>
 
 How to cope with multiple users conducting simultaneous transactions
+
+### <mark style="background: #69E772;">Transactions:</mark> 
+
+In the Builder Case Study we require transactions to:  
+
+<mark style="background: #69E772;">Add an order:</mark>  
+- Maybe add a customer  
+- Add an order  
+- Add one or more order lines to the order. Each new line means we need to adjust the remaining amount in the stock table.  
+- Confirm (commit) or abandon (rollback) the order)  
+
+<mark style="background: #69E772;">Ship an order:</mark>  
+- Confirm that the stock has been handed over to the customer.  
+- This requires an update of the order table.  
+
+There are more.
+
+### <mark style="background: #69E772;">Concurrent transactions (Builder)</mark>
+
+![](https://i.imgur.com/RLcCe6n.png)
+
+### <mark style="background: #69E772;">If it is a single-user system:</mark>
+
+Fred will put in his order and the stock-level for the bicycle locks will go down to 5.  
+
+Joe will try to order 7 locks and won’t be allowed.  
+
+OR  
+
+Joe will put in his order and stock-level for the locks will go down to 8.  
+
+Fred will try to order 10 locks and won’t be allowed.  
+
+But what if they are both are working at the same time?
+
+### <mark style="background: #69E772;">Problems with Concurrency:</mark>
+
+Concurrent transaction can cause three kinds of database problems  
+- Lost Update  
+- Violation of Integrity Constraints  
+- Inconsistent Retrieval
+
+### <mark style="background: #69E772;">Lost update (Builder):</mark>
+
+Apparently successful updates can be overwritten by other transactions.
+
+```plSQL
+Initial Balance = 100
+```
+
+![](https://i.imgur.com/BvNELAW.png)
+
+![](https://i.imgur.com/PsFC1j5.png)
+
+Either update could go a fraction of a second earlier and overwrite the other.
+
+### <mark style="background: #69E772;">Inconsistent Retrieval (Dirty Reads):</mark>
+
+If transaction are allowed to read the partial results of incomplete transactions, they can obtain an inconsistent view of the DB (dirty or unrepeatable reads).
+
+### <mark style="background: #69E772;">Concurrency Control:</mark>  
+
+<mark style="background: #69E772;">Transaction:</mark> the basic unit of work in a RDBMS  
+
+<mark style="background: #69E772;">Properties of a transaction:</mark>  
+- ATOMICITY  
+- CONSISTENCY  
+- ISOLATION  
+- DURABILITY
+
+![](https://i.imgur.com/LQEFiBm.png)
+
+### <mark style="background: #69E772;">A.C.I.D properties:</mark>
+
+<mark style="background: #69E772;">Atomicity:</mark> the is the “all or nothing” property ; a transaction is an indivisible unit of work  
+
+<mark style="background: #69E772;">Consistency:</mark> transactions transform the DB from one consistent state to another consistent state
+
+<mark style="background: #69E772;">Isolation:</mark> transactions execute in isolation i.e. the partial effect of one transaction is not  visible to other transactions.  
+
+<mark style="background: #69E772;">Durability (aka Persistence):</mark> the effect of a successfully completed (i.e. committed) transaction are permanently recorded in the DB and cannot be undone.
+
+### <mark style="background: #69E772;">Conflicting Operations:</mark>
+
+If two transactions only read a data item, they do <mark style="background: #69E772;">not</mark> conflict and order is not important.  
+
+If two transactions either read or write completely separate data items, they do not conflict and order is <mark style="background: #69E772;">not</mark> important.  
+
+If one transactions writes a data item and another transaction reads or writes the same data item, the order of execution <mark style="background: #69E772;">is</mark> important.
+
+### <mark style="background: #69E772;">Making changes persist:</mark>
+
+When data is changed, it must be persisted, to ensure that the change takes.  
+
+<mark style="background: #69E772;">E.g. a text editor:</mark>  
+- ``SAVE`` will ``COMMIT`` your changes.  
+- ``QUIT`` will ``ROLLBACK`` your changes.  
+
+<mark style="background: #69E772;">AUTOCOMMIT:</mark>  
+- When this feature is ON, changes are persisted as soon as they happen. Similar to Google Docs.
+
+### <mark style="background: #69E772;">AUTOCOMMIT, COMMIT and ROLLBACK:</mark>
+
+Many modern database clients set ``autocommit`` on by default.
+
+![](https://i.imgur.com/9rpddOY.png)
+
+![](https://i.imgur.com/CEktyAp.png)
+
+### <mark style="background: #69E772;">Transactions:</mark>
+
+A transaction (or logical unit of work) is a sequence of SQL statements that ``postgreSQL`` treats as a single unit.  
+
+<mark style="background: #69E772;">A transaction ends with a</mark>  
+- commit,  
+- rollback ,  
+- any DDL statement which issues an implicit commit.
+
+### <mark style="background: #69E772;">Implicit and explicit transactions:</mark>
+
+<mark style="background: #69E772;">In autocommit mode:</mark>  
+- Every SQL statement is considered to be a transaction  
+- It has an implicit BEGIN before it.  
+- It has an implicit COMMIT after it.  
+
+TURN AUTOCOMMIT OFF!!!
+
+![](https://i.imgur.com/3dDi43M.png)
+
+### <mark style="background: #69E772;">Transactions and locking:</mark>
+
+Transactions start with ``BEGIN``  
+- When an ``INSERT``, ``UPDATE`` or ``DELETE`` takes place:  
+- It locks the row that is being ``INSERTed`` / ``UPDATEd`` / ``DELETEd``  
+- Other sessions cannot see the changes that are being made.  
+- The lock holds until the transaction session is finished by issuing  
+- ``COMMIT`` or ``ROLLBACK``
+
+### <mark style="background: #69E772;">The transaction control commands:</mark>
+
+<mark style="background: #69E772;">commit</mark> makes all changes since the beginning of a transaction permanent  
+
+<mark style="background: #69E772;">rollback</mark> rolls back (undoes) all changes since the beginning of a transaction.  
+
+<mark style="background: #69E772;">Other users:</mark>  
+- cannot see the results of the transaction until it has been committed.  
+- Can see the data as it was before the other user's transaction started!
+
+### <mark style="background: #69E772;">Overview:</mark>
+
+<mark style="background: #69E772;">Locking:</mark>  
+- allows a user to take hold of a block for updating.  
+- Prevents other users from modifying the same data.  
+- Locks can create performance problems.  
+- When one process locks, others are shut out.  
+- There are several levels of locking.
+
+<mark style="background: #69E772;">When modifying:</mark>  
+- The transaction should place a lock until committed or rolled back.  
+- This is known as data concurrency.
+
+<mark style="background: #69E772;">Read-consistency:</mark>
+- All processes can access (read) the original data as they were at the time the query began (uncommitted modification).
+
+### <mark style="background: #69E772;">Row-level Locking (read consistency):</mark>
+
+Each row can be locked individually.  
+
+Locked rows can only be updated by the locking session.  
+
+Other rows can be updated by other sessions.  
+
+Other sessions can still read all rows.  
+
+When other sessions read locked rows, they see the pre-locked values for the row.  
+
+When the lock is released, by COMMIT or ROLLBACK, the new values are visible to other sessions.
+
+### <mark style="background: #69E772;">Locking rows:</mark>
+
+![](https://i.imgur.com/vPEjbjA.png)
+
+### <mark style="background: #69E772;">Exclusive locks:</mark>
+
+<mark style="background: #69E772;">Exclusive locks occur on ROWS when:</mark>  
+- The row is ``INSERTed``  
+- The row is ``DELETEd``  
+- The row is ``UPDATEd``  
+- The row is ``SELECTed``... FOR ``UPDATE``...
+
+### <mark style="background: #69E772;">Deadlocks:</mark>
+
+A deadlock can occur when two or more users are waiting for data locked by each other.  
+
+Deadlocks prevent some transactions from continuing to work.  
+
+The next example illustrates two transactions in a deadlock.
+
+### <mark style="background: #69E772;">Example:</mark>
+
+![](https://i.imgur.com/9CmPlp1.png)
+
+### <mark style="background: #69E772;">Example explanation:</mark>
+
+<mark style="background: #69E772;">At timepoint A:</mark>  
+- no problem exists as each transaction has a row lock on the row it attempts to update.  
+- Each transaction proceeds without being terminated.  
+- However, each tries next to update the row currently held by the other transaction.  
+
+<mark style="background: #69E772;">At timepoint B:</mark>  
+- a deadlock results, because neither transaction can obtain the resource it needs to proceed or terminate.  
+- It is a deadlock because no matter how long each transaction waits, the conflicting locks are held.
+
+### <mark style="background: #69E772;">How to avoid Deadlocks:</mark>
+
+Application developers can eliminate all risk of deadlocks by ensuring that transactions requiring multiple resources <mark style="background: #69E772;">always lock them in the same order.</mark>  
+
+However, in complex applications, this is easier said than done, particularly if an ad hoc query tool is used.  
+
+To be safe, you should adopt a strict locking order, but you must also <mark style="background: #69E772;">handle locking exceptions</mark>.  
+
+To handle locking exceptions:  
+- Pause for three seconds, and then retry the statement.  
+- Or, roll back the transaction, wait 3 seconds and retry.

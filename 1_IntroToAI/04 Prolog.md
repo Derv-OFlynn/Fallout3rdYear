@@ -69,3 +69,99 @@ yes
 
 Why? After working through the first goal, Prolog has instantiated X with ``mia``, so that it cannot unify it with ``vincent`` anymore. Hence the second goal fails.
 
+### <mark style="background: #69E7E4;">Prolog and unification:</mark>
+
+Prolog does not use a standard unification algorithm
+
+Consider the following query:
+
+```Prolog
+?- father(X) = X.
+```
+
+Do these terms unify or not?
+
+<mark style="background: #69E7E4;">Infinite terms:</mark>
+```Prolog
+?- father(X) = X.
+X=father(father(father(father(father(father
+(father(father(father(father(father(father
+(father(father(father(father(father(father
+(father(father(father(father(father(father
+(father(father(father(father(father(father
+(father(father(father(father(father(father
+(father(father(father(father(father(father
+(father(father(father(father(father(father
+(.............
+```
+
+```Prolog
+?- father(X) = X.
+X=father(father(father(…))))
+yes
+?-
+```
+
+### <mark style="background: #69E7E4;">Occurs Check:</mark>
+
+A standard unification algorithm carries out an occurs check
+
+If it is asked to unify a variable with another term it checks whether the variable occurs in this term
+
+<mark style="background: #69E7E4;">In Prolog (ISO standard):</mark>
+```Prolog
+?- unify_with_occurs_check(father(X), X).
+no
+```
+
+### <mark style="background: #69E7E4;">Programming with unification:</mark>
+
+```Prolog
+vertical( line(point(X,Y),
+point(X,Z))).
+horizontal( line(point(X,Y),
+point(Z,Y))).
+```
+
+```Prolog
+?- vertical(line(point(1,1),point(1,3))).
+yes
+?- vertical(line(point(1,1),point(3,2))).
+no
+?- horizontal(line(point(1,1),point(1,Y))).
+Y = 1;
+no
+?- horizontal(line(point(2,3),Point)).
+Point = point(_554,3);
+no
+?-
+```
+
+![](https://i.imgur.com/EcCtg1q.png)
+
+### <mark style="background: #69E7E4;">Proof search:</mark>
+
+Now that we know about unification, we are in a position to learn how Prolog searches a knowledge base to see if a
+query is satisfied.
+
+In other words: we are ready to learn about <mark style="background: #69E7E4;">proof search</mark> and <mark style="background: #69E7E4;">search trees</mark>
+
+![](https://i.imgur.com/Hw5ZBeO.png)
+
+![](https://i.imgur.com/k8MUv4g.png)
+
+![](https://i.imgur.com/z8T1PEI.png)
+
+![](https://i.imgur.com/2mZBOP0.png)
+
+![](https://i.imgur.com/z5Wp7Kh.png)
+
+![](https://i.imgur.com/73MkOwi.png)
+
+![](https://i.imgur.com/ULB6FSc.png)
+
+![](https://i.imgur.com/LJN9PtY.png)
+
+![](https://i.imgur.com/3BSFsOO.png)
+
+![](https://i.imgur.com/jibG7OT.png)
