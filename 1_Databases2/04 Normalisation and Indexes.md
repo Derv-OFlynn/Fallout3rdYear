@@ -369,3 +369,107 @@ They improve the performance of queries that use attributes <mark style="backgro
 You can use a separate index for every attribute you wish to use in the WHERE clause of your select query  
 
 But there is the overhead of maintaining a large number of these indexes
+
+A <mark style="background: #69E772;">Secondary Index</mark> is an <mark style="background: #69E772;">ordered file</mark> with two fields.  The <mark style="background: #69E772;">first</mark> is of the same data type as some <mark style="background: #69E772;">non-ordering</mark> field and the second is either a block or a record pointer.
+
+If the <mark style="background: #69E772;">entries</mark> in this non-ordering field <mark style="background: #69E772;">must</mark> be <mark style="background: #69E772;">unique</mark> this field is sometime referred to as a <mark style="background: #69E772;">Secondary Key</mark>. This results in a dense index.
+
+For a secondary index, an external index file has a list of pointers to the various values of the indexed column (i.e. It’s a logical index, not physical)  so you can have many secondary indexes
+- What would a secondary index to a telephone directory look like? E.g. Road Name?
+- WHY would you use a secondary index?
+
+### <mark style="background: #69E772;">Primary Indexes (not clustered):</mark>
+
+A Secondary Index is an ordered file with two fields.  The first is of the same data type as some nonordering field and the second is either a block or a record pointer.
+
+If the entries in this nonordering field must be unique this field is sometime referred to as a Secondary Key.  This results in a dense index.
+
+For a secondary index, an external index file has a list of pointers to the various values of the indexed column (i.e. It’s a logical index, not physical)  so you can have many secondary indexes
+
+What would a secondary index to a telephone directory look like? E.g. Road Name?
+
+WHY would you use a secondary index?
+
+![](https://i.imgur.com/5xNeMGY.png)
+
+### <mark style="background: #69E772;">Secondary Index on Non-Key Field:</mark>
+
+A secondary index is an index defined on a non-key field. It can be implemented as a primary index (not clustered) but since there is <mark style="background: #69E772;">no guarantee</mark> that the value will be <mark style="background: #69E772;">unique</mark> the previous index method will not work in all the case.
+- <mark style="background: #69E772;">Option 1:</mark> Include index entries for each record.  This results in multiple entries of the same value.
+- <mark style="background: #69E772;">Option 2:</mark> Use variable length records with a pointer to each block/record with that value.
+- <mark style="background: #69E772;">Option 3:</mark> Have the pointer; point to a block or chain of blocks that contain pointers to all the blocks/records that contain the field value. Example of multi-level index
+
+![](https://i.imgur.com/tsmFFGz.png)
+
+### <mark style="background: #69E772;">Bitmap Index:</mark>
+
+An index implemented as a map of bits
+
+Each unique entry in the index is a string of bits
+
+Usually used on fields that are not (or rarely)  modified 
+
+Fields with low cardinality
+
+Used in read-only environment like data warehouses
+
+Typical example: day of the week, gender,…
+
+How many bytes is a bitmap index on:
+- Day of the week for 10 millions records 
+- Gender for 1 billion records
+
+![](https://i.imgur.com/lG9ma16.png)
+
+### <mark style="background: #69E772;">Multilevel Indexes:</mark>
+
+A <mark style="background: #69E772;">Multilevel Index</mark> is where you construct an <mark style="background: #69E772;">Second- Level index</mark> on a <mark style="background: #69E772;">First-Level</mark> Index. Continue this process until the entire index can be contained in a <mark style="background: #69E772;">Single File Block</mark>.
+
+This allows much faster access than binary search because at each level the size of the index is reduced by the fan out factor.  Rather just by 2 as in binary search.
+
+![](https://i.imgur.com/My6zpaz.png)
+
+In databases, multi-level indexes are implemented using a tree structure
+
+A tree is a data structure with specific rules, which ones?
+
+### <mark style="background: #69E772;">Multilevel Indexes Using Search Trees, B-Trees & B+ Trees:</mark>
+
+A <mark style="background: #69E772;">Search Tree</mark> of order <mark style="background: #69E772;">p</mark> differs from a <mark style="background: #69E772;">Multilevel Index</mark> in that each node contains a most <mark style="background: #69E772;">p - 1</mark> search values and <mark style="background: #69E772;">p</mark> pointers.
+
+There is <mark style="background: #69E772;">no</mark> requirement that the Search Tree be <mark style="background: #69E772;">Balanced</mark>.
+
+![](https://i.imgur.com/BT0Mnn5.png)
+
+<mark style="background: #69E772;">B-Trees</mark> address the problems with Search Trees in that they have the <mark style="background: #69E772;">additional</mark> constraint that they be <mark style="background: #69E772;">balanced</mark> and they contain pointers to data records.
+
+Each B-Trees is made up of at most <mark style="background: #69E772;">P</mark> tree pointers and <mark style="background: #69E772;">P-1</mark> field values <mark style="background: #69E772;">K</mark> and data pointers <mark style="background: #69E772;">Pr</mark>.
+
+![](https://i.imgur.com/up1WOJr.png)
+
+### <mark style="background: #69E772;">Query executions in Postgres – Index and Table access:</mark>
+
+<mark style="background: #69E772;">Seq Scan:</mark> the Seq Scan operation scans the entire relation (table) as stored on disk 
+
+<mark style="background: #69E772;">Index Scan:</mark> the Index Scan performs a B-tree traversal, walks through the leaf nodes to find all matching entries, and fetches the corresponding table data. The so-called index filter predicates often cause performance problems for an Index Scan. 
+
+<mark style="background: #69E772;">Index Only Scan:</mark> The Index Only Scan performs a B-tree traversal and walks through the leaf nodes to find all matching entries. There is no table access needed because the index has all columns to satisfy the query
+
+<mark style="background: #69E772;">Bitmap Index Scan / Bitmap Heap Scan / Recheck Cond</mark>. A plain Index Scan fetches one tuple-pointer at a time from the index, and immediately visits that tuple in the table. A bitmap scan fetches all the tuple-pointers from the index in one go, sorts them using an in-memory “bitmap” data structure, and then visits the table tuples in physical tuple-location order.
+
+Generally join operations process only two tables at a time. In case a query has more joins, they are executed sequentially: first two tables, then the intermediate result with the next table. In the context of joins, the term “table” could therefore also mean “intermediate result”.
+1. <mark style="background: #69E772;">Nested Loops:</mark> Joins two tables by fetching the result from one table and querying the other table for each row from the first.
+2. <mark style="background: #69E772;">Hash Join / Hash:</mark> The hash join loads the candidate records from one side of the join into a hash table (marked with <mark style="background: #69E772;">Hash</mark> in the plan) which is then probed for each record from the other side of the join.
+3. <mark style="background: #69E772;">Merge Join:</mark> The (sort) merge join combines two sorted lists like a zipper. Both sides of the join must be pre-sorted.
+
+### <mark style="background: #69E772;">Query executions in Postgres – Sorting, Grouping and Limit:</mark>
+
+<mark style="background: #69E772;">Sort / Sort Key:</mark> Sorts the set on the columns mentioned in Sort Key. The Sort operation needs large amounts of memory to materialize the intermediate result. 
+
+<mark style="background: #69E772;">GroupAggregate:</mark> Aggregates a pre-sorted set according to the group by clause. This operation does not buffer large amounts of data
+
+<mark style="background: #69E772;">HashAggregate:</mark> Uses a temporary hash table to group records. The HashAggregate operation does not require a pre-sorted data set, instead it uses large amounts of memory to materialize the intermediate result. The output is not ordered in any meaningful way. 
+
+<mark style="background: #69E772;">Limit:</mark> Aborts the underlying operations when the desired number of rows has been fetched. The efficiency of the top-N query depends on the execution mode of the underlying operations. It is very inefficient whit operations such as Sort.
+
+<mark style="background: #69E772;">WindowAgg:</mark> Indicates the use of window functions. 
