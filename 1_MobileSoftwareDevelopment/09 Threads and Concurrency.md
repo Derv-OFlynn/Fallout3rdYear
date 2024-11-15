@@ -319,4 +319,40 @@ A coroutine is like a lightweight thread that lets you run multiple pieces of co
 
 Using coroutines means that you can launch a background job without the rest of the code having to wait around for it to complete.
 
-# <mark style="background: #FF5582A6;">SLIDE 40:</mark>
+Coroutines can be suspended and resumed mid-execution. This means you can have a long-running task, which you can execute little-by-little. You can pause it any number of times, and resume it when you’re ready again.
+
+### <mark style="background: #AD21D9;">Implementation:</mark>
+
+Mark the targeted method with suspend
+
+``Suspend fun insert()``
+
+Launch the coroutine in background
+
+``yourClass.launch(){x.insert()}``
+
+You can also use asynch instead of launch where:
+- <mark style="background: #AD21D9;">launch:</mark> fire and forget
+- <mark style="background: #AD21D9;">async:</mark> perform a task and return a result
+
+More is here https://developer.android.com/kotlin/coroutines/coroutines-adv
+
+### <mark style="background: #AD21D9;">WorkManager:</mark>
+
+There are times when you’ll want your app to process data in the background.
+
+This might be because it needs to access storage, for example, or it needs to download a large file.
+
+You can use Kotlin coroutines for tasks that need to be executed immediately.
+
+But what if you want to defer the task, or have a long-running task that must continue to run, even if the device restarts?
+
+### <mark style="background: #AD21D9;">Use WorkManager to schedule deferrable tasks</mark>
+
+If you want to schedule a task to run in the background, you can use Android’s ``WorkManager`` API.
+
+It’s designed for potentially long-running tasks that are guaranteed to run even if the user quits the app or restarts the device.
+
+ You can even use WorkManager to run tasks when certain constraints are met, such as when WiFi is available, or chain complex tasks together.
+
+More on https://developer.android.com/topic/libraries/architecture/workmanager
