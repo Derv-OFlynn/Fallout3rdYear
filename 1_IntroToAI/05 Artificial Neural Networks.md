@@ -207,8 +207,53 @@ As an example, we may consider the three-layer back-propagation network. Suppose
 
 A multilayer network learns much faster when the sigmoidal activation function is replaced by a <mark style="background: #69E7E4;">hyperbolic tangent</mark>
 
-We also can accelerate training by including a momentum term in the delta rule:
+We also can accelerate training by including a <mark style="background: #69E7E4;">momentum term</mark> in the delta rule:
 ![](https://i.imgur.com/x0BIv8Q.png)
 
-# <mark style="background: #FF5582A6;">SLIDE 21</mark>
+where β is a positive number (0 <= b < 1) called the
+<mark style="background: #69E7E4;">momentum constant</mark>. Typically, the momentum
+constant is set to 0.95.
 
+This equation is called the <mark style="background: #69E7E4;">generalised delta rule</mark>.
+
+### <mark style="background: #69E7E4;">Learning with momentum for operation Exclusive-OR:</mark>
+
+![](https://i.imgur.com/59uoS4H.png)
+
+### <mark style="background: #69E7E4;">Learning with adaptive learning rate:</mark>
+
+To accelerate the convergence and yet avoid the danger of instability, we can apply two heuristics:
+
+<mark style="background: #69E7E4;">Heuristic 1:</mark>
+If the change of the sum of squared errors has the same algebraic sign for several consequent epochs, then the learning rate parameter, α, should be increased.
+
+<mark style="background: #69E7E4;">Heuristic 2:</mark>
+If the algebraic sign of the change of the sum of squared errors alternates for several consequent epochs, then the learning rate parameter, α, should be decreased.
+
+Adapting the learning rate requires some changes in the back-propagation algorithm.
+
+If the sum of squared errors at the current epoch exceeds the previous value by more than a predefined ratio (typically 1.04), the learning rate parameter is decreased (typically by multiplying by 0.7) and new weights and thresholds are calculated.
+
+If the error is less than the previous one, the learning rate is increased (typically by multiplying by 1.05).
+
+### <mark style="background: #69E7E4;">Learning with adaptive learning rate:</mark>
+
+![](https://i.imgur.com/Hy7ziZV.png)
+
+### <mark style="background: #69E7E4;">Learning with momentum and adaptive learning rate:</mark>
+
+![](https://i.imgur.com/5aFimKn.png)
+
+### <mark style="background: #69E7E4;">The Hopfield Network:</mark>
+
+Neural networks were designed on analogy with the brain. The brain’s memory, however, works by association. For example, we can recognise a familiar face even in an unfamiliar environment within 100-200 ms. We can also recall a complete sensory experience, including sounds and scenes, when we hear only a few bars of music. The brain routinely associates one thing with another.
+
+Multilayer neural networks trained with the back- propagation algorithm are used for pattern recognition problems. However, to emulate the human memory’s associative characteristics we need a different type of network: a <mark style="background: #69E7E4;">recurrent neural network</mark>.
+
+A recurrent neural network has feedback loops from its outputs to its inputs. The presence of such loops has a profound impact on the learning capability of the network.
+
+The stability of recurrent networks intrigued several researchers in the 1960s and 1970s. However, none was able to predict which network would be stable, and some researchers were pessimistic about finding a solution at all. The problem was solved only in 1982, when John Hopfield formulated the physical principle of storing information in a dynamically stable network.
+
+### <mark style="background: #69E7E4;">Single-layer n-neuron Hopfield network:</mark>
+
+![](https://i.imgur.com/psKcU6I.png)

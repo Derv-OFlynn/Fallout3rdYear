@@ -25,7 +25,8 @@ Values are supplied for elements of annotation type e.g. reviewer = “Abubakr S
 
 Tool can then automatically <mark style="background: #AD21D9;">extract</mark> these values from either source file, or (more often) compiled class file. e.g. determine whether a class has been reviewed since it was last <mark style="background: #AD21D9;">modified</mark>.
 
-# <mark style="background: #FF5582A6;">SLIDE 6:</mark>
+![](https://i.imgur.com/l3lP0Mv.png)
+
 
 ### <mark style="background: #AD21D9;">Overview:</mark>
 
@@ -47,7 +48,8 @@ As ROOM takes care of these concerns for you, it is highly <mark style="backgrou
 
 ### <mark style="background: #AD21D9;">Modern Android:</mark>
 
-# <mark style="background: #FF5582A6;">SLIDE 10:</mark>
+![](https://i.imgur.com/YX2UnIe.png)
+
 
 ### <mark style="background: #AD21D9;">Components:</mark>
 
@@ -56,7 +58,12 @@ As ROOM takes care of these concerns for you, it is highly <mark style="backgrou
 - <mark style="background: #AD21D9;">Database</mark> Contains database holder and serves as main access point for underlying connection to app's stored, relational data.
 - <mark style="background: #AD21D9;">Data Access Objects (DAO):</mark> Contains methods used for accessing database.
 
-# <mark style="background: #FF5582A6;">SLIDE 12,13,14:</mark>
+![](https://i.imgur.com/RQr5BIW.png)
+
+![](https://i.imgur.com/JKV5dNj.png)
+
+![](https://i.imgur.com/uYkCUgs.png)
+
 
 ### <mark style="background: #AD21D9;">Entities:</mark>
 
@@ -70,7 +77,8 @@ To store a field, ROOM must have <mark style="background: #AD21D9;">access</mark
 
 2 options make field <mark style="background: #AD21D9;">public</mark>, or you can provide a getter and setter.
 
-# <mark style="background: #FF5582A6;">SLIDE 16:</mark>
+![](https://i.imgur.com/69Uol6L.png)
+
 
 <mark style="background: #AD21D9;">Entities can have:</mark>
 - An <mark style="background: #AD21D9;">empty</mark> constructor
@@ -267,4 +275,4 @@ Entities define the database schema
 
 DAO provides methods to access database
 
-# <mark style="background: #FF5582A6;">SLIDE 35:</mark>
+![](https://i.imgur.com/QkOITsG.png)

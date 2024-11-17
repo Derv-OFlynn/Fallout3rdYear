@@ -198,3 +198,226 @@ So, if the web server goes down in the middle of the user’s signup, another we
 - Easier to manage.  
 - Less error prone.  
 - Scalable (horizontally).
+
+### <mark style="background: #BABD00;">Software Erosion:</mark>
+
+![](https://i.imgur.com/e3fmAkq.png)
+
+The “bathtub curve” for <mark style="background: #BABD00;">hardware</mark> failure.
+
+![](https://i.imgur.com/TQ1BA7U.png)
+
+Software doesn’t wear out.
+
+### <mark style="background: #BABD00;">The Software Product:</mark>
+
+<mark style="background: #BABD00;">What are some of the attributes of good software?</mark>
+- <mark style="background: #BABD00;">Reliability:</mark> Software must be trustworthy.
+- <mark style="background: #BABD00;">Usability:</mark> Software must be usable by the users for which it was designed.  
+- <mark style="background: #BABD00;">Efficiency:</mark> Software should not make wasteful use of system resources.  
+- <mark style="background: #BABD00;">Maintainability:</mark> Software must evolve to meet changing needs.  
+- <mark style="background: #BABD00;">Portability:</mark> We should be able to move software from machine to machine as we require.
+- <mark style="background: #BABD00;">Others:</mark> Functional suitability, Compatibility, Security (ISO/IEC 25010:2011
+
+<mark style="background: #BABD00;">The cost of change:</mark>
+![](https://i.imgur.com/JCoSRyn.png)
+
+### <mark style="background: #BABD00;">Three Ways Software wears out:</mark>
+
+<mark style="background: #BABD00;">1. Bugs</mark>
+
+"Computer" was originally a job, mostly done by women. Seen as a secondary, secretarial role. 
+
+First computer was made in 1942 by the British. "The Colossus".
+
+The origin of the word "Bug" is from when a moth flew into a vacuum tube and had to be removed - "debugging".
+
+Bugfixes are the second most common source of bugs.
+
+<mark style="background: #BABD00;">2. New Feature requests</mark>
+
+Users request more features as time goes on. 
+
+<mark style="background: #BABD00;">3. Environment in which the software runs changes</mark>
+
+SQLite is the most used DB in the world. Switching their build process to TCL
+
+Dr. Richard Hipp created SQLite.
+
+### <mark style="background: #BABD00;">The Twelve Factors:</mark>
+
+1. <mark style="background: #BABD00;">Codebase:</mark> One codebase tracked in revision control, many deploys.  
+2. <mark style="background: #BABD00;">Dependencies:</mark> Explicitly declare and isolate dependencies.  
+3. <mark style="background: #BABD00;">Config:</mark> Store config in the environment.  
+4. <mark style="background: #BABD00;">Backing Services:</mark> Treat backing services as attached resources.  
+5. <mark style="background: #BABD00;">Build, release, run:</mark> Strictly separate build and run stages.  
+6. <mark style="background: #BABD00;">Processes:</mark> Execute the app as one or more stateless processes.
+7. <mark style="background: #BABD00;">Port Binding:</mark> Export services via port binding.  
+8. <mark style="background: #BABD00;">Concurrency:</mark> Scale out via the process model.  
+9. <mark style="background: #BABD00;">Disposability:</mark> Maximise robustness with fast start-up and graceful shutdown.  
+10. <mark style="background: #BABD00;">Dev/prod parity:</mark> Keep development, staging, and production as similar as possible.  
+11. <mark style="background: #BABD00;">Logs:</mark> Treat logs as event streams.  
+12. <mark style="background: #BABD00;">Admin processes:</mark> Run admin/management tasks as one-off processes.
+
+The role of any project manager is to manage time, resources, money and people in order to deliver a project on time, within budget and meeting the requirements
+
+### <mark style="background: #BABD00;">Load Balancing:</mark>
+
+All inbound traffic to a web role passes through a stateless load balancer, which distributes client requests among the role instances.  
+
+Individual role instances do not have public IP addresses, and are not directly addressable from the Internet. (This is why you can’t ‘Ping’ the IP addresses).  
+
+Web roles are stateless, so that any client request can be routed to any role instance.  
+
+A Status-check event is raised every 15 seconds. This can be used to indicate if the role is ready to receive traffic, or is busy and should be taken out of the load balancer rotation.
+
+![](https://i.imgur.com/1k4ZMNx.png)
+
+### <mark style="background: #BABD00;">Elasticity:</mark>
+
+<mark style="background: #BABD00;">Elasticity – What is it?</mark>  
+
+The degree to which a system is able to adapt to workload changes by provisioning and deprovisioning resources in an automated manner, such that at each point in time the available resources match the current demand as closely as possible.  
+
+<mark style="background: #BABD00;">Elasticity is automated scalability.</mark>  
+Scalability provides the ability to increase (or decrease) the amount of resources in scaling up (more powerful instances) or out (additional instances), which is usually done through manual intervention.  
+
+Elasticity does the same but in an automated manner, independent from human interaction.
+
+### <mark style="background: #BABD00;">7. Port Binding:</mark>
+
+<mark style="background: #BABD00;">Export services via port binding.</mark>  
+
+In essence, your application must interface to the outside world using a simple URL.  
+
+Web apps are sometimes executed inside a webserver container.  
+
+For example, PHP apps might run as a module inside Apache HTTPD, or Java apps might run inside Tomcat.  
+
+The twelve-factor app is completely self-contained and does not rely on runtime injection of a webserver into the execution environment to create a web-facing service.
+
+The web app exports HTTP (and any other server software) as a service by binding to a port, and listening to requests coming in on that port.  
+
+This means that one app can become the backing service for another app, by providing the URL to the backing app as a resource handle in the config for the consuming app.  
+<mark style="background: #BABD00;">Software Composable Intrastructure ???</mark>
+
+![](https://i.imgur.com/5MmGUgs.png)
+
+### <mark style="background: #BABD00;">8. Concurrency</mark>
+
+<mark style="background: #BABD00;">Scale out via the process model.</mark>  
+
+In the twelve-factor app, processes are a first class citizen.  
+Processes in the twelve-factor app take strong cues from the unix process model for running service daemons.  
+
+The unix philosophy states that an app should do one thing, only one thing and do it well.
+
+A daemon is a program that runs in the background.
+
+The developer can architect their app to handle diverse workloads by assigning each type of work to a process type.  
+
+For example, HTTP requests may be handled by a web process, and long-running background tasks handled by a worker process.
+
+![](https://i.imgur.com/6EImxu6.png)
+
+![](https://i.imgur.com/viAPH3q.png)
+
+The idea is that lots of little processes are handling specific needs.  
+
+So you might have dozens of handlers at the ready to process web requests, and another dozen to handle API calls for your enterprise users. And still another half-dozen processing background welcome-emails going to new users.  
+
+By keeping all these small parts working independently, and running them as separate processes, your application will scale better. In particular, you’ll be able to do more stuff concurrently.  
+
+By scaling horizontally (or vertically).
+
+### <mark style="background: #BABD00;">9. Disposability</mark>
+
+<mark style="background: #BABD00;">Maximize robustness with fast start-up and graceful shutdown.</mark>  
+
+The twelve-factor app’s processes are disposable, meaning they can be started or stopped at a moment’s notice.  
+
+This facilitates fast elastic scaling, rapid deployment of code or config changes, and robustness of production deploys.  
+
+Consequently, processes should strive to minimize startup time.  
+
+Processes shut down gracefully.  
+
+For a web process, a graceful shutdown is achieved by ceasing to listen on the service port (thereby refusing any new requests), allowing any current requests to finish, and then exiting.
+
+Further, your application should be robust against sudden death (crashing) in the case of a failure in the underlying hardware.  
+
+Meaning, if it does crash, it should always be able to start back up cleanly.  
+
+You should never do any mandatory “cleanup” tasks when the app shuts down, because that might cause problems if they failed to run in a crash scenario.  
+
+A recommended approach is use of a robust queueing backend, such as Beanstalkd, that returns jobs to the queue when clients disconnect or time out.
+
+You should never require any manual intervention or manual clean-up tasks unless you have a good and compelling reason to do so.
+
+### <mark style="background: #BABD00;">10. Dev/Prod Parity</mark>
+
+<mark style="background: #BABD00;">Keep development, staging, and production as similar as possible.</mark>
+![](https://i.imgur.com/fSfO4mc.png)
+
+<mark style="background: #BABD00;">Historically, there have been substantial gaps between development and production:</mark>  
+- <mark style="background: #BABD00;">The time gap:</mark> A developer may work on code that takes days, weeks, or even months to go into production.  
+- <mark style="background: #BABD00;">The personnel gap:</mark> developers write code, ops engineers deploy it.  
+- <mark style="background: #BABD00;">The tools gap:</mark> Developers may be using a stack like Nginx, SQLite, and OS X, while the production deploy uses Apache, MySQL, and Linux.
+
+The twelve-factor app is designed for continuous deployment by keeping the gap between development and production small.  
+- <mark style="background: #BABD00;">Make the time gap small:</mark> a developer may write code and have it deployed hours or even just minutes later.  
+- <mark style="background: #BABD00;">Make the personnel gap small:</mark> developers who wrote code are closely involved in deploying it and watching its behaviour in production.  
+- <mark style="background: #BABD00;">Make the tools gap small:</mark> keep development and production as similar as possible.
+
+![](https://i.imgur.com/9YM79wZ.png)
+
+### <mark style="background: #BABD00;">Continuous Delivery Vs Continuous Deployment:</mark>
+
+Subtle but important different between Continuous Delivery and Continuous Deployment.  
+
+Continuous deployment is the next step of continuous delivery
+
+![](https://i.imgur.com/Jtd1zB8.png)
+
+### <mark style="background: #BABD00;">Logs:</mark>
+
+<mark style="background: #BABD00;">Treat logs as event streams.</mark>  
+
+Logs provide visibility into the behaviour of a running app.  
+
+Logs are the stream of aggregated, time-ordered events collected from the output streams of all running processes and backing services.  
+
+Logs have no fixed beginning or end, but flow continuously as long as the app is operating.  
+
+Logs in their raw form are typically a text format with one event per line (though backtraces from exceptions may span multiple lines).
+
+<mark style="background: #BABD00;">A twelve-factor app never concerns itself with routing or storage of its output stream.</mark>  
+- It should not attempt to write to or manage logfiles. Instead, each running process writes its event stream, unbuffered, to stdout.  
+- During local development, the developer will view this stream in the foreground of their terminal to observe the app’s behaviour.
+
+<mark style="background: #BABD00;">In staging or production deploys, each process’ stream will be captured by the execution environment:</mark>  
+- collated together with all other streams from the app.  
+- routed to one or more final destinations for viewing and long-term archival.  
+
+These archival destinations are not visible to or configurable by the app, and instead are completely managed by the execution environment.
+
+### <mark style="background: #BABD00;">12. Admin Processes</mark>
+
+<mark style="background: #BABD00;">Run admin/management tasks as one-off processes.</mark>  
+
+<mark style="background: #BABD00;">Developers will often wish to do one-off administrative or maintenance tasks for the app, such as:</mark>  
+- Running database migrations.  
+- Running a console (also known as a REPL shell) to run arbitrary code or inspect the app’s models against the live database (e.g.: python, perl, irb for ruby, etc).  
+- Running one-time scripts committed into the app’s repo (e.g. php scripts/fix_bad_records.php).
+
+One-off admin processes should be run in an identical environment as the regular long-running processes of the app.  
+
+Admin code must ship with application code to avoid synchronization issues.  
+
+Twelve-factor strongly favours languages which provide a REPL shell out of the box, and which make it easy to run one-off scripts.  
+
+In a local deploy, developers invoke one-off admin processes by a direct shell command.  
+
+In a production deploy, developers can use ssh or other remote command execution mechanism to run a one-off process.
+
+[Source](https://12factor.net)

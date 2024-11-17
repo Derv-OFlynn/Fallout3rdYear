@@ -58,7 +58,7 @@ fun main() {
 
 ### <mark style="background: #AD21D9;">Multithreading:</mark>
 
-# <mark style="background: #FF5582A6;">SLIDE 9</mark>
+![](https://i.imgur.com/dn5v5Dv.png)
 
 ### <mark style="background: #AD21D9;">In General:</mark>
 
@@ -70,7 +70,11 @@ Then processor 2 switches to run T3.
 
 T2 simply pauses, until its next time slice on a processor.
 
-# <mark style="background: #FF5582A6;">SLIDE 10,11</mark>
+![](https://i.imgur.com/sMEdPWh.png)
+
+### <mark style="background: #AD21D9;">Lifecycle of a thread:</mark>
+
+![](https://i.imgur.com/FmU75gg.png)
 
 ### <mark style="background: #AD21D9;">Modifying the UI with Threads:</mark>
 
@@ -131,13 +135,17 @@ UI thread has 16 ms to do all its work
 
 If it takes too long, app stutters or hangs
 
-# <mark style="background: #FF5582A6;">SLIDE 16, 17</mark>
+![](https://i.imgur.com/2Zmy4iV.png)
+
 
 If the UI waits <mark style="background: #AD21D9;">too long</mark> for an operation to finish, it becomes unresponsive. After 5 seconds of this… The framework shows an <mark style="background: #AD21D9;">Application Not Responding (ANR)</mark> dialog
 
 <mark style="background: #AD21D9;">There are two rules that android uses to determine if an app is unresponsive:</mark>
 - Must process a user input event < 5 seconds
 - ``BroadcastReceiver`` must finish processing an intent < 10 seconds regardless of source
+
+![](https://i.imgur.com/4SC07RN.png)
+
 
 ### <mark style="background: #AD21D9;">Rules – Consequences of non-observance:</mark>
 
@@ -167,11 +175,11 @@ Leaves the UI thread available for responding to user input events
 
 Execute long running tasks on a <mark style="background: #AD21D9;">background</mark> / worker thread
 
-# <mark style="background: #FF5582A6;">SLIDE 21</mark>
+![](https://i.imgur.com/rbBzP9U.png)
 
 ### <mark style="background: #AD21D9;">2 Golden Rules:</mark>
 
-Do not block the UI thread
+<mark style="background: #AD21D9;">Do not block the UI thread:</mark>
 - Complete all work in less than 16 ms for each screen
 - Run slow non-UI work on a non-UI thread
 
@@ -275,7 +283,7 @@ By default service runs within the main thread of the application!
 - ``onStartCommand()``
 - ``onDestroy()``
 
-# <mark style="background: #FF5582A6;">SLIDE 34</mark>
+![](https://i.imgur.com/ceCooKa.png)
 
 ### <mark style="background: #AD21D9;">Services - Uses:</mark>
 
