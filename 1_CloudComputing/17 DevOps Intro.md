@@ -112,7 +112,7 @@ The goal is to create a single, integrated seamless automated pipeline of activi
 - Involves using tried and tested software development practices (including design patterns).
 - To not only provision Infrastructure but all the processes governing the management of said Infrastructure.
 
-Differs from <mark style="background: #BABD00;">infrastructure automation</mark>, which just involves replicating steps multiple times and reproducing them on several servers.
+Differs from <mark style="background: #BABD00;">infrastructure automation</mark>, which just involves replicating steps multiple times and reproducing them on several servers. It
 
 <mark style="background: #BABD00;">Programmable Infrastructure (IaC):</mark>
 - The knowledge of server provisioning, configuration management and deployment is no longer only with the systems admins.
@@ -121,18 +121,27 @@ Differs from <mark style="background: #BABD00;">infrastructure automation</mark>
 <mark style="background: #BABD00;">A whole host of tools have sprung up to make the whole process easier:</mark>
 - Vagrant, ansible, puppet, Chef, Salt, Terraform, Consul, Bcfg2, CFEngine, etc.
 - Many of these tools provide RESTFul APIs that leverage to support any desired degree of interoperability.
+- Terraform used for creation and provisioning broad infra
+- Ansible very good at provsioning SPECIFIC instances. Often used with Terraform.
 
 ![](https://i.imgur.com/vGuVViZ.png)
 
+The infrastructure is provisioned, created and managed by specifications in configuration files.
+
+This is declarative - you specify WHAT, not HOW.
 ### <mark style="background: #BABD00;">Idempotent:</mark>
 
-The dictionary definition:- denoting an element of a set that is unchanged in value when multiplied or otherwise operated on by itself.
+Comes from maths, a mathematical op is idempotent if and only if you perform an operation one or more times then the result is the exact same as if you performed it only once. e.g. adding by 1 is not idempotent (0+1 =1, 1+1=2) but multiplying by 1 is (1x1=1,2x1=1)
+
+<mark style="background: #BABD00;">The dictionary definition:</mark> denoting an element of a set that is unchanged in value when multiplied or otherwise operated on by itself.
 
 Idempotence is simply a word that describes an operation that will have the same effect whether you run it once or 1001 times.
 
 Adding one is not idempotent because the result keeps incrementing, but multiplying by one is idempotent because the answer is the same no matter how many times you multiply it!
 
 In the context of Infrastructure as Code, if a virtualized resource or software component is already installed or configured, an idempotent tool will not try to reinstall or reconfigure the component, even if it is given the command to do so.
+
+You can go from any arbitrary state to any specific desired state.
 
 ### <mark style="background: #BABD00;">Advantages:</mark>
 
@@ -150,9 +159,11 @@ Significant planning required upfront before the configuration - such as choosin
 
 Bad configurations could get duplicated on all the servers
 
-Configuration drift, in which the server configurations are modified on the machines (for example, through hot-fixes without modifying the original templates), makes configurations on the server and in the template to differ.
+<mark style="background: #BABD00;">Configuration drift</mark>, in which the server configurations are modified on the machines (for example, through hot-fixes without modifying the original templates), makes configurations on the server and in the template to differ.
 
 This is especially true if strict discipline is not followed.
+
+Recent IaC tools are getting smarter. Some can now detect config drift.
 
 ### <mark style="background: #BABD00;">Desired State Configuration:</mark>
 

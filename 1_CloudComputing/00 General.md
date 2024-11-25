@@ -88,3 +88,25 @@ Last lecture before exam is devoted to going through exam.
 
 
 Some multiple choice.
+
+## <mark style="background: #BABD00;">CA 2:</mark>
+
+Similar to CA1. Some questions based on the labs. 
+
+Week 6-11 inclusive.
+
+"Please select the most correct answer" <- a lot of these questions
+
+Do not get partial marks for partially correct answers
+
+Hasn't decided on amount of questions
+
+Labs from week 5 onwards can be examined. Isn't going to examine steps. Will examine concepts and explanations of how it works. e.g. the purpose of an API Gateway, API definition, how load balancers work. 
+
+Read the introductory section on the links to the labs. 
+
+~10% of questions will be lab-based.
+
+### <mark style="background: #BABD00;">Sample Exam Paper:</mark>
+
+Will go over this in week 12
