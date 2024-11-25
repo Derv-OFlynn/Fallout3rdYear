@@ -22,7 +22,7 @@ The process of mapping a hostname to a numeric quantity such as, an IP address o
 When an IP address for a particular hostname is obtained from a <mark style="background: #FF5582A6;">name service</mark>, the hostname is said to be <mark style="background: #FF5582A6;">resolved</mark>.
 
 <mark style="background: #FF5582A6;">Two primary name service sources are:</mark>
-- The <mark style="background: #FF5582A6;">Domain Name System (DNS)</mark>. This is a distributed name service requiring the use of the DNS protocol. and,
+- The <mark style="background: #FF5582A6;">Domain Name System (DNS)</mark>. This is a distributed name service requiring the use of the DNS protocol and
 - Local configuration databases which are operating-system specific.
 
 Fortunately from a programming perspective the details of the name service are hidden: We only need to know how to ask for a name to be <mark style="background: #FF5582A6;">resolved</mark>.
@@ -35,8 +35,7 @@ Applications interact with DNS servers using functions imported from a library k
 
 Calls to the resolver code are made using functions such as ``getaddrinfo( )`` and ``getnameinfo( )``
 
-The former maps a hostname into its IP address, and the
-latter does the reverse mapping
+The former maps a hostname into its IP address, and the latter does the reverse mapping
 
 ### <mark style="background: #FF5582A6;">Operation of Resolvers:</mark>
 
@@ -44,7 +43,7 @@ Prior to contacting a name server, the resolver code refers to a local <mark sty
 
 The file ``/etc/resolv.conf`` normally contains the IP address of the <mark style="background: #FF5582A6;">local</mark> name servers
 
-The resolver then sends a query to a local name server for a resource record:
+<mark style="background: #FF5582A6;">The resolver then sends a query to a local name server for a resource record:</mark>
 - Entries in the DNS are known as <mark style="background: #FF5582A6;">resource records</mark> (RRs)
 - If necessary, the local name server may query another name server (starting at the Root DNS server) for the RR.
 
@@ -59,7 +58,7 @@ There are a number of different <mark style="background: #FF5582A6;">resource re
 - <mark style="background: #FF5582A6;">AAAA</mark> records map hostnames to a 128-bit IPv6 address,
 - <mark style="background: #FF5582A6;">PTR</mark> records map <mark style="background: #FF5582A6;">IP addresses into hostnames</mark>,
 - <mark style="background: #FF5582A6;">MX</mark> records specifies a host to act as a <mark style="background: #FF5582A6;">mail exchanger</mark>,
-- CNAME records map common services, such as <mark style="background: #FF5582A6;">ftp</mark> and <mark style="background: #FF5582A6;">www</mark> to the actual host providing the service
+- <mark style="background: #FF5582A6;">CNAME</mark> records map common services, such as <mark style="background: #FF5582A6;">ftp</mark> and <mark style="background: #FF5582A6;">www</mark> to the actual host providing the service
 - e.g. www.tudublin.ie has the <mark style="background: #FF5582A6;">canonical</mark> name tudublin.ie.
 
 The RRs that we are interested in is the <mark style="background: #FF5582A6;">A record</mark>.
@@ -110,16 +109,15 @@ struct addrinfo *ai_next; // Next addrinfo in linked list
 ### <mark style="background: #FF5582A6;">addrinfo members of interest:</mark>
 
 <mark style="background: #FF5582A6;">here are five members of interest:</mark>
-- <mark style="background: #FF5582A6;">ai_family:</mark> Specifies the address family supported by the hostname. Recall we are interested in AF_INET which is the TCP/IP stack.
-- <mark style="background: #FF5582A6;">ai_socktype:</mark> Specifies the type of socket supported by the hostname. Recall we are interested in SOCK_STREAM i.e. a streaming socket.
-- <mark style="background: #FF5582A6;">ai_protocol:</mark> Specifies the specific protocol supported by the hostname. Recall we are interested in IPPROTO_TCP i.e. TCP
+- <mark style="background: #FF5582A6;">ai_family:</mark> Specifies the address family supported by the hostname. Recall we are interested in ``AF_INET`` which is the TCP/IP stack.
+- <mark style="background: #FF5582A6;">ai_socktype:</mark> Specifies the type of socket supported by the hostname. Recall we are interested in ``SOCK_STREAM`` i.e. a streaming socket.
+- <mark style="background: #FF5582A6;">ai_protocol:</mark> Specifies the specific protocol supported by the hostname. Recall we are interested in ``IPPROTO_TCP`` i.e. TCP
 - <mark style="background: #FF5582A6;">*ai_addr:</mark> Points to a structure that holds the full TCP/IP address for the hostname. The next slide refers to this structure.
 - <mark style="background: #FF5582A6;">ai_addrlen:</mark> The length of the socket address.
 
 ### <mark style="background: #FF5582A6;">ai_addr and sockaddr_in:</mark>
 
-``*ai_addr`` points to a socket address structure of type
-sockaddr. Recall this is the <mark style="background: #FF5582A6;">generic</mark> address structure.
+``*ai_addr`` points to a socket address structure of type ``sockaddr``. Recall this is the <mark style="background: #FF5582A6;">generic</mark> address structure.
 
 TCP applications use the <mark style="background: #FF5582A6;">family-specific</mark> address structure (``sockaddr_in`` – members shown below) which is then typecast to the generic address structure in any calls to the socket primitives.
 
@@ -185,8 +183,6 @@ Line 31 prints the IP address and Port number from the ``ai_addr`` member of the
 
 ### <mark style="background: #FF5582A6;">The complete TCP Transport Service offering:</mark>
 
-Recall that the TCP Transport Service has the following characteristics:
-
 <mark style="background: #FF5582A6;">Connection Orientation:</mark> This aspect has been examined through a variety of lab exercises.
 
 <mark style="background: #FF5582A6;">Point-To-Point Communication:</mark> Each TCP connection has exactly two endpoints. Also examined through the lab exercises.
@@ -195,10 +191,10 @@ Recall that the TCP Transport Service has the following characteristics:
 
 <mark style="background: #FF5582A6;">Full Duplex Communication:</mark> A TCP connection allows data to flow in either direction
 
-TCP buffers outgoing and incoming data (recall RECVQ and SENDQ buffers) allowing applications to continue executing other code whilst the data is being transferred.
+TCP buffers outgoing and incoming data (recall ``RECVQ`` and ``SENDQ`` buffers) allowing applications to continue executing other code whilst the data is being transferred.
 
 <mark style="background: #FF5582A6;">Stream Interface:</mark> The <mark style="background: #FF5582A6;">source</mark> application sends a continuous sequence of octets across a connection
-- The data is passed en-bloc to TCP for delivery. Recall use of send() primitive containing a pointer to the local App-buffer.
+- The data is passed en-bloc to TCP for delivery. Recall use of ``send()`` primitive containing a pointer to the local App-buffer.
 - TCP does not guarantee to deliver the data in the same size pieces that it was transferred by the source application. Recall use of ``recv()`` primitive which is always placed inside a ``while()`` structure.
 
 <mark style="background: #FF5582A6;">Reliable Connection Startup:</mark> TCP both applications to agree to any new connection. To be examined.
@@ -213,8 +209,7 @@ Central to the provision of these services are the concepts of Flow Control and 
 
 ### <mark style="background: #FF5582A6;">Recap of Flow Control in the Data Link layer:</mark>
 
-Recall the use of the Sliding Windows Flow Control
-technique:
+Recall the use of the Sliding Windows Flow Control technique:
 - This technique allows multiple <mark style="background: #FF5582A6;">Frames</mark> to be in transit in quick succession,
 - This provides for more efficient <mark style="background: #FF5582A6;">Link Utilisation</mark>.
 
@@ -260,9 +255,9 @@ Station A maintains a list of frame numbers it is allowed to send and, Station B
 
 Recall the purpose of Error Control: Sender and Receiver stations co-ordinate activities to recover from <mark style="background: #FF5582A6;">Lost</mark> or <mark style="background: #FF5582A6;">Damaged</mark> Frames etc.
 
-Error Control involves enhancing Flow Control techniques with additional functionality such as:
+<mark style="background: #FF5582A6;">Error Control involves enhancing Flow Control techniques with additional functionality such as:</mark>
 - <mark style="background: #FF5582A6;">Transmission Timers:</mark> Sender stations set a timer for each frame transmitted and takes action when a timer expires.
-- <mark style="background: #FF5582A6;">Negative ACKs:</mark> A Receiver station can reject an out-of- sequence/damaged frame with a REJ(5) or SREJ(4) message.
+- <mark style="background: #FF5582A6;">Negative ACKs:</mark> A Receiver station can reject an out-of- sequence/damaged frame with a ``REJ(5)`` or ``SREJ(4)`` message.
 
 Example Error Control techniques include: <mark style="background: #FF5582A6;">Go-Back-N</mark> and <mark style="background: #FF5582A6;">Selective Reject</mark>: Both techniques are based on the Sliding Windows Flow Control technique.
 
@@ -279,7 +274,7 @@ Whilst similar to the <mark style="background: #FF5582A6;">Sliding Window Flow C
 
 ### <mark style="background: #FF5582A6;">TCP Flow Control:</mark>
 
-For the effective operation of Flow Control:
+<mark style="background: #FF5582A6;">For the effective operation of Flow Control:</mark>
 - TCP Senders and Receivers maintain lists of bytes sent/received <mark style="background: #FF5582A6;">not</mark> segments.
 - TCP Buffers used to hold incoming segments are measured in bytes <mark style="background: #FF5582A6;">not</mark> segments.
 
@@ -332,7 +327,7 @@ In addition to Flow Control, TCP must address the following reliability problems
 
 This requires the use of some form of error control.
 
-Interestingly to implement <mark style="background: #FF5582A6;">flow</mark> and <mark style="background: #FF5582A6;">error control</mark>, TCP is only equipped with two elements:
+Interestingly, to implement <mark style="background: #FF5582A6;">flow</mark> and <mark style="background: #FF5582A6;">error control</mark>, TCP is only equipped with two elements:
 - Positive ACKs and Timers,
 - Significantly TCP does not have a <mark style="background: #FF5582A6;">Negative ACK</mark>.
 
@@ -360,7 +355,7 @@ For the Receiver, sequence numbers play a key role in detecting <mark style="bac
 
 How long should a Sending TCP entity wait before re-transmitting a segment?
 
-The answer depends upon two factors:
+<mark style="background: #FF5582A6;">The answer depends upon two factors:</mark>
 - The underlying network architecture, and,
 - Traffic levels across the network.
 
@@ -381,3 +376,34 @@ TCP <mark style="background: #FF5582A6;">adapts</mark> its RTO timer to match th
 This is known as an <mark style="background: #FF5582A6;">adaptive retransmission</mark> scheme and is the key to TCP’s success.
 
 This adaptability helps TCP to react <mark style="background: #FF5582A6;">quickly</mark> to changes in traffic levels and to <mark style="background: #FF5582A6;">maximise</mark> throughput on each connection.
+
+# <mark style="background: #FF5582A6;">Practice Test:</mark>
+
+![](https://i.imgur.com/h12BsYT.png)
+
+Test 1: Connected Socket
+
+![](https://i.imgur.com/BJV1r6R.png)
+![](https://i.imgur.com/Hv3jv9g.png)
+![](https://i.imgur.com/DNZtYBE.png)
+
+Test1: send(clntSock)
+
+![](https://i.imgur.com/RxVyRAc.png)
+
+Test1: initiate connection to a remote socket
+
+![](https://i.imgur.com/R8Wkuiy.png)
+![](https://i.imgur.com/8OjOeeQ.png)
+
+Test1: clntSock = accept(servSock, (struct sockaddr * ) NULL, NULL);
+
+![](https://i.imgur.com/A5meqiL.png)
+![](https://i.imgur.com/1CdqOGy.png)
+
+Test1: recv()
+
+![](https://i.imgur.com/x6HJD55.png)
+![](https://i.imgur.com/BtIZexY.png)
+
+Test1: close(clntSock)
