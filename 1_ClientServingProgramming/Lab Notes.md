@@ -29,6 +29,12 @@ Use `chmod xxx filename` to change the permissions (using the numbers 0-7)
 
 The ``netstat`` command displays various network related information such as network connections, routing tables, interface statistics, masquerade connections, multicast memberships etc.,
 
+http is on port 80
+
+sudo is used in linux to run commands safely
+
+
+
 ### <mark style="background: #FF5582A6;">daytimeServer.c</mark>
 ```C
 #include <stdio.h>
@@ -121,7 +127,7 @@ int main(int argc, char *argv[]) {
     in_port_t servPort = atoi(argv[1]);
 
     // Create a socket for the server
-    //Creates a TCP socket in the IPv4 domain
+    // Creates a TCP socket in the IPv4 domain
     int servSock; 
     if ((servSock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP)) < 0)
         DieWithSystemMessage("socket() failed");

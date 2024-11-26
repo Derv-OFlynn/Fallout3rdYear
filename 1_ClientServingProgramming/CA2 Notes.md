@@ -399,7 +399,7 @@ Test1: clntSock = accept(servSock, (struct sockaddr * ) NULL, NULL);
 ![](https://i.imgur.com/A5meqiL.png)
 ![](https://i.imgur.com/1CdqOGy.png)
 
-Test1: recv()
+Test1: None of the above
 
 ![](https://i.imgur.com/x6HJD55.png)
 ![](https://i.imgur.com/BtIZexY.png)
