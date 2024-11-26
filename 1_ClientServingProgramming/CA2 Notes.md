@@ -9,7 +9,7 @@
 
 <mark style="background: #FF5582A6;">Advantages for using hostnames:</mark>
 - Using <mark style="background: #FF5582A6;">hostnames</mark> instead of IP addresses is easier for end-users,
-- A host’s IP address can change without affecting its <mark style="background: #FF5582A6;">hostname</mark>. For instance, www.example.com currently resides at 93.184.216.34. This IP address could easily be changed.
+- A host’s IP address can change without affecting its <mark style="background: #FF5582A6;">hostname</mark>. For instance, www.example.com currently resides at ``93.184.216.34``. This IP address could easily be changed.
 
 ### <mark style="background: #FF5582A6;">Hostname-to-IP Address Mappings:</mark>
 
@@ -25,15 +25,15 @@ When an IP address for a particular hostname is obtained from a <mark style="bac
 - The <mark style="background: #FF5582A6;">Domain Name System (DNS)</mark>. This is a distributed name service requiring the use of the DNS protocol and
 - Local configuration databases which are operating-system specific.
 
-Fortunately from a programming perspective the details of the name service are hidden: We only need to know how to ask for a name to be <mark style="background: #FF5582A6;">resolved</mark>.
+Fortunately from a programming perspective the details of the name service are hidden. We only need to know how to ask for a name to be <mark style="background: #FF5582A6;">resolved</mark>.
 
 ### <mark style="background: #FF5582A6;">Resolvers and Name Servers:</mark>
 
-Organizations often run one or more name servers a.k.a. DNS (Domain Name System) servers.
+Organisations often run one or more name servers a.k.a. DNS (Domain Name System) servers.
 
 Applications interact with DNS servers using functions imported from a library known as a <mark style="background: #FF5582A6;">resolver</mark>: The resolver code is contained in a system library and is link-edited into the application during the <mark style="background: #FF5582A6;">build</mark> process,
 
-Calls to the resolver code are made using functions such as ``getaddrinfo( )`` and ``getnameinfo( )``
+Calls to the resolver code are made using functions such as ``getaddrinfo()`` and ``getnameinfo()``
 
 The former maps a hostname into its IP address, and the latter does the reverse mapping
 
@@ -65,7 +65,7 @@ The RRs that we are interested in is the <mark style="background: #FF5582A6;">A 
 
 ### <mark style="background: #FF5582A6;">The getaddrinfo() function:</mark>
 
-The ``getaddrinfo( )`` function performs a query for an <mark style="background: #FF5582A6;">A</mark> record. It is defined as follows:
+The ``getaddrinfo()`` function performs a query for an <mark style="background: #FF5582A6;">A</mark> record. It is defined as follows:
 
 ```C
 int getaddrinfo (const char *hostStr, const char *serviceStr,
@@ -74,7 +74,7 @@ const struct addrinfo *hints, struct addrinfo **results);
 
 e.g. ``getaddrinfo(“www.google.com”, 0, NULL, &addrList);``
 
-<mark style="background: #FF5582A6;">Returns:</mark> NULL if OK and a non-null error code if unsuccessful.
+<mark style="background: #FF5582A6;">Returns:</mark> ``NULL`` if ok and a non-null error code if unsuccessful.
 
 The function returns one, or more, ``addrinfo`` structures, each of which contains an Internet address that can be specified in subsequent calls to ``bind()`` or ``connect()``.
 
@@ -96,8 +96,7 @@ Each entry in the linked list is an ``addrinfo`` structure which is defined as f
 struct addrinfo {
 int ai_flags; // Flags to control information resolution
 int ai_family; // Family: AF_INET, AF_UNSPEC etc.
-int ai_socktype; // Socket type: SOCK_STREAM,
-SOCK_DGRAM
+int ai_socktype; // Socket type: SOCK_STREAM, SOCK_DGRAM
 int ai_protocol; // Protocol: 0 (default) or IPPROTO_XXX
 socklen_t ai_addrlen; // Length of socket address ai_addr
 struct sockaddr *ai_addr; // Socket address for socket
@@ -125,8 +124,7 @@ TCP applications use the <mark style="background: #FF5582A6;">family-specific</m
 struct sockaddr_in {
 	uint8_t sin_len; // length of structure (16)
 	sa_family_t sin_family; // AF_INET
-	in-port_t sin_port; // 16-bit TCP or UDP port number
-	network byte ordered
+	in-port_t sin_port; // 16-bit TCP or UDP port number network byte ordered
 	struct in_addr sin_addr; // 32-bit IPv4 address
 	network byte ordered
 	char sin_zero[8]; // unused
@@ -209,7 +207,7 @@ Central to the provision of these services are the concepts of Flow Control and 
 
 ### <mark style="background: #FF5582A6;">Recap of Flow Control in the Data Link layer:</mark>
 
-Recall the use of the Sliding Windows Flow Control technique:
+<mark style="background: #FF5582A6;">Recall the use of the Sliding Windows Flow Control technique:</mark>
 - This technique allows multiple <mark style="background: #FF5582A6;">Frames</mark> to be in transit in quick succession,
 - This provides for more efficient <mark style="background: #FF5582A6;">Link Utilisation</mark>.
 
@@ -306,7 +304,7 @@ To prevent this, the <mark style="background: #FF5582A6;">receiving</mark> TCP e
 ![](https://i.imgur.com/R05mzTz.png)
 
 <mark style="background: #FF5582A6;">Each end of the connection allocates a window (RECVQ buffer) to hold incoming data:</mark>
-- The size of the initial window, in bytes, is set using the Window Size field during Phase 1 (Connection Initialization) when both sides exchange SYN messages.
+- The size of the initial window, in bytes, is set using the Window Size field during Phase 1 (Connection Initialisation) when both sides exchange ``SYN`` messages.
 - This is known as a <mark style="background: #FF5582A6;">Window Advertisement</mark>.
 
 <mark style="background: #FF5582A6;">Thereafter, throughout Phase 2 (Data Exchange), all ACKs messages include a Window Advertisement:</mark>
@@ -329,7 +327,7 @@ This requires the use of some form of error control.
 
 Interestingly, to implement <mark style="background: #FF5582A6;">flow</mark> and <mark style="background: #FF5582A6;">error control</mark>, TCP is only equipped with two elements:
 - Positive ACKs and Timers,
-- Significantly TCP does not have a <mark style="background: #FF5582A6;">Negative ACK</mark>.
+- Significantly, TCP does not have a <mark style="background: #FF5582A6;">Negative ACK</mark>.
 
 The following slide shows the operation of TCP during normal <mark style="background: #FF5582A6;">Data Exchange</mark> without error.
 
