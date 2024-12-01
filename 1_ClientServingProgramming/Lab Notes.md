@@ -33,7 +33,125 @@ http is on port 80
 
 sudo is used in linux to run commands safely
 
+<mark style="background: #FF5582A6;">There are four byte ordering functions to consider:</mark>
+- ``htons()`` – converts host 16-bit value to network byte order 
+- ``htonl()`` – converts host 32-bit value to network byte order
+- ``ntohs()`` – converts 16-bit network value to host byte order
+- ``ntohl()`` – converts 32-bit network value to host byte order
 
+``ht`` - host (if at the beginning)
+`h` - host (if at the end)
+`nt` - network (if at the beginning)
+`n` - network (if at the end)
+``s`` - short (i.e. 16 bits)
+`l` - long (i.e. 32 bits)
+
+<mark style="background: #FF5582A6;">Structure of daytimeServer:</mark>
+1. Initialise num of connections
+2. Main function
+3. send buffer
+4. check if argc has the correct amount of vars
+5. convert port number from ascii to int
+6. Initialise servSock and call SOCKET() on it to turn it into a connected socket
+7. Initialise the server address structure, zero it out. Tell it to use IPv4. Accept connections on any available interface. Store port num in network byte order.
+8. BIND the server socket
+9. LISTEN on the server socket
+10. begin infinite server loop
+11. ACCEPT the client socket.
+12. get time
+13. print time to sendbuffer
+14. Initialise numBytesSent with SEND on clntSock
+14. close(clntSock)
+
+<mark style="background: #FF5582A6;">echoServer.c structure:</mark>
+1. Initialise num of connections
+2. Main function
+3. Initialise send buffer and receive buffer
+4. Check if argc has correct number of parameters
+5. Convert port number from ascii to int
+6. initialise servSock
+7. SOCKET servSock
+8. Initialise the server address structure, zero it out. Tell it to use IPv4. Accept connections on any available interface. Store port num in netowrk byte order.
+9. BIND servSock
+10. LISTEN on servSock
+11. Infinite loop
+12. initialise clntSock by calling connect on servSock.
+11. While the amount of bytes is in the buffer is smaller than the amount of bytes written, write the byte to screen. 
+12. Break when ``"\r\n"`` found -> enter
+13. Copy the received message into snedbuffer (snprintf)
+14. SEND the sendbuffer to the clntSock
+15. close(clntSock)
+
+<mark style="background: #FF5582A6;">httpServer.c structure:</mark>
+1. Initialise num of connections
+2. Main function
+3. Initialise numBytes, recvLoop and totalBytes
+4. Check if argc has correct number of parameters
+5. Convert port number from ascii to int
+6. initialise servSock
+7. SOCKET servSock
+8. Initialise the server address structure, zero it out. Tell it to use IPv4. Accept connections on any available interface. Store port num in netowrk byte order.
+9. BIND servSock
+10. LISTEN on servSock
+11. infinite server loop
+12. Initialise clntSock by calling ACCEPT on servSock
+13. Initialise client vars (recvLoop, totalBytes, uri, sendbuffer, recvbuffer)
+14. While loop until recvLoop reaches 0
+15. initialise numBytes by calling RECV on client sock
+16. increment totalBytes by numBytes
+17. end loop either if totalBytes >= Bufsize -2 or if it reads "\r\n\r\n"
+18. Parse the http request using sscanf on the receive buffer and read the three strings into discard1, uri and discard2
+19. compare uri and "/favicon.ico" using strcmp. If the same, print that you found it
+20. null complete the recvbuffer and output recbuffer to stdout
+21. compare uri and "/index.html" using strcmp. If the same, print the homepage. If different, print error page.
+22. initialise numBytesSent by calling SEND on clntSock
+23. close(clntSock)
+
+![](https://i.imgur.com/20vSvhc.png)
+
+``"\r\n\r\n"`` signals the end of a HTTP message
+
+<mark style="background: #FF5582A6;">SOCKET:</mark>
+```C
+int servSock; 
+if ((servSock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP)) < 0)
+		DieWithSystemMessage("socket() failed");
+```
+
+<mark style="background: #FF5582A6;">BIND:</mark>
+```C
+if (bind(servSock, (struct sockaddr*) &servAddr, sizeof(servAddr)) < 0)
+	DieWithSystemMessage("bind() failed");
+```
+
+<mark style="background: #FF5582A6;">LISTEN:</mark>
+```C
+if (listen(servSock, MAXPENDING) < 0)
+	DieWithSystemMessage("listen() failed");
+```
+
+<mark style="background: #FF5582A6;">ACCEPT:</mark>
+```C
+int clntSock = accept(servSock, (struct sockaddr *) NULL, NULL);
+```
+
+<mark style="background: #FF5582A6;">RECV:</mark>
+```C
+while ((numBytes = recv(clntSock, recvbuffer, BUFSIZE - 1, 0)) > 0) {
+	recvbuffer[numBytes] = '\0';  // Null-terminate the received string
+	fputs(recvbuffer, stdout);
+}
+```
+
+<mark style="background: #FF5582A6;">SEND:</mark>
+```C
+ssize_t numBytesSent = send(clntSock, sendbuffer, strlen(sendbuffer), 0);
+```
+
+<mark style="background: #FF5582A6;">CLOSE:</mark>
+```C
+close(clntSock);
+```
 
 ### <mark style="background: #FF5582A6;">daytimeServer.c</mark>
 ```C
@@ -53,44 +171,44 @@ static const int MAXPENDING = 5;
 int main(int argc, char *argv[]) {
 	time_t	ticks;  
 	char sendbuffer[BUFSIZE];  
-
+	
 	if (argc != 2) 
 		DieWithUserMessage("Parameter(s)", "<Server Port>");
-
+	
 	in_port_t servPort = atoi(argv[1]); 
 
 	int servSock; 
 	if ((servSock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP)) < 0)
 		DieWithSystemMessage("socket() failed");
-
+	
 	
 	struct sockaddr_in servAddr;
 	memset(&servAddr, 0, sizeof(servAddr));       
 	servAddr.sin_family = AF_INET;                
 	servAddr.sin_addr.s_addr = htonl(INADDR_ANY); 
 	servAddr.sin_port = htons(servPort);          
-
+	
 	
 	if (bind(servSock, (struct sockaddr*) &servAddr, sizeof(servAddr)) < 0)
 		DieWithSystemMessage("bind() failed");
-
+	
 	
 	if (listen(servSock, MAXPENDING) < 0)
 		DieWithSystemMessage("listen() failed");
-
+	
 	for (;;) { 
     
     
     int clntSock = accept(servSock, (struct sockaddr *) NULL, NULL);
     if (clntSock < 0)
       DieWithSystemMessage("accept() failed");
-
+	
     
     snprintf(sendbuffer, sizeof(sendbuffer), "%.24s\r\n", ctime(&ticks));
     ssize_t numBytesSent = send(clntSock, sendbuffer, strlen(sendbuffer), 0);  
     if (numBytesSent < 0)
       DieWithSystemMessage("send() failed");
-
+	
 	close(clntSock);
 
   }   
@@ -364,9 +482,11 @@ int main(int argc, char *argv[]) {
       		DieWithSystemMessage("recv() failed");
 
 	snprintf(sendbuffer, sizeof(sendbuffer), "%s", recvbuffer);
-    	ssize_t numBytesSent = send(clntSock, sendbuffer, strlen(sendbuffer), 0);
-    	if (numBytesSent < 0)
-      		DieWithSystemMessage("send() failed");
+    	
+	ssize_t numBytesSent = send(clntSock, sendbuffer, strlen(sendbuffer), 0);
+	
+	if (numBytesSent < 0)
+		DieWithSystemMessage("send() failed");
 
 	close(clntSock);
 
@@ -597,10 +717,9 @@ int main(int argc, char *argv[]) {
     close(sock);
     exit(0);  // Exit the program successfully
 }
-
 ```
 
-### <mark style="background: #FF5582A6;">httpServerWithFile.c</mark>
+### <mark style="background: #FF5582A6;">httpServer.c</mark>
 ```C
 //This application is a very simplistic server that simply returns requested file or error file contents using HTTP with simplistic HTTP Headers 
 #include <stdio.h>
@@ -617,29 +736,29 @@ int main(int argc, char *argv[]) {
 static const int MAXPENDING = 5; 
 
 int main(int argc, char *argv[]) {
-int numBytes = 0, char_in, count = 0, size = 0, recvLoop = 0, totalBytes =0;
-char recvbuffer[BUFSIZE], sendbuffer[BUFSIZE], path[200] ={'.'}, discard1[50], discard2[50]; 
+	int numBytes = 0, char_in, count = 0, size = 0, recvLoop = 0, totalBytes =0;
+	char recvbuffer[BUFSIZE], sendbuffer[BUFSIZE], path[200] ={'.'}, discard1[50], discard2[50]; 
 
-struct stat st;
-FILE * hFile; //declare file pointer
+	struct stat st;
+	FILE * hFile; //declare file pointer
 	
- if (argc != 2) 
-    DieWithUserMessage("Parameter(s)", "<Server Port>");
+	 if (argc != 2) 
+	    DieWithUserMessage("Parameter(s)", "<Server Port>");
 
-  in_port_t servPort = atoi(argv[1]); 
+	  in_port_t servPort = atoi(argv[1]); 
 
  
-  int servSock; 
+	  int servSock; 
 
-  if ((servSock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP)) < 0)
-    	DieWithSystemMessage("socket() failed");
+	  if ((servSock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP)) < 0)
+		DieWithSystemMessage("socket() failed");
 
   
-  struct sockaddr_in servAddr;                  
-  memset(&servAddr, 0, sizeof(servAddr));      
-  servAddr.sin_family = AF_INET;               
-  servAddr.sin_addr.s_addr = htonl(INADDR_ANY); 
-  servAddr.sin_port = htons(servPort);          
+	struct sockaddr_in servAddr;                  
+	memset(&servAddr, 0, sizeof(servAddr));      
+	  servAddr.sin_family = AF_INET;               
+	  servAddr.sin_addr.s_addr = htonl(INADDR_ANY); 
+	  servAddr.sin_port = htons(servPort);          
   
   if (bind(servSock, (struct sockaddr*) &servAddr, sizeof(servAddr)) < 0)
     	DieWithSystemMessage("bind() failed");
@@ -743,137 +862,110 @@ FILE * hFile; //declare file pointer
 ### <mark style="background: #FF5582A6;">httpServer.c COMMENTED:</mark>
 
 ```C
-#include <stdio.h>           // Standard I/O functions like printf, sscanf
-#include <stdlib.h>          // General-purpose functions like atoi, exit
-#include <string.h>          // String handling functions like memset, strcmp
-#include <sys/types.h>       // Data types for socket programming
-#include <sys/socket.h>      // Socket API functions like socket, bind, listen, accept
-#include <netinet/in.h>      // Structures and constants for Internet domain addresses
-#include <arpa/inet.h>       // Functions for manipulating IP addresses (e.g., htonl)
-#include "Practical.h"       // Custom error-handling utilities
-#include <unistd.h>          // For close() to close sockets
-#include <sys/stat.h>        // For retrieving file information (e.g., size) using `stat`
+#include <stdio.h>            // Standard I/O functions
+#include <stdlib.h>           // General-purpose functions like atoi, exit
+#include <string.h>           // String manipulation functions
+#include <sys/types.h>        // Data types for sockets
+#include <sys/socket.h>       // Socket API
+#include <netinet/in.h>       // Internet address structures
+#include <arpa/inet.h>        // Helper functions for IP addresses
+#include <unistd.h>           // POSIX API (close, etc.)
+#include <sys/stat.h>         // File statistics
+#include "Practical.h"        // Custom error-handling utilities
 
-static const int MAXPENDING = 5;  // Maximum number of pending client connections
+// Define HTTP response templates for home and error pages
+#define HOME_PAGE "HTTP/1.0 200 File Found\r\nContent-Length: 131\r\nConnection: close\r\nServer: httpserver\r\n\r\n<HTML><HEAD><TITLE>File  Found</TITLE></HEAD><BODY><h2>FILE Found</h2><hr><p>Your requested INDEX FILE was found.</p></BODY></HTML>"
+#define ERROR_PAGE "HTTP/1.0 404 File Not Found\r\nContent-Length: 142\r\nConnection: close\r\n\r\n<HTML><HEAD><TITLE>File NOT Found</TITLE></HEAD><BODY><h2>FILE NOT Found</h2><hr><p>Your requested INDEX FILE was NOT found.</p></BODY></HTML>"
+
+// Maximum number of pending connections
+static const int MAXPENDING = 2;
 
 int main(int argc, char *argv[]) {
-    int numBytes = 0, char_in, count = 0, size = 0, recvLoop = 0, totalBytes = 0;
-    char recvbuffer[BUFSIZE], sendbuffer[BUFSIZE], path[200] = {'.'}, discard1[50], discard2[50]; 
+    int recvLoop = 0, numBytes = 0, totalBytes = 0;
+    char recvbuffer[BUFSIZE], sendbuffer[BUFSIZE], uri[200] = {""}, discard1[50], discard2[50];
 
-    struct stat st;             // Structure to hold file metadata
-    FILE *hFile;                // File pointer for file operations
-
-    // Validate the number of arguments
+    // Ensure exactly one argument is passed: the server port
     if (argc != 2) 
         DieWithUserMessage("Parameter(s)", "<Server Port>");
 
-    in_port_t servPort = atoi(argv[1]);  // Convert server port from string to integer
+    in_port_t servPort = atoi(argv[1]); // Convert port to integer
 
-    // Create a socket
+    // Create the server socket
     int servSock; 
     if ((servSock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP)) < 0)
         DieWithSystemMessage("socket() failed");
 
-    // Set up the server address structure
-    struct sockaddr_in servAddr;                  
-    memset(&servAddr, 0, sizeof(servAddr));      // Clear the structure
-    servAddr.sin_family = AF_INET;               // IPv4 protocol
-    servAddr.sin_addr.s_addr = htonl(INADDR_ANY); // Accept connections from any IP address
-    servAddr.sin_port = htons(servPort);          // Set the port number in network byte order
+    // Configure server address structure
+    struct sockaddr_in servAddr;
+    memset(&servAddr, 0, sizeof(servAddr));       
+    servAddr.sin_family = AF_INET;                
+    servAddr.sin_addr.s_addr = htonl(INADDR_ANY); // Accept connections from any address
+    servAddr.sin_port = htons(servPort);          // Convert port to network byte order
 
-    // Bind the socket to the local address and port
+    // Bind the socket to the specified port
     if (bind(servSock, (struct sockaddr*) &servAddr, sizeof(servAddr)) < 0)
         DieWithSystemMessage("bind() failed");
 
-    // Put the socket into listening mode
+    // Listen for incoming connections
     if (listen(servSock, MAXPENDING) < 0)
         DieWithSystemMessage("listen() failed");
 
-    // Infinite loop to handle client connections
+    // Server runs indefinitely
     for (;;) {
         // Accept a client connection
         int clntSock = accept(servSock, (struct sockaddr *) NULL, NULL);
         if (clntSock < 0)
             DieWithSystemMessage("accept() failed");
 
-        recvLoop = 1;                  // Initialize receive loop
-        totalBytes = 0;                // Track total bytes received
-        memset(sendbuffer, '\0', sizeof(sendbuffer)); // Clear the send buffer
-        memset(recvbuffer, '\0', sizeof(recvbuffer)); // Clear the receive buffer
+        // Initialize variables for each client
+        recvLoop = 1;
+        totalBytes = 0;
+        memset(uri, '\0', sizeof(uri));
+        memset(sendbuffer, '\0', sizeof(sendbuffer));
+        memset(recvbuffer, '\0', sizeof(recvbuffer));
 
-        // Receive HTTP request headers byte-by-byte
-        while (recvLoop > 0) {  
-            numBytes = recv(clntSock, (recvbuffer + totalBytes), 1, 0); // Receive one byte at a time
-            totalBytes += numBytes;                                    // Increment the offset
+        // Receive the HTTP request
+        while (recvLoop > 0) {
+            numBytes = recv(clntSock, (recvbuffer + totalBytes), 1, 0); // Read 1 byte at a time
+            totalBytes += numBytes; 
 
-            // Stop receiving if the buffer is almost full or the end of HTTP headers is detected
+            // Stop receiving if buffer is full or HTTP header is complete
             if ((totalBytes >= (BUFSIZE - 2)) || (strstr(recvbuffer, "\r\n\r\n") > 0))
-                recvLoop = 0; 
+                recvLoop = 0;
         }
-
-        // Handle errors during reception
         if (numBytes < 0)
             DieWithSystemMessage("recv() failed");
 
-        // Extract the requested file path from the HTTP request
-        sscanf(recvbuffer, "%s %s %s", discard1, (path + 1), discard2);
-        printf("\npath contains: %s\n", path);
+        // Parse the HTTP request
+        sscanf(recvbuffer, "%s %s %s\r\n", discard1, uri, discard2);  
 
         // Ignore requests for favicon.ico
-        if (strcmp(path, "./favicon.ico") == 0) {
-            printf("\n\nFound and ignored favicon.ico\n\n");        
-        } else {
-            // If the root path is requested, serve the index.html file
-            if (strcmp(path, "./") == 0) {
-                strcpy(path, "./index.html");
-            }
-
-            // Try to open the requested file
-            hFile = fopen(path, "r");
-            if (hFile == NULL) {  // If the file doesn't exist, serve an error page
-                strcpy(path, "./error.html"); // Path for error page
-                hFile = fopen(path, "r");    // Open the error file
-
-                stat(path, &st);            // Get file size
-                size = st.st_size;
-                printf("\nERROR.HTML File size is: %d\n", size);
-                snprintf(sendbuffer, sizeof(sendbuffer), "HTTP/1.1 404 File Not Found\r\nContent-Length: %d\r\nCache-Control: no-cache\r\nConnection: close\r\n\r\n", size); 
-            } else {  // File exists
-                stat(path, &st);           // Get file size
-                size = st.st_size;
-                printf("\nRequested file size is: %d\n", size);
-                snprintf(sendbuffer, sizeof(sendbuffer), "HTTP/1.1 200 Okay\r\nContent-Length: %d\r\nCache-Control: no-cache\r\nConnection: close\r\n\r\n", size); 
-            }
-
-            // Send HTTP response headers to the client
-            ssize_t numBytesSent = send(clntSock, sendbuffer, strlen(sendbuffer), 0);
-            if (numBytesSent < 0)
-                DieWithSystemMessage("send() failed");
-
-            strcpy(sendbuffer, "");  // Clear the send buffer
-
-            // Read the file content and send it to the client
-            while ((char_in = fgetc(hFile)) != EOF) {
-                sendbuffer[count] = char_in;  // Store character in send buffer
-                count++;                      // Increment buffer index
-            }
-
-            numBytesSent = send(clntSock, sendbuffer, count, 0); // Send file content
-            if (numBytesSent < 0)
-                DieWithSystemMessage("send() failed");
-
-            size = 0;  // Reset file size tracker
-            count = 0; // Reset buffer index
-            fclose(hFile); // Close the file
-            strcpy(path, "."); // Reset the path buffer
+        if (strcmp(uri, "/favicon.ico") == 0) {
+            printf("\n\nFound and ignored favicon.ico\n\n");
+            close(clntSock);
+            continue;
         }
 
-        close(clntSock); // Close the client socket
+        // Log the received request
+        recvbuffer[totalBytes] = '\0'; 
+        fputs(recvbuffer, stdout);
+
+        // Generate the appropriate HTTP response
+        if (strcmp(uri, "/index.html") == 0) {
+            snprintf(sendbuffer, sizeof(sendbuffer), HOME_PAGE);
+        } else {
+            snprintf(sendbuffer, sizeof(sendbuffer), ERROR_PAGE);
+        }
+
+        // Send the HTTP response
+        ssize_t numBytesSent = send(clntSock, sendbuffer, strlen(sendbuffer), 0);
+        if (numBytesSent < 0)
+            DieWithSystemMessage("send() failed");
+
+        // Close the client socket
+        close(clntSock);
     }
-
-    // This point is never reached
 }
-
 ```
 ### <mark style="background: #FF5582A6;">httpClient.c</mark>
 ```C

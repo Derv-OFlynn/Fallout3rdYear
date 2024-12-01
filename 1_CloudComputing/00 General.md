@@ -109,4 +109,36 @@ Read the introductory section on the links to the labs.
 
 ### <mark style="background: #BABD00;">Sample Exam Paper:</mark>
 
-Will go over this in week 12
+Four questions, 100m
+
+Q1 is mandatory (40m)
+
+Q2-4 choose 2 (30m each)
+
+Please start each part to each q on a new page
+
+"Blooms taxonomy" cognitive skills
+
+1. Knowledge
+2. Understanding
+3. Application
+4. Analyse
+5. Synthesise
+6. UHHH
+
+
+10 qs of computing
+1. What is the definition of the concept
+2. What is the purpose of said concept
+3. What are the characteristics of said concept
+
+5. Compare and contrast that concept with other concepts in related domains
+6. Compare and contrast concepts with concepts in a different domain
+7. Come up with clear examples of those concepts
+8. Do you know how to apply the concept in the real world
+9. Do you know all and any related formulas you're required to know
+10. Do you know all and any related algorithms you're required to know
+
+Strats:
+1. Quick scan - 1 min
+2. Detailed scan - 6-7 mins
