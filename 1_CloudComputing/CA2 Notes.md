@@ -1130,7 +1130,7 @@ Traditional approaches for backup in a VDC environment use the same technologies
 <mark style="background: #BABD00;">The approaches are as following:</mark>  
 - <mark style="background: #BABD00;">First approach:</mark> A VM is treated as if it were a physical server. A backup agent is installed on the VM that streams the VM data to the backup server. Management of the backup operation is similar to that of CDC, and hence, creating application consistent backups is easy. It is also possible to restore specific files to the guest OS. However, this solution requires the management of agents on all VMs. Note that the solution does not capture the VM files (i.e., Virtual BIOS file, VM swap file, Virtual disk file, Log file, and Configuration file). So, in the event of a restore, a user should manually recreate the VM and then restore data into it.  
 - <mark style="background: #BABD00;">Second approach:</mark> Since a VM’s virtual disks are nothing but a collection of files, it is possible to simply back them up by performing a file system backup from a hypervisor.  This is a relatively simple method because it requires only an agent on the hypervisor, and that backs up all the VM files. However, LUNs assigned directly to a VM (using RDM) cannot be backed up using this approach.  
-- <mark style="background: #BABD00;">Third approach:</mark> It uses array based technologies to backup a VM and utilizes the storage subsystem for backup operations. These technologies often use snapshot and cloning techniques to capture and backup a VM. Snapshot and cloning of a VM will be discussed in the next lesson.
+- <mark style="background: #BABD00;">Third approach:</mark> It uses array based technologies to backup a VM and utilises the storage subsystem for backup operations. These technologies often use snapshot and cloning techniques to capture and backup a VM. Snapshot and cloning of a VM will be discussed in the next lesson.
 
 ### <mark style="background: #BABD00;">Backup Considerations in a VDC:</mark>
 
@@ -1643,7 +1643,7 @@ The twelve-factor app’s processes are disposable, meaning they can be started 
 
 This facilitates fast elastic scaling, rapid deployment of code or config changes, and robustness of production deploys.  
 
-Consequently, processes should strive to minimize start-up time.  
+Consequently, processes should strive to minimise start-up time.  
 
 Processes shut down gracefully.  
 
@@ -2086,7 +2086,7 @@ Describes the core of the solution to the problem in such a way that you can use
 
 <mark style="background: #BABD00;">Blue-Green Deployments:</mark>  
 - One of the challenges with automating deployment is the cut-over itself, taking software from the final stage of testing to live production.  
-- You usually need to do this quickly in order to minimize downtime.  
+- You usually need to do this quickly in order to minimise downtime.  
 - The blue-green deployment approach does this by ensuring you have two production environments, as identical as possible.
 
 ![](https://i.imgur.com/Wlr1m68.png)
@@ -2349,29 +2349,39 @@ More and more commonly used in Kubernetes, CI/CD and GCP, AWS and Azure pipeline
 
 [Link](https://www.geeksforgeeks.org/difference-between-stateless-and-stateful-protocol/)
 
-In networking, how interactions between clients and servers are managed greatly affects system performance. There are two main types of protocols for this purpose: ****stateless**** and ****stateful**** protocols. Stateless protocols do not maintain state information, so a server does not need to retain information from prior requests. This simplifies server design and optimises resource utilization. In contrast, stateful protocols maintain session information, allowing for more consistent interaction between clients and servers. Understanding the characteristics and differences of these protocols is crucial for properly designing network systems.
+In networking, how interactions between clients and servers are managed greatly affects system performance. There are two main types of protocols for this purpose: <mark style="background: #BABD00;">stateless</mark> and <mark style="background: #BABD00;">stateful</mark> protocols. 
+
+<mark style="background: #BABD00;">Stateless</mark> protocols do not maintain state information, so a server does not need to retain information from prior requests. This simplifies server design and optimises resource utilisation. 
+
+In contrast, <mark style="background: #BABD00;">stateful</mark> protocols maintain session information, allowing for more consistent interaction between clients and servers. 
+
+Understanding the characteristics and differences of these protocols is crucial for properly designing network systems.
 
 ### <mark style="background: #BABD00;">What is the Stateless Protocol?</mark>
 
-Stateless Protocols are the type of network protocols in which the Client sends a request to the server and the server responds back according to the current state. It does not require the server to retain session information or status about each communicating partner for multiple requests. 
+Stateless Protocols are a type of network protocols in which the Client sends a request to the server and the server responds back according to the current state. 
 
-HTTP (Hypertext Transfer Protocol), UDP (User Datagram Protocol), and DNS (Domain Name System) are examples of ****Stateless Protocols****. 
+It does not require the server to retain session information or status about each communicating partner for multiple requests. 
+
+<mark style="background: #BABD00;">HTTP</mark> (Hypertext Transfer Protocol), <mark style="background: #BABD00;">UDP</mark> (User Datagram Protocol), and <mark style="background: #BABD00;">DNS</mark> (Domain Name System) are examples of <mark style="background: #BABD00;">Stateless</mark> Protocols. 
 
 <mark style="background: #BABD00;">Salient Features of Stateless Protocols</mark>
-- Stateless Protocol simplifies the design of the Server.
+- Stateless Protocols simplify the design of the Server.
 - The stateless protocol requires fewer resources because the system does not need to keep track of the multiple link communications and the session details.
-- In Stateless Protocol each information packet travels on its own without reference to any other packet.
+- In Stateless Protocols each information packet travels on its own without reference to any other packet.
 - Each communication in Stateless Protocol is discrete and unrelated to those that precedes or follow.
 
 ### <mark style="background: #BABD00;">What is Stateful Protocol?</mark>
 
-In Stateful Protocol If client send a request to the server then it expects some kind of response, if it does not get any response then it resend the request. FTP (File Transfer Protocol), TCP, and Telnet are the example of Stateful Protocol. 
+In Stateful Protocols, if a client sends a request to the server then it expects some kind of response, if it does not get any response then it resends the request. 
+
+<mark style="background: #BABD00;">FTP</mark> (File Transfer Protocol), <mark style="background: #BABD00;">TCP</mark>, and <mark style="background: #BABD00;">Telnet</mark> are the example of Stateful Protocols. 
 
 <mark style="background: #BABD00;">Salient Features of Stateful Protocol:</mark>
 - Stateful Protocols provide better performance to the client by keeping track of the connection information.
-- Stateful Application require Backing storage.
-- Stateful request are always dependent on the server-side state.
-- TCP session follow stateful protocol because both systems maintain information about the session itself during its life.
+- Stateful Applications require Backing storage.
+- Stateful requests are always dependent on the server-side state.
+- TCP sessions follow a stateful protocol because both systems maintain information about the session itself during its life.
 
 ### <mark style="background: #BABD00;">Comparisons Between Stateless and Stateful Protocol</mark>
 
@@ -2380,21 +2390,28 @@ In Stateful Protocol If client send a request to the server then it expects some
 
 ### <mark style="background: #BABD00;">Conclusion</mark>
 
-Basically, there are two types of protocols: Stateless and Stateful Each type has its benefits and pitfalls that qualify it for use in some contexts and not others. Since these protocols do not retain session specific details, the simplicity in design of servers and the management of resources is well adopted especially in application that do not necessarily require session information of clients. On the other hand, stateful protocols possess better interactivity by maintaining session information that is advantageous for those applications that require session continuity and reliability. By elucidating these differences, one is better placed to determine the right protocol for budgeting purposes and in meeting the profound demands of the business’s specific network.
+There are two types of protocols: <mark style="background: #BABD00;">Stateless</mark> and <mark style="background: #BABD00;">Stateful</mark>. Each type has its benefits and pitfalls that qualify it for use in some contexts and not others. 
+
+Since <mark style="background: #BABD00;">stateless</mark> protocols do not retain session specific details, the simplicity in design of servers and the management of resources is well adopted, especially in applications that do not necessarily require session information of clients. 
+
+On the other hand, <mark style="background: #BABD00;">stateful</mark> protocols possess better interactivity by maintaining session information that is advantageous for those applications that require session continuity and reliability. By elucidating these differences, one is better placed to determine the right protocol for budgeting purposes and in meeting the profound demands of the business’s specific network.
 
 ### <mark style="background: #BABD00;">Difference Between Stateless and Stateful Protocol – FAQs</mark>
 
 <mark style="background: #BABD00;">What is the key benefit of using stateless protocols?</mark>
-The main advantage concerning the employment of stateless protocols can be recognized in its relative simplicity and the fairly low demands put on the resources necessary. Since the session information is not required to be stored on the server, it also means that the design is eased and the server load is less.
+- The main advantage concerning the employment of stateless protocols can be recognised in its relative simplicity and the fairly low demands put on the necessary resources. 
+- Since the session information is not required to be stored on the server, it also means that the design is easier and the server load is less.
 
 <mark style="background: #BABD00;">How do stateful protocols enhance client-server communication?</mark>
-Stateful protocols improve the engagement between devices because it holds information regarding the connection between the engaging requests which in turn makes the engagement to be much more continuous and reliable as compared to stateless. For cases where it is necessary to monitor particular active sessions, this is quite helpful.
+- Stateful protocols improve the engagement between devices because it holds information regarding the connection between the engaging requests which in turn makes the engagement to be much more continuous and reliable as compared to stateless. 
+- For cases where it is necessary to monitor particular active sessions, this is quite helpful.
 
 <mark style="background: #BABD00;">Can you give an example of when to use a stateless protocol?</mark>
-Connectionless protocols are appropriate for HTTP for web browsing where every request from the client does not depend on the other as the connection will not be persistent. As a result, it should be okay for mainly, low-risk/low-value, operational type activities.
+- Connectionless protocols are appropriate for HTTP for web browsing where every request from the client does not depend on the other as the connection will not be persistent. 
+- As a result, it should be okay for mainly, low-risk/low-value, operational type activities.
 
 <mark style="background: #BABD00;">Can you give an example of when to use a stateless protocol?</mark>
-Reliable protocols are ideal in any system where the context of the session must be constantly kept and used such in the case of FTP or Telnet where the two entities must talk to each other in a one-to-one fashion.
+- Reliable protocols are ideal in any system where the context of the session must be constantly kept and used such in the case of FTP or Telnet where the two entities must talk to each other in a one-to-one fashion.
 
 # <mark style="background: #BABD00;">Why use serverless computing? | Pros and cons of serverless</mark>
 
@@ -2402,7 +2419,11 @@ Reliable protocols are ideal in any system where the context of the session must
 
 ### <mark style="background: #BABD00;">Why use serverless computing?</mark>
 
-Serverless computing offers a number of advantages over traditional cloud-based or server-centric infrastructure. For many developers, serverless architectures offer greater scalability, more flexibility, and quicker time to release, all at a reduced cost. With serverless architectures, developers do not need to worry about purchasing, provisioning, and managing backend servers. However, serverless computing is not a magic bullet for all web application developers.
+Serverless computing offers a number of advantages over traditional cloud-based or server-centric infrastructure. 
+
+For many developers, serverless architectures offer greater scalability, more flexibility, and quicker time to release, all at a reduced cost. 
+
+With serverless architectures, developers do not need to worry about purchasing, provisioning, and managing backend servers. However, serverless computing is not a magic bullet for all web application developers.
 
 ### <mark style="background: #BABD00;">How does serverless computing work?</mark>
 
@@ -2460,31 +2481,35 @@ Also, developers who want to push some or all of their application functions clo
 
 ### <mark style="background: #BABD00;">When should developers avoid using a serverless architecture?</mark>
 
-There are cases when it makes more sense, both from a cost perspective and from a system architecture perspective, to use dedicated servers that are either self-managed or offered as a service. For instance, large applications with a fairly constant, predictable workload may require a traditional setup, and in such cases the traditional setup is probably less expensive.
+There are cases when it makes more sense, both from a cost perspective and from a system architecture perspective, to use dedicated servers that are either self-managed or offered as a service. 
+
+For instance, large applications with a fairly constant, predictable workload may require a traditional setup, and in such cases the traditional setup is probably less expensive.
 
 Additionally, it may be prohibitively difficult to migrate legacy applications to a new infrastructure with an entirely different architecture.
 
 ### <mark style="background: #BABD00;">How does Cloudflare help developers build serverless architectures?</mark>
 
-[Cloudflare Workers](https://www.cloudflare.com/products/cloudflare-workers/) is a product that enables developers to write JavaScript functions and deploy them at the edge of the Cloudflare network. This makes it possible to run application code in a serverless architecture as close to the end user as possible, minimizing latency.
+[Cloudflare Workers](https://www.cloudflare.com/products/cloudflare-workers/) is a product that enables developers to write JavaScript functions and deploy them at the edge of the Cloudflare network. This makes it possible to run application code in a serverless architecture as close to the end user as possible, minimising latency.
 
 # <mark style="background: #BABD00;">What is a Message Broker?</mark>
 
 [Link](https://www.ibm.com/topics/message-brokers)
 
-A message broker is software that enables applications, systems and services to communicate with each other and exchange information.
+A <mark style="background: #BABD00;">message broker</mark> is software that enables applications, systems and services to communicate with each other and exchange information.
 
 The message broker does this by translating messages between formal messaging protocols. This allows interdependent services to “talk” with one another directly, even if they were written in different languages or implemented on different platforms.
 
-Message brokers are software modules within messaging middleware or message-oriented middleware (MOM) solutions. This type of middleware provides developers with a standardized means of handling the flow of data between an application’s components so that they can focus on its core logic. It can serve as a distributed communications layer that allows applications spanning multiple platforms to communicate internally.
+Message brokers are software modules within messaging middleware or message-oriented middleware (MOM) solutions. This type of middleware provides developers with a standardised means of handling the flow of data between an application’s components so that they can focus on its core logic. It can serve as a distributed communications layer that allows applications spanning multiple platforms to communicate internally.
 
 Message brokers can validate, store, route, and deliver messages to the appropriate destinations. They serve as intermediaries between other applications, allowing senders to issue messages without knowing where the receivers are, whether or not they are active, or how many of them there are. This facilitates decoupling of processes and services within systems.
 
 In order to provide reliable message storage and guaranteed delivery, message brokers often rely on a substructure or component called a [message queue](https://www.ibm.com/topics/message-queues) that stores and orders the messages until the consuming applications can process them. In a message queue, messages are stored in the exact order in which they were transmitted and remain in the queue until receipt is confirmed.
 
-Asynchronous messaging refers to the type of inter-application communication that message brokers make possible. It prevents the loss of valuable data and enables systems to continue functioning even in the face of the intermittent connectivity or latency issues common on public [networks](https://www.ibm.com/topics/networking). Asynchronous messaging guarantees that messages will be delivered once (and once only) in the correct order relative to other messages.
+Asynchronous messaging refers to the type of inter-application communication that message brokers make possible. It prevents the loss of valuable data and enables systems to continue functioning even in the face of the intermittent connectivity or latency issues common on public [networks](https://www.ibm.com/topics/networking). 
 
-Message brokers may comprise queue managers to handle the interactions between multiple message queues, as well as services providing data routing, message translation, persistence, and client state management functionalities.
+Asynchronous messaging guarantees that messages will be delivered once (and once only) in the correct order relative to other messages.
+
+Message brokers may comprise of queue managers to handle the interactions between multiple message queues, as well as services providing data routing, message translation, persistence, and client state management functionalities.
 
 # <mark style="background: #BABD00;">What is a Message Queue?</mark>
 
@@ -2496,9 +2521,19 @@ Below are several resources to help you better understand message queues in the 
 
 ### <mark style="background: #BABD00;">Message Queue Basics</mark>
 
-In modern cloud architecture, applications are decoupled into smaller, independent building blocks that are easier to develop, deploy and maintain. Message queues provide communication and coordination for these distributed applications. Message queues can significantly simplify coding of decoupled applications, while improving performance, reliability and scalability.
+In modern cloud architecture, applications are decoupled into smaller, independent building blocks that are easier to develop, deploy and maintain. 
 
-Message queues allow different parts of a system to communicate and process operations asynchronously. A message queue provides a lightweight buffer which temporarily stores messages, and endpoints that allow software components to connect to the queue in order to send and receive messages. The messages are usually small, and can be things like requests, replies, error messages, or just plain information. To send a message, a component called a producer adds a message to the queue. The message is stored on the queue until another component called a consumer retrieves the message and does something with it.
+Message queues provide communication and coordination for these distributed applications. 
+
+Message queues can significantly simplify coding of decoupled applications, while improving performance, reliability and scalability.
+
+Message queues allow different parts of a system to communicate and process operations asynchronously. 
+
+A message queue provides a lightweight buffer which temporarily stores messages, and endpoints that allow software components to connect to the queue in order to send and receive messages. 
+
+The messages are usually small, and can be things like requests, replies, error messages, or just plain information. To send a message, a component called a producer adds a message to the queue. 
+
+The message is stored on the queue until another component called a consumer retrieves the message and does something with it.
 
 ![](https://i.imgur.com/GYzhkKO.png)
 
@@ -2512,23 +2547,21 @@ A [key-value database](https://aws.amazon.com/dynamodb/) is a type of non-relati
 
 ### <mark style="background: #BABD00;">What are the advantages of key-value databases</mark>
 
-Traditional [relational databases](https://aws.amazon.com/relational-database/) ([SQL databases](https://aws.amazon.com/rds/)) store data in the form of tables containing rows and columns. They enforce a rigid structure on data and are not optimal for every use case. On the other hand, key-value databases are NoSQL databases. They allow flexible database schemas and improved performance at scale for certain use cases. The advantages of key-value stores include:
+Traditional [relational databases](https://aws.amazon.com/relational-database/) ([SQL databases](https://aws.amazon.com/rds/)) store data in the form of tables containing rows and columns. They enforce a rigid structure on data and are not optimal for every use case. 
 
-<mark style="background: #BABD00;">Scalability</mark>
-As every user query requires data interaction, databases can often become a bottleneck in application performance. Several strategies to solve the issue, such as replication and [sharding](https://aws.amazon.com/what-is/database-sharding/), add complexity to the application code. Many key-value databases provide built-in support for advanced scaling features. They scale horizontally and automatically distribute data across servers to reduce bottlenecks at a single server.
+On the other hand, key-value databases are NoSQL databases. They allow flexible database schemas and improved performance at scale for certain use cases. 
 
-<mark style="background: #BABD00;">Ease of use:</mark>
-Key-value databases follow the object-oriented paradigm that allows developers to map real-world objects directly to software objects. Several programming languages, such as Java, also follow the same paradigm. Instead of mapping their code objects to multiple underlying tables, engineers can create key-value pairs that match their code objects. This makes key-value stores more intuitive for developers to use.
-
-<mark style="background: #BABD00;">Performance:</mark>
-Key-value databases process constant read-write operations with low-overhead server calls. Improved latency and reduced response time give better performance at scale. They are based on simple, single-table structures rather than multiple interrelated tables. Unlike relational databases, key-value databases don't have to perform resource-intensive table joins, which makes them much faster.
+<mark style="background: #BABD00;">The advantages of key-value stores include:</mark>
+- <mark style="background: #BABD00;">Scalability</mark> As every user query requires data interaction, databases can often become a bottleneck in application performance. Several strategies to solve the issue, such as replication and [sharding](https://aws.amazon.com/what-is/database-sharding/), add complexity to the application code. Many key-value databases provide built-in support for advanced scaling features. They scale horizontally and automatically distribute data across servers to reduce bottlenecks at a single server.
+- <mark style="background: #BABD00;">Ease of use:</mark> Key-value databases follow the object-oriented paradigm that allows developers to map real-world objects directly to software objects. Several programming languages, such as Java, also follow the same paradigm. Instead of mapping their code objects to multiple underlying tables, engineers can create key-value pairs that match their code objects. This makes key-value stores more intuitive for developers to use.
+- <mark style="background: #BABD00;">Performance:</mark> Key-value databases process constant read-write operations with low-overhead server calls. Improved latency and reduced response time give better performance at scale. They are based on simple, single-table structures rather than multiple interrelated tables. Unlike relational databases, key-value databases don't have to perform resource-intensive table joins, which makes them much faster.
 
 ### <mark style="background: #BABD00;">What are the use cases of key-value databases?</mark>
 
 You can use key-value database systems as the primary database for your application or to handle niche requirements. We give some example key-value database use cases below.
 
 <mark style="background: #BABD00;">Session management:</mark>
-A session-oriented application, such as a web application, starts a session when a user logs in to an application and is active until the user logs out or the session times out. During this period, the application stores all user session attributes either in the main memory or in a database. User session data may include profile information, messages, personalized data and themes, recommendations, targeted promotions, and discounts.
+A session-oriented application, such as a web application, starts a session when a user logs in to an application and is active until the user logs out or the session times out. During this period, the application stores all user session attributes either in the main memory or in a database. User session data may include profile information, messages, personalised data and themes, recommendations, targeted promotions, and discounts.
 
 Each user session has a unique identifier. Session data is never queried by anything other than a primary key, so a fast key-value store is a better fit for session data. In general, key-value databases may provide smaller per-page overhead than relational databases.
 
@@ -2586,7 +2619,7 @@ Advanced key-value databases provide native, server-side support for ACID. This 
 Key-value databases do require some trade-offs, as with any kind of technology choice.
 
 <mark style="background: #BABD00;">Absence of complex queries:</mark>
-As key-value databases don't support complex queries, developers must work around this in the code. Data operations are mainly through simple query language terms like get, put, and delete. There are limitations to how much you can filter and sort data before accessing it.
+As key-value databases don't support complex queries, developers must work around this in the code. Data operations are mainly through simple query language terms like ``get``, ``put``, and ``delete``. There are limitations to how much you can filter and sort data before accessing it.
 
 <mark style="background: #BABD00;">Schema mismanagement:</mark>
 Key-value store design does not enforce a schema on developers. Anyone can modify the schema in the database program. Development teams have to plan the data model systematically to avoid long-term problems. The lack of a tight schema also means that the application is responsible for the proper interpretation of the data it consumes, often referred to as 'schema on read'.
@@ -2601,26 +2634,49 @@ Managing IT infrastructure can be challenging, but teams that use well-known sof
 
 As a software development framework, GitOps has three main parts to its workflow, including infrastructure as code, merge requests, and CI/CD pipelines.
 
+1. <mark style="background: #BABD00;">Infrastructure as Code (IaC)</mark>
+2. <mark style="background: #BABD00;">Merge Requests (MR)</mark>
+3. <mark style="background: #BABD00;">Continuous Integration and Continuous Deployment (CI/CD)</mark>
+
 ### <mark style="background: #BABD00;">1. Infrastructure as code (IaC)</mark>
 
 [IaC Link](https://about.gitlab.com/topics/gitops/gitops-workflow/#-infrastructure-as-code-iac)
 
-The first step in a GitOps workflow is defining all [infrastructure as code](https://about.gitlab.com/topics/gitops/infrastructure-as-code/). IaC automates the IT infrastructure provisioning by using configuration files. IaC is a DevOps practice that supports teams to version infrastructure to improve consistency across machines to reduce deployment friction. Infrastructure code undergoes a similar process as application code with touchpoints in continuous integration, version control, testing, and continuous deployment. Automation leads to more [efficient](https://about.gitlab.com/blog/2020/04/17/why-gitops-should-be-workflow-of-choice/) development, increased consistency, and [faster](https://about.gitlab.com/blog/2021/02/24/production-grade-infra-devsecops-with-five-minute-production/) time to market.
+The first step in a GitOps workflow is defining all [infrastructure as code](https://about.gitlab.com/topics/gitops/infrastructure-as-code/). IaC automates the IT infrastructure provisioning by using configuration files. 
 
-Managing [infrastructure](https://about.gitlab.com/blog/2020/11/09/lessons-in-iteration-from-new-infrastructure-team/) has traditionally been a manual process involving large teams maintaining physical servers. Each machine often has its own configuration, leading to snowflake environments. With infrastructure as code, teams have increased visibility, consistency, stability, and scalability.
+IaC is a DevOps practice that supports teams to version infrastructure to improve consistency across machines to reduce deployment friction. 
+
+Infrastructure code undergoes a similar process as application code with touchpoints in continuous integration, version control, testing, and continuous deployment. 
+
+Automation leads to more [efficient](https://about.gitlab.com/blog/2020/04/17/why-gitops-should-be-workflow-of-choice/) development, increased consistency, and [faster](https://about.gitlab.com/blog/2021/02/24/production-grade-infra-devsecops-with-five-minute-production/) time to market.
+
+Managing [infrastructure](https://about.gitlab.com/blog/2020/11/09/lessons-in-iteration-from-new-infrastructure-team/) has traditionally been a manual process involving large teams maintaining physical servers. Each machine often has its own configuration, leading to snowflake environments. 
+
+With infrastructure as code, teams have increased visibility, consistency, stability, and scalability.
 
 ### <mark style="background: #BABD00;">2. Merge requests (MRs)</mark>
 
 [MRs Link](https://about.gitlab.com/topics/gitops/gitops-workflow/#-merge-requests-mrs)
 
-Declarative tools, such as Kubernetes, enable config files to be [version controlled](https://about.gitlab.com/blog/2020/11/12/migrating-your-version-control-to-git/) by Git, an open source version control system that tracks code changes. Using a Git repository as the single source of truth for infrastructure definitions, GitOps benefits from a robust audit trail. The second aspect of GitOps workflows involve merge requests, which serve as the [change function](https://about.gitlab.com/blog/2020/10/13/merge-request-reviewers/) for infrastructure updates.
+Declarative tools, such as Kubernetes, enable config files to be [version controlled](https://about.gitlab.com/blog/2020/11/12/migrating-your-version-control-to-git/) by Git, an open source version control system that tracks code changes. 
 
-Teams collaborate in merge requests through [code reviews](https://about.gitlab.com/blog/2021/01/25/mr-reviews-with-vs-code/), comments, and suggestions. A merge commits to the [main](https://about.gitlab.com/blog/2021/03/10/new-git-default-branch-name/) branch and acts as an audit log. Built-in rollback features enable teams to revert to a desired state and explore innovative ways to approach difficult challenges. Merge requests facilitate experimentation and provide a safe way for team members to receive fast [feedback](https://about.gitlab.com/blog/2021/03/18/iteration-and-code-review/) from their peers and subject matter experts.
+Using a Git repository as the single source of truth for infrastructure definitions, GitOps benefits from a robust audit trail. 
+
+The second aspect of GitOps workflows involve merge requests, which serve as the [change function](https://about.gitlab.com/blog/2020/10/13/merge-request-reviewers/) for infrastructure updates.
+
+Teams collaborate in merge requests through [code reviews](https://about.gitlab.com/blog/2021/01/25/mr-reviews-with-vs-code/), comments, and suggestions. A merge commits to the [main](https://about.gitlab.com/blog/2021/03/10/new-git-default-branch-name/) branch and acts as an audit log. 
+
+Built-in rollback features enable teams to revert to a desired state and explore innovative ways to approach difficult challenges. Merge requests facilitate experimentation and provide a safe way for team members to receive fast [feedback](https://about.gitlab.com/blog/2021/03/18/iteration-and-code-review/) from their peers and subject matter experts.
 
 ### <mark style="background: #BABD00;">3. Continuous integration and continuous deployment (CI/CD)</mark>
+
 [CI/CDL ink](https://about.gitlab.com/topics/gitops/gitops-workflow/#-continuous-integration-and-continuous-deployment-cicd)
 
-GitOps automates infrastructure management using a Git workflow with [effective](https://about.gitlab.com/blog/2020/07/29/effective-ci-cd-pipelines/) continuous integration and continuous deployment. After code is merged to the main branch, the CI/CD pipeline initiates the [change](https://about.gitlab.com/blog/2021/02/22/pipeline-editor-overview/) in the environment. Manual changes and human error can cause configuration drift and snowflake environments, but GitOps automation and continuous deployment overwrites them so the environment always [deploys](https://about.gitlab.com/blog/2021/02/05/ci-deployment-and-environments/) a consistent desired state.
+GitOps automates infrastructure management using a Git workflow with [effective](https://about.gitlab.com/blog/2020/07/29/effective-ci-cd-pipelines/) continuous integration and continuous deployment. 
+
+After code is merged to the main branch, the CI/CD pipeline initiates the [change](https://about.gitlab.com/blog/2021/02/22/pipeline-editor-overview/) in the environment. 
+
+Manual changes and human error can cause configuration drift and snowflake environments, but GitOps automation and continuous deployment overwrites them so the environment always [deploys](https://about.gitlab.com/blog/2021/02/05/ci-deployment-and-environments/) a consistent desired state.
 
 # <mark style="background: #BABD00;">The 3 Core principles of ZeroTrust</mark>
 
@@ -2632,7 +2688,7 @@ Today, as cyber threats evolve and organisational perimeters expand with remote 
 
 ![](https://i.imgur.com/F0TR3W4.png)
 
-In this guide, we’ll delve into the three fundamental principles of Zero Trust: Least Privilege Access, Always Verify, and Risk Mitigation. Each principle is critical for building a resilient and dynamic security environment where threats are not only recognized but also effectively contained. Join us as we explore how these principles can fortify your organisation against the ever-changing landscape of cyber threats.
+In this guide, we’ll delve into the three fundamental principles of Zero Trust: Least Privilege Access, Always Verify, and Risk Mitigation. Each principle is critical for building a resilient and dynamic security environment where threats are not only recognised but also effectively contained. Join us as we explore how these principles can fortify your organisation against the ever-changing landscape of cyber threats.
 
 - `Least Privilege Access`
 - `Always Verify`
@@ -2640,25 +2696,22 @@ In this guide, we’ll delve into the three fundamental principles of Zero Trust
 
 ### <mark style="background: #BABD00;">What is Zero Trust Security?</mark>
 
-  
-Zero Trust Security is a cybersecurity strategy that challenges the conventional perimeter-based security models, which have increasingly shown their limitations in the face of modern cyber threats and evolving work environments. Traditional security models operate under the assumption that everything inside an organisation’s network can be trusted. However, this assumption has become flawed due to the rising sophistication of cyber attacks and the fact that insiders can often be threats themselves.
+Zero Trust Security is a cybersecurity strategy that challenges the conventional perimeter-based security models, which have increasingly shown their limitations in the face of modern cyber threats and evolving work environments. 
+
+Traditional security models operate under the assumption that everything inside an organisation’s network can be trusted. However, this assumption has become flawed due to the rising sophistication of cyber attacks and the fact that insiders can often be threats themselves.
 
 In the face of evolving cyber threats and changing work environments, traditional perimeter-based security models are proving inadequate. Enter ZTNA, a paradigm shift in cybersecurity that embodies the principle of “never trust, always verify.”  
   
-
 ### <mark style="background: #BABD00;">Least Privilege Access</mark>
 
-In a Zero Trust architecture, access controls are dynamically and strictly enforced to ensure robust security. Let's explore the five distinct levels of access that are particularly relevant within a Zero Trust framework:
+In a Zero Trust architecture, access controls are dynamically and strictly enforced to ensure robust security. 
 
-1. **No Access:** This is the default setting for any user or device. Access is not granted until explicit authentication and authorisation are achieved, reinforcing the security from the ground up.
-
-2. **Public Access:** This level allows users to access publicly available information or resources without the need for authentication. It's designed for maximum accessibility while still maintaining overarching security protocols.
-
-3. **General Access:** Within an organisation, general access typically includes access to basic organisational tools such as email. This level is meant for day-to-day operational activities by regular staff members.
-
-4. **Administrative Access:** Reserved for IT and security personnel, this is the highest level of access. It includes comprehensive privileges over all systems and applications, enabling these authorised users to modify, delete, or configure high-level settings as required for system management and security.
-
-5. **Privileged Access:** At this level, users and systems are granted only the minimum levels of access—or permissions—necessary to perform specific functions. This careful allocation of privileges is crucial for minimizing the attack surface and limiting the potential damage from security breaches or insider threats. This foundational principle of granting the least privilege necessary to complete your tasks is the core of the Zero Trust model.
+<mark style="background: #BABD00;">The five distinct levels of access that are particularly relevant within a Zero Trust framework:</mark>
+1. <mark style="background: #BABD00;">No Access:</mark> This is the default setting for any user or device. Access is not granted until explicit authentication and authorisation are achieved, reinforcing the security from the ground up.
+2. <mark style="background: #BABD00;">Public Access:</mark> This level allows users to access publicly available information or resources without the need for authentication. It's designed for maximum accessibility while still maintaining overarching security protocols.
+3. <mark style="background: #BABD00;">General Access:</mark> Within an organisation, general access typically includes access to basic organisational tools such as email. This level is meant for day-to-day operational activities by regular staff members.
+4. <mark style="background: #BABD00;">Administrative Access:</mark> Reserved for IT and security personnel, this is the highest level of access. It includes comprehensive privileges over all systems and applications, enabling these authorised users to modify, delete, or configure high-level settings as required for system management and security.
+5. <mark style="background: #BABD00;">Privileged Access:</mark> At this level, users and systems are granted only the minimum levels of access—or permissions—necessary to perform specific functions. This careful allocation of privileges is crucial for minimising the attack surface and limiting the potential damage from security breaches or insider threats. This foundational principle of granting the least privilege necessary to complete your tasks is the core of the Zero Trust model.
 
 Each of these access levels plays a vital role in the enforcement of Zero Trust principles, ensuring that security is maintained through meticulous control over who can access what within your network.
 
@@ -2670,20 +2723,21 @@ Consequently, Zero Trust protocols strictly limit access privileges to only thos
 
 Although this model imposes stricter access controls, it streamlines your organisation’s cybersecurity framework, facilitating a more manageable and secure system environment. This enhanced security architecture is crucial for safeguarding your data and assets.  
   
-
 ### <mark style="background: #BABD00;">Risk Mitigation</mark>
 
-To effectively minimize the blast radius within a network, the Zero Trust framework advocates for an 'assume breach' approach. By segmenting the network into smaller, secure zones, this strategy enhances control over access and sharply curtails the possibility for threats to move laterally within the system.
+To effectively minimise the blast radius within a network, the Zero Trust framework advocates for an 'assume breach' approach. By segmenting the network into smaller, secure zones, this strategy enhances control over access and sharply curtails the possibility for threats to move laterally within the system.
 
-This segmentation not only restricts access to sensitive areas but also contains potential breaches to isolated segments, dramatically reducing the overall risk and impact of security threats. This proactive and compartmentalized approach is essential for robustly defending against and swiftly responding to cybersecurity threats.
-
-As our VP of engineering would explain:
+This segmentation not only restricts access to sensitive areas but also contains potential breaches to isolated segments, dramatically reducing the overall risk and impact of security threats. This proactive and compartmentalised approach is essential for robustly defending against and swiftly responding to cybersecurity threats.
 
 "Imagine your computer network is like a city, and each service or application is a building within that city. The 'blast radius' refers to how much damage a potential security breach could cause—just like how far the impact of an explosion might reach in a real city.
 
-In cybersecurity, if a hacker gains unauthorised access to part of the network, the blast radius is the extent to which they can move from that entry point to other parts of the network. With a larger blast radius, hackers can access more data and cause more damage. By limiting the blast radius, you're essentially building walls or barriers between different parts of your "city" (or network). If one barrier is compromised, only those within that area would be impacted. The damage doesn't spread to other buildings behind other barriers."
+In cybersecurity, if a hacker gains unauthorised access to part of the network, the blast radius is the extent to which they can move from that entry point to other parts of the network. 
 
-TL;DR: the blast radius in cybersecurity is about the damage a breach can cause in a network. Strategies like network segmentation contain breaches and minimise this damage.
+With a larger blast radius, hackers can access more data and cause more damage. By limiting the blast radius, you're essentially building walls or barriers between different parts of your "city" (or network). 
+
+If one barrier is compromised, only those within that area would be impacted. The damage doesn't spread to other buildings behind other barriers."
+
+<mark style="background: #BABD00;">TL;DR:</mark> the blast radius in cybersecurity is about the damage a breach can cause in a network. Strategies like network segmentation contain breaches and minimise this damage.
 
 # <mark style="background: #BABD00;">21 Lab Notes CA2</mark>
 
@@ -2693,7 +2747,7 @@ TL;DR: the blast radius in cybersecurity is about the damage a breach can cause 
 
 "Docker is a set of platform as a service (PaaS) products that use OS-level virtualisation to deliver software in packages called containers." - [from Wikipedia](https://en.wikipedia.org/wiki/Docker_(software)).
 
-So stripping the jargon we get two definitions:
+<mark style="background: #BABD00;">So stripping the jargon we get two definitions:</mark>
 1. Docker is a set of tools to deliver software in containers.
 2. Containers are packages of software.
 
@@ -2714,7 +2768,9 @@ API Gateway sits in front of a deployed backend service and handles all incoming
 
 ### <mark style="background: #BABD00;">Pub/Sub: Qwik Start - Console</mark>
 
-Pub/Sub is a messaging service for exchanging event data among applications and services. A producer of data publishes messages to a Pub/Sub topic. A consumer creates a subscription to that topic. Subscribers either pull messages from a subscription or are configured as webhooks for push subscriptions. Every subscriber must acknowledge each message within a configurable window of time.
+Pub/Sub is a messaging service for exchanging event data among applications and services. A producer of data publishes messages to a Pub/Sub topic. A consumer creates a subscription to that topic. 
+
+Subscribers either pull messages from a subscription or are configured as webhooks for push subscriptions. Every subscriber must acknowledge each message within a configurable window of time.
 
 A publisher application creates and sends messages to a topic. Subscriber applications create a subscriber to a topic to receive messages from it.
 
@@ -2746,7 +2802,11 @@ External passthrough Network Load Balancers are regional, layer 4 load balancers
 - Google Cloud VMs with external IPs
 - Google Cloud VMs that have internet access through Cloud NAT or instance-based NAT
 
-External passthrough Network Load Balancers are _not proxies_. The load balancer itself doesn't terminate user connections. Load-balanced packets are sent to the backend VMs with their source and destination IP addresses, protocol, and, if applicable, ports, unchanged. The backend VMs then terminate user connections. Responses from the backend VMs go directly to the clients, not back through the load balancer. This process is known as direct server return (DSR).
+External passthrough <mark style="background: #BABD00;">Network Load Balancers</mark> are <mark style="background: #BABD00;">not proxies</mark>. The load balancer itself doesn't terminate user connections. 
+
+Load-balanced packets are sent to the backend VMs with their source and destination IP addresses, protocol, and, if applicable, ports, unchanged. The backend VMs then terminate user connections. 
+
+Responses from the backend VMs go directly to the clients, not back through the load balancer. This process is known as direct server return (DSR).
 
 <mark style="background: #BABD00;">Backend service-based external passthrough Network Load Balancers support the following features:</mark>
 - <mark style="background: #BABD00;">Managed and unmanaged instance group backends.</mark> Backend service-based external passthrough Network Load Balancers support both managed and unmanaged instance groups as backends. Managed instance groups automate certain aspects of backend management and provide better scalability and reliability as compared to unmanaged instance groups.
@@ -2759,7 +2819,7 @@ External passthrough Network Load Balancers are _not proxies_. The load balancer
 - <mark style="background: #BABD00;">Support for non-legacy health checks:</mark> Backend service-based external passthrough Network Load Balancers let you use [health checks](https://cloud.google.com/load-balancing/docs/network/networklb-backend-service#health-checks) that match the type of traffic (TCP, SSL, HTTP, HTTPS, or HTTP/2) that they are distributing.
 - <mark style="background: #BABD00;">Google Cloud Armor integration:</mark> Google Cloud Armor supports advanced network DDoS protection for external passthrough Network Load Balancers. For more information, see [Configure advanced network DDoS protection](https://cloud.google.com/armor/docs/advanced-network-ddos).
 - <mark style="background: #BABD00;">GKE integration:</mark> If you are building applications in GKE, we recommend that you use the built-in [GKE Service controller](https://cloud.google.com/kubernetes-engine/docs/concepts/service), which deploys Google Cloud load balancers on behalf of GKE users. This is the same as the standalone load balancing architecture described on this page, except that its lifecycle is fully automated and controlled by GKE.
-    
+
 <mark style="background: #BABD00;">Related GKE documentation:</mark> 
 - [LoadBalancer Service concepts](https://cloud.google.com/kubernetes-engine/docs/concepts/service-load-balancer)
 - [Exposing applications using Services](https://cloud.google.com/kubernetes-engine/docs/how-to/exposing-apps)
@@ -2768,7 +2828,10 @@ External passthrough Network Load Balancers are _not proxies_. The load balancer
 
 This document introduces the concepts that you need to understand how to configure an external Application Load Balancer.
 
-An external Application Load Balancer is a proxy-based Layer 7 load balancer that enables you to run and scale your services behind a single external IP address. The external Application Load Balancer distributes HTTP and HTTPS traffic to backends hosted on a variety of Google Cloud platforms (such as Compute Engine, Google Kubernetes Engine (GKE), Cloud Storage, and so on), as well as external backends connected over the internet or via hybrid connectivity. For details, see [Application Load Balancer overview: Use cases](https://cloud.google.com/load-balancing/docs/application-load-balancer#use-cases).
+An external Application Load Balancer is a proxy-based Layer 7 load balancer that enables you to run and scale your services behind a single external IP address. 
+
+The external Application Load Balancer distributes HTTP and HTTPS traffic to backends hosted on a variety of Google Cloud platforms (such as Compute Engine, Google Kubernetes Engine (GKE), Cloud Storage, and so on), as well as external backends connected over the internet or via hybrid connectivity. 
+For details, see [Application Load Balancer overview: Use cases](https://cloud.google.com/load-balancing/docs/application-load-balancer#use-cases).
 
 <mark style="background: #BABD00;">Modes of operation:</mark>
 - <mark style="background: #BABD00;">Global external Application Load Balancer</mark> This is a global load balancer that is implemented as a managed service on [Google Front Ends (GFEs)](https://cloud.google.com/docs/security/infrastructure/design#google-frontend-service). It uses the open-source [Envoy proxy](https://www.envoyproxy.io/) to support [advanced traffic management](https://cloud.google.com/load-balancing/docs/https/traffic-management-global) capabilities such as traffic mirroring, weight-based traffic splitting, request/response-based header transformations, and more.
@@ -2777,7 +2840,11 @@ An external Application Load Balancer is a proxy-based Layer 7 load balancer tha
 
 ### <mark style="background: #BABD00;">IAM Custom Roles:</mark>
 
-Cloud IAM provides the right tools to manage resource permissions with minimum fuss and high automation. You don't directly grant users permissions. Instead, you grant them roles, which bundle one or more permissions. This allows you to map job functions within your company to groups and roles. Users get access only to what they need to get the job done, and admins can easily grant default permissions to entire groups of users.
+Cloud IAM provides the right tools to manage resource permissions with minimum fuss and high automation. 
+
+You don't directly grant users permissions. Instead, you grant them roles, which bundle one or more permissions. 
+
+This allows you to map job functions within your company to groups and roles. Users get access only to what they need to get the job done, and admins can easily grant default permissions to entire groups of users.
 
 <mark style="background: #BABD00;">There are two kinds of roles in Cloud IAM:</mark>
 - Predefined Roles
@@ -2785,9 +2852,11 @@ Cloud IAM provides the right tools to manage resource permissions with minimum f
 
 <mark style="background: #BABD00;">Predefined roles:</mark> are created and maintained by Google. Their permissions are automatically updated as necessary, such as when new features or services are added to Google Cloud.
 
-**Custom roles** are user-defined, and allow you to bundle one or more supported permissions to meet your specific needs. Custom roles are not maintained by Google; when new permissions, features, or services are added to Google Cloud, your custom roles will not be updated automatically. You create a custom role by combining one or more of the available Cloud IAM permissions. Permissions allow users to perform specific actions on Google Cloud resources.
+<mark style="background: #BABD00;">Custom roles</mark> are user-defined, and allow you to bundle one or more supported permissions to meet your specific needs. Custom roles are not maintained by Google; when new permissions, features, or services are added to Google Cloud, your custom roles will not be updated automatically. 
 
-Cloud IAM also provides the ability to create customized Cloud IAM roles. You can create a custom Cloud IAM role with one or more permissions and then grant that custom role to users. Cloud IAM provides a UI and API for creating and managing custom roles.
+You create a custom role by combining one or more of the available Cloud IAM permissions. Permissions allow users to perform specific actions on Google Cloud resources.
+
+Cloud IAM also provides the ability to create customised Cloud IAM roles. You can create a custom Cloud IAM role with one or more permissions and then grant that custom role to users. Cloud IAM provides a UI and API for creating and managing custom roles.
 
 <mark style="background: #BABD00;">Key Point:</mark> Custom roles enable you to enforce the principle of least privilege, ensuring that the user and service accounts in your organisation have only the permissions essential to performing their intended functions.
 
@@ -2805,7 +2874,11 @@ You create a custom role by combining one or more of the available Cloud IAM per
 
 ### <mark style="background: #BABD00;">Hosting a Web App on Google Cloud Using Compute Engine</mark>
 
-There are many ways to deploy web sites within Google Cloud. Each solution offers different features, capabilities, and levels of control. Compute Engine offers a deep level of control over the infrastructure used to run a web site, but also requires a little more operational management compared to solutions like Google Kubernetes Engines (GKE), App Engine, or others. With Compute Engine, you have fine-grained control of aspects of the infrastructure, including the virtual machines, load balancers, and more.
+There are many ways to deploy web sites within Google Cloud. Each solution offers different features, capabilities, and levels of control. 
+
+Compute Engine offers a deep level of control over the infrastructure used to run a web site, but also requires a little more operational management compared to solutions like Google Kubernetes Engines (GKE), App Engine, or others. 
+
+With Compute Engine, you have fine-grained control of aspects of the infrastructure, including the virtual machines, load balancers, and more.
 
 <mark style="background: #BABD00;">Note:</mark> In a production environment, you may want to separate each microservice into their own instance and instance group to allow them to scale independently.
 
@@ -2815,9 +2888,11 @@ There are many ways to deploy web sites within Google Cloud. Each solution offer
 
 ### <mark style="background: #BABD00;">VPC Networking Fundamentals</mark>
 
-Google Cloud Virtual Private Cloud (VPC) provides networking functionality to Compute Engine virtual machine (VM) instances, Kubernetes Engine containers and App Engine Flex. In other words, without a VPC network you cannot create VM instances, containers or App Engine applications. Therefore, each Google Cloud project has a **default** network to get you started.
+Google Cloud <mark style="background: #BABD00;">Virtual Private Cloud (VPC)</mark> provides networking functionality to Compute Engine virtual machine (VM) instances, Kubernetes Engine containers and App Engine Flex. In other words, without a VPC network you cannot create VM instances, containers or App Engine applications. Therefore, each Google Cloud project has a <mark style="background: #BABD00;">default</mark> network to get you started.
 
-You can think of a VPC network the same way you would think of a physical network, except that it is virtualised within Google Cloud. A VPC network is a global resource which consists of a list of regional virtual subnetworks (subnets) in data centres, all connected by a global wide area network (WAN). VPC networks are logically isolated from each other in Google Cloud.
+You can think of a VPC network the same way you would think of a physical network, except that it is virtualised within Google Cloud. 
+
+A VPC network is a global resource which consists of a list of regional virtual subnetworks (subnets) in data centres, all connected by a global wide area network (WAN). VPC networks are logically isolated from each other in Google Cloud.
 
 Routes tell VM instances and the VPC network how to send traffic from an instance to a destination, either inside the network or outside of Google Cloud.
 
@@ -2828,10 +2903,10 @@ Each VPC network implements a distributed virtual firewall that you can configur
 Every VPC network has two implied firewall rules that block all incoming connections and allow all outgoing connections.
 
 <mark style="background: #BABD00;">Notice that there are 4 Ingress firewall rules for the default network:</mark>
-- default-allow-icmp
-- default-allow-internal
-- default-allow-rdp
-- default-allow-ssh
+- ``default-allow-icmp``
+- ``default-allow-internal``
+- ``default-allow-rdp``
+- ``default-allow-ssh``
 
 These firewall rules allow <mark style="background: #BABD00;">ICMP</mark>, <mark style="background: #BABD00;">RDP</mark> and <mark style="background: #BABD00;">SSH</mark> ingress traffic from anywhere (0.0.0.0/0) and all **TCP**, **UDP** and **ICMP** traffic within the network (10.128.0.0/9). The <mark style="background: #BABD00;">Targets</mark>, <mark style="background: #BABD00;">Source filters</mark>, <mark style="background: #BABD00;">Protocols/ports</mark> and <mark style="background: #BABD00;">Action</mark> columns explain these rules.
 
@@ -2841,9 +2916,15 @@ When a stopped instance is started again, a new ephemeral external IP address is
 
 ### <mark style="background: #BABD00;">Service Accounts and Roles: Fundamentals</mark>
 
-Service accounts are a special type of Google account that grant permissions to virtual machines instead of end users. Service accounts are primarily used to ensure safe, managed connections to APIs and Google Cloud services. Granting access to trusted connections and rejecting malicious ones is a must-have security feature for any Google Cloud project.
+Service accounts are a special type of Google account that grant permissions to virtual machines instead of end users. 
 
-A service account is a special Google account that belongs to your application or a [virtual machine](https://cloud.google.com/compute/docs/instances/) (VM) instead of an individual end user. Your application uses the service account to [call the Google API of a service](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#authorisingrequests), so that the users aren't directly involved.
+Service accounts are primarily used to ensure safe, managed connections to APIs and Google Cloud services. 
+
+Granting access to trusted connections and rejecting malicious ones is a must-have security feature for any Google Cloud project.
+
+A service account is a special Google account that belongs to your application or a [virtual machine](https://cloud.google.com/compute/docs/instances/) (VM) instead of an individual end user. 
+
+Your application uses the service account to [call the Google API of a service](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#authorisingrequests), so that the users aren't directly involved.
 
 For example, a Compute Engine VM may run as a service account, and that account can be given permissions to access the resources it needs. This way the service account is the identity of the service, and the service account's permissions control which resources the service can access.
 
@@ -2866,7 +2947,9 @@ An example of a Google-managed service account is a Google API service account i
 
 `PROJECT_NUMBER@cloudservices.gserviceaccount.com`
 
-This service account is designed specifically to run internal Google processes on your behalf and is not listed in the **Service Accounts** section of the console. By default, the account is automatically granted the project editor role on the project and is listed in the **IAM** section of the console. This service account is deleted only when the project is deleted.
+This service account is designed specifically to run internal Google processes on your behalf and is not listed in the <mark style="background: #BABD00;">Service Accounts</mark> section of the console. 
+
+By default, the account is automatically granted the project editor role on the project and is listed in the <mark style="background: #BABD00;">IAM</mark> section of the console. This service account is deleted only when the project is deleted.
 
 <mark style="background: #BABD00;">Understanding IAM roles:</mark>
 When an identity calls a Google Cloud API, Google Cloud Identity and Access Management requires that the identity has the appropriate permissions to use the resource. You can grant permissions by granting roles to a user, a group, or a service account.
