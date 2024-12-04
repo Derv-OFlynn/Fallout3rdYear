@@ -22,7 +22,11 @@
 
 <mark style="background: #BABD00;">Defense-in-Depth:</mark> It is a risk management strategy which provides multiple layers of defense against attacks.  
 
-<mark style="background: #BABD00;">Trusted Computing Base (TCB):</mark> TCB of an information system is the set of all components that are critical to its security. Vulnerabilities occurring inside the TCB might jeopardise the security of the entire system. This way, TCB essentially defines a boundary for security-critical and non critical parts of an information system; for example, kernel services of an OS are more critical for its security than application level services. Therefore, kernel services are part of a TCB for an OS, whereas application level services need not be a part of it.  
+<mark style="background: #BABD00;">Trusted Computing Base (TCB):</mark> 
+- TCB of an information system is the set of all components that are critical to its security.
+- Vulnerabilities occurring inside the TCB might jeopardise the security of the entire system. 
+- This way, TCB essentially defines a boundary for security-critical and non critical parts of an information system; for example, kernel services of an OS are more critical for its security than application level services. 
+- Therefore, kernel services are part of a TCB for an OS, whereas application level services need not be a part of it.  
 
 <mark style="background: #BABD00;">Encryption:</mark> It is the conversion of data into a form that cannot be easily understood by unauthorised users. Decryption is the process of converting encrypted data back into its original form. Encryption is used to enforce confidentiality, privacy, and integrity.  
 
@@ -60,7 +64,7 @@ Authorisation is a process to grant specific access rights to a user on resource
 
 Finally, auditing is a process to evaluate the effectiveness of security enforcement mechanisms.
 
-<mark style="background: #BABD00;">Observability</mark> is the managing, monitoring and observing  your log to see if something malicious is happening.
+<mark style="background: #BABD00;">Observability</mark> is the managing, monitoring and observing of your log to see if something malicious is happening.
 
 ### <mark style="background: #BABD00;">Multi-factor Authentication:</mark>
 
@@ -98,7 +102,11 @@ DID gives an organisation additional time to detect and respond to an attack. Re
 4. <mark style="background: #BABD00;">Compute Security</mark> (Hardening, Anti Virus, etc.)  
 5. <mark style="background: #BABD00;">Storage Security</mark> (Encryption, Zoning, etc.)
 
-Defense-in-depth represents the use of multiple security defenses to help mitigate the risk of security threats if one component of the defense is being compromised. An example could be an antivirus software installed on individual VM when there is already a virus protection on the firewalls within the same environment. Different security products from multiple vendors may be deployed to defend different potential vulnerable resources within the network.  
+Defense-in-depth represents the use of multiple security defenses to help mitigate the risk of security threats if one component of the defense is being compromised. 
+
+An example could be an antivirus software installed on individual VM when there is already a virus protection on the firewalls within the same environment. 
+
+Different security products from multiple vendors may be deployed to defend different potential vulnerable resources within the network.  
 
 Defense-in-depth is an information assurance strategy in which multiple layers of defense are  placed throughout the system. For this reason, it is also known as a “layered approach to security”.  
 
@@ -189,7 +197,7 @@ For a CSP, the <mark style="background: #BABD00;">key security concerns</mark> a
 
 These risks are especially more severe in case of Public Cloud environment. This is because, in Public Cloud, services can be used by competing clients as compared to Private Clouds. Also, the number of Cloud users are much higher in Public Clouds.  
 
-The ‘Velocity-of-attack’ in the Cloud refers to a situation where any existing security threat in the Cloud spreads more rapidly and has larger impact than that in the Classic Data Centre (CDC) environments.  
+The <mark style="background: #BABD00;">Velocity-of-attack</mark> in the Cloud refers to a situation where any existing security threat in the Cloud spreads more rapidly and has larger impact than that in the Classic Data Centre (CDC) environments.  
 
 Information assurance, data privacy, and ownership are among the key Cloud security concerns for its users.  
 
@@ -338,7 +346,7 @@ The process of breaking out and interacting with the hypervisor is called a VM e
 
 <mark style="background: #BABD00;">Hyperjacking:</mark> It enables an attacker to install a rogue hypervisor or Virtual Machine Monitor (VMM) that can take control of the underlying server resources
 
-An attacker can run unauthorised applications on a guest OS without the OS realizing it  
+An attacker can run unauthorised applications on a guest OS without the OS realising it  
 
 An attacker could control the interaction between the VMs and the underlying server  
 
@@ -412,7 +420,6 @@ In a virtualised environment, a rough VM could be used to launch DoS attack agai
 - Intrusion detection in VDC and Cloud  
 - Physical Security of the premises  
 - Access Control and Identity management services in Cloud
-
 
 ### <mark style="background: #BABD00;">Security at Compute Level:</mark>
 
@@ -559,7 +566,7 @@ Inappropriate use of virtual network resources and bandwidth consumption in VM-t
 
 ### <mark style="background: #BABD00;">Security at Network Level: Demilitarised Zone:</mark>
 
-<mark style="background: #BABD00;">Demilitarized Zone (DMZ):</mark> It is a physical or logical (sub)network that limits the exposure of the nodes in the internal network from external networks.
+<mark style="background: #BABD00;">Demilitarised Zone (DMZ):</mark> It is a physical or logical (sub)network that limits the exposure of the nodes in the internal network from external networks.
 
 <mark style="background: #BABD00;">Adds additional layer of security against external attacks:</mark>  
 - An attacker has access only to the DMZ, rather than any other part of the network  
@@ -626,8 +633,6 @@ This may include using separate LUNs for VM components and for VM data and segre
 <mark style="background: #BABD00;">Encryption of Data-at-rest:</mark> 
 - Provides confidentiality and integrity services  
 - Reduces legal liabilities of a CSP due to an unauthorised disclosure of data on its Cloud because even if the encrypted data becomes accessible to an unauthorised user, it cannot be used in any meaningful way.  
-
-
 
 <mark style="background: #BABD00;">Full disk encryption is the key method used for encrypting data-at-rest residing on a disk:</mark> 
 - Full disk encryption employs software application or built-in hardware capability to encrypt every bit of data that goes on a disk or disk volume. 
@@ -921,7 +926,7 @@ To plan for an effective BC solution in a VDC, administrators need to identify p
 - Apart from physical storage, virtual disks are also subject to potential failure. However failures in virtual disks are often due to errors in VMFS, which would be either due to incorrect operation of an hypervisor or a security attack on the file system itself. Failure in VMFS or virtual disk would impact all the applications in the associated VMs.  
 
 <mark style="background: #BABD00;">SPOF in Network Infrastructure:</mark> 
-- Based upon the underlying network infrastructure – SAN, NAS, or converged network type (for example, FCoE, IP SAN, etc.) – the supporting components (NICs, communication paths, interconnect device, etc.) might fail and thus disrupt communication between the devices. Apart from physical network component, virtual network is also subject to potential failures. These failures in a virtual network could be due to incorrect design, the configuration of the applications realizing these virtual components, or due to security attacks on these applications.  
+- Based upon the underlying network infrastructure – SAN, NAS, or converged network type (for example, FCoE, IP SAN, etc.) – the supporting components (NICs, communication paths, interconnect device, etc.) might fail and thus disrupt communication between the devices. Apart from physical network component, virtual network is also subject to potential failures. These failures in a virtual network could be due to incorrect design, the configuration of the applications realising these virtual components, or due to security attacks on these applications.  
 - Failure in a virtual network component results in the disruption of communication between the VMs using that component for their communication.  
 
 <mark style="background: #BABD00;">Site:</mark> 
@@ -952,7 +957,7 @@ Because of the large number of components involved in the overall operation of a
 ![](https://i.imgur.com/eU8bROe.png)
 
 <mark style="background: #BABD00;">Clustered Servers:</mark>
-- Groups Of physical servers are combined and managed as an aggregated compute resource pool
+- Groups of physical servers are combined and managed as an aggregated compute resource pool
 - Provides protection from server and hypervisor failures
 
 One of the important techniques to protect compute infrastructure, for providing high availability of VMs and their data in a VDC environment, is clustering.  
@@ -1039,8 +1044,7 @@ The discussion in this lesson will focus on protecting physical network infrastr
 
 ### <mark style="background: #BABD00;">Protecting Network: NIC Teaming:</mark>
 
-Enables failover in case of physical NIC failures/link
-outages. Supports the IEEE 802.1AX-2008 link aggregation standard
+Enables failover in case of physical NIC failures/link outages. Supports the IEEE 802.1AX-2008 link aggregation standard
 
 <mark style="background: #BABD00;">VMS unaware of the underlying physical NICs:</mark>
 - Packets sent to the logical NIC team are dispatched to one of the physical NICs
@@ -1099,7 +1103,7 @@ A VDC site failover process also depends upon other capabilities, including VM r
 <mark style="background: #BABD00;">Backup optimisation:</mark>
 - Deduplication
 
-De-duplication is when a backup software identifies duplicate files and stores only one copy of it in order to minimise storage use.
+<mark style="background: #BABD00;">De-duplication</mark> is when a backup software identifies duplicate files and stores only one copy of it in order to minimise storage use.
 
 A backup operation in a VDC environment often requires backing up the VM state. The VM state includes the state of its virtual disks, memory (i.e. RAM), network configuration, as well as the power state (on, off, or suspended). A virtual disk includes all the information typically backed up (OS, applications, and data). As with physical machines, a VM backup needs to be periodically updated with respect to its source, in order to recover from human or technical errors.  
 
@@ -1205,7 +1209,7 @@ There are two main methods to replicate VMs. The first approach uses compute bas
 
 For example, using compute based replication, a VM is replicated from a local disk drive to a storage array in a different location. Compute based replication creates either a VM snapshot, or a VM clone, or a VM template – these will be discussed next.  
 
-Another method is to use storage array to replicate the VM either to an array at the primary site itself or to a remote array (for example, iSCSI, or Fibre channel, or NAS storage array) at the secondary site. This method is similar to the traditional array based replication method used in a CDC. It works by copying LUNs of the source VM to the target array. Replication to a remote array may be either synchronous or asynchronous.
+Another method is to use a storage array to replicate the VM either to an array at the primary site itself or to a remote array (for example, iSCSI, or Fibre channel, or NAS storage array) at the secondary site. This method is similar to the traditional array based replication method used in a CDC. It works by copying LUNs of the source VM to the target array. Replication to a remote array may be either synchronous or asynchronous.
 
 ### <mark style="background: #BABD00;">VM Snapshot:</mark>
 
@@ -2279,8 +2283,8 @@ Complex products and services may have sophisticated deployment pipelines; a sim
 ![](https://i.imgur.com/VDuDKkw.png)
 
 <mark style="background: #BABD00;">Conceptual diagram:</mark>
-<!--⚠️Imgur upload failed, check dev console-->
-![[Pasted image 20241129135127.png]]
+![](https://i.imgur.com/onfd3YF.png)
+
 
 ### <mark style="background: #BABD00;">Deployment Pipeline – Release Candidates:</mark> 
 
@@ -2291,7 +2295,6 @@ The job of the deployment pipeline is to catch known issues.
 If we can’t detect any known problems, we should feel comfortable releasing any packages that have gone through it.  
 
 If we aren’t, or if we discover defects later, it means we need to improve our pipeline, perhaps adding or updating some tests.
-
 
 ### <mark style="background: #BABD00;">Deployment Pipeline – Parallelise the Activities.</mark>  
 
@@ -2930,7 +2933,7 @@ For example, a Compute Engine VM may run as a service account, and that account 
 
 A service account is identified by its email address, which is unique to the account.
 
- <mark style="background: #BABD00;">User-managed service accounts</mark>
+ <mark style="background: #BABD00;">User-managed service accounts:</mark>
 When you create a new Cloud project using Google Cloud console and if Compute Engine API is enabled for your project, a Compute Engine Service account is created for you by default. It is identifiable using the email:
 
 `PROJECT_NUMBER-compute@developer.gserviceaccount.com`
