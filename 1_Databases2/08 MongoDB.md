@@ -309,4 +309,251 @@ Website has the following requirements:
 }
 ```
 
-# <mark style="background: #FF5582A6;">SLIDE 35</mark>
+### <mark style="background: #69E772;">Some considerations while designing Schema in MongoDB</mark>
+
+Design your schema according to user requirements.  
+
+Combine objects into one document if you will use them together. Otherwise separate them (but make sure there should not be need of joins).  
+
+Duplicate the data (but limited) because disk space is cheap as compare to compute time.  
+
+Do joins while write, not on read.  
+
+Optimize your schema for most frequent use cases.  
+
+Do complex aggregation in the schema.
+
+### <mark style="background: #69E772;">Before Index:</mark>
+ 
+ <mark style="background: #69E772;">What does a database normally do when we query?</mark>  
+- MongoDB must scan <mark style="background: #69E772;">every</mark> document.  
+- Inefficient because process <mark style="background: #69E772;">large volume</mark> of data
+
+![](https://i.imgur.com/P1PL932.png)
+
+### <mark style="background: #69E772;">Definition of Index:</mark>
+
+Indexes are special data structures that store a small portion of the <mark style="background: #69E772;">collection’s</mark> data set in an easy to traverse form.
+
+![](https://i.imgur.com/CJ9T74i.png)
+
+### <mark style="background: #69E772;">Index in MongoDB:</mark>  
+
+<mark style="background: #69E772;">Creation index:</mark>  ``db.users. createIndex( { score: 1 } )``  
+
+<mark style="background: #69E772;">Show existing indexes:</mark> ``db.users.getIndexes()``  
+
+<mark style="background: #69E772;">Drop index:</mark>  
+``db.users.dropIndex( {score: 1}``
+
+<mark style="background: #69E772;">Types:</mark>    
+- Single Field Indexes  
+- Compound Field Indexes  
+- Multikey Indexes
+
+<mark style="background: #69E772;">Single Field Indexes:</mark>  
+``db.users. createIndex( { score: 1 } )``
+
+![](https://i.imgur.com/885a68a.png)
+
+<mark style="background: #69E772;">Compound Field Indexes:</mark>  
+``db.users. createIndex( { userid:1, score: -1 } )``
+
+![](https://i.imgur.com/SRzjtb7.png)
+
+<mark style="background: #69E772;">Multikey Indexes:</mark>  
+``db.users.createIndex( { addr.zip:1} )``
+
+![](https://i.imgur.com/YItYx1r.png)
+
+### <mark style="background: #69E772;">Aggregation:</mark>  
+
+Operations that process data records and return computed results.  
+
+MongoDB provides aggregation operations  
+
+Running data aggregation on the mongod instance simplifies application code and limits resource requirements.  
+
+<mark style="background: #69E772;">Aggregation can be done with:</mark>  
+- Pipeline ($group operator)  
+- ``Map_reduce``
+
+### <mark style="background: #69E772;">Pipelines:</mark>
+
+MongoDB’s <mark style="background: #69E772;">aggregation framework</mark> is modelled on the concept of data processing pipelines. Documents enter a multi-stage pipeline that transforms the documents into an aggregated result.  
+
+The most basic pipeline stages provide <mark style="background: #69E772;">filters</mark> that operate like queries and <mark style="background: #69E772;">document transformations</mark> that modify the form of the output document.  
+
+Other pipeline operations provide tools for grouping and sorting documents by specific field or fields as well as tools for aggregating the contents of arrays  
+
+Pipeline stages can use <mark style="background: #69E772;">operators</mark> for tasks such as calculating the average or concatenating a string.  
+
+Pipeline is the preferred method for data aggregation in MongoDB.
+
+### <mark style="background: #69E772;">Aggregation using pipeline:</mark>
+
+![](https://i.imgur.com/lmKakx0.png)
+
+### <mark style="background: #69E772;">Some Aggregator Operators:</mark>
+
+![](https://i.imgur.com/cPzxwN3.png)
+
+### <mark style="background: #69E772;">$count // example</mark> 
+
+```JSON
+{ "_id" : 1, "subject" : "History", "score" : 88 }  
+{ "_id" : 2, "subject" : "History", "score" : 92 }  
+{ "_id" : 3, "subject" : "History", "score" : 97 }  
+{ "_id" : 4, "subject" : "History", "score" : 71 }  
+{ "_id" : 5, "subject" : "History", "score" : 79 }  
+{ "_id" : 6, "subject" : "History", "score" : 83 }
+``` 
+
+```SQL
+db.scores.aggregate(  
+[  
+{ $match: { score: { $gt: 80} } },  
+{ $count: "passing_scores“ }  
+])  
+Output:  
+{ "passing_scores" : 4 }
+```
+
+```SQL
+db.test_db.find({gender: 'f'});  
+db.test_db.find({gender: 'm'});  
+db.test_db.find({gender: 'm', $or: [{nationality: 'english'}, {nationality:'american'}]});  
+db.test_db.find({gender: 'm', $or: [{nationality: 'english'},{nationality: 'american'}]}).sort({nationality: -1});  
+db.test_db.find({gender: 'm', $or: [{nationality: 'english'},{nationality: 'american'}]}).sort({nationality: -1, first: 1});  
+db.test_db.find({gender: 'm', $or: [{nationality: 'english'},{nationality: 'american'}]}).limit(2);  
+db.test_db.update({first: 'james', last: 'caan'}, {$set:{hair_colour: 'brown'}});  
+db.test_db.update({ nationality: "american" },{ $inc: { age: 2} })  
+db.test_db.aggregate( [ { $match: { 'age' : { '$gte' : 37 }}}, {$group: { _id: '$nationality', total : { $sum : 1} }}] );  
+db.test_db.aggregate( [ { $match: { 'age' : { '$gte' : 37 }}}, {$group: { _id: '$gender', total : { $sum : 1} }}] );  
+db.test_db.aggregate( [ {$group: { _id: '$gender', avg_age : { $avg : '$age'} }}] );
+```
+
+### <mark style="background: #69E772;">Documents Update:</mark>
+
+MongoDB does not allow to update a field by using an expression containing other fields of the collection  
+
+Therefore, you cannot write ``$field = $field + 1`` or something similar (as we did for SQL)  
+
+For numeric update, use the ``$inc`` operator with update function  
+
+Or.. JavaScript always an option!  
+
+Example:  
+```JSON
+{ _id: 1, item: "abc123", quantity: 10, metrics: { orders: 2, ratings: 3.5 } }  
+
+db.products.update( { item: "abc123" }, { $inc: { quantity: -2, "metrics.orders": 1 }})
+```
+
+### <mark style="background: #69E772;">Multiple Updates:</mark>
+
+Add {multi: true). It controls the ability of mongoDB to update more than one field in a single query  
+
+Try:  
+```JSON
+> db.pierpaolo.update({first: { $ne: "aa"} }, { $inc: {age : 2}})  
+
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })  
+
+db.pierpaolo.update({first: { $ne: "aa"} }, { $inc: {age : 2}},{multi: true})  
+WriteResult({ "nMatched" : 7, "nUpserted" : 0,"nModified" : 7 })
+```
+
+### <mark style="background: #69E772;">Mongo & JavaScript:</mark>
+
+You can store your commands in a js script and execute them with ``mongo js_file.js``
+
+### <mark style="background: #69E772;">Shell – Script Commands:</mark>
+
+![](https://i.imgur.com/uOutnWV.png)
+
+### <mark style="background: #69E772;">Cursors:</mark>
+
+```JavaScript
+var myCursor = db.inventory.find( { type: 'food' } );  
+
+while (myCursor.hasNext()) {  
+	print(tojson(myCursor.next())); }  
+
+myCursor.forEach(printjson);  
+
+var documentArray = myCursor.toArray();  
+var myDocument = documentArray[3];  
+
+var myDocument = myCursor[3];
+```
+
+### <mark style="background: #69E772;">Map Reduce:</mark>
+
+Algorithm (“template”) to perform distributed parallel computation  
+
+Used in MongoDB for performing distributed queries, for instance aggregated queries  
+
+MongoDB provides the function map-reduce  
+
+Map reduce is a concept from functional programming
+
+```JavaScript
+map even [3,4,5,6,7,9] = [4,6]
+```
+
+<mark style="background: #69E772;">Has two phases:</mark>  
+- A <mark style="background: #69E772;">map</mark> stage that processes each document and emits one or more objects for each input document  
+- A <mark style="background: #69E772;">reduce</mark> phase that combines the output of the map operation. 
+- An <mark style="background: #69E772;">optional</mark> finalise stage for final modifications to the result  
+
+Uses Custom JavaScript functions which provides greater flexibility but is less efficient and more complex than the aggregation pipeline  
+
+Can have output sets that exceed the 16 megabyte output limitation of the aggregation pipeline.
+
+```JSON
+db.collection( {  
+	mapReduce: <collection>,  
+	map: <function>,  
+	reduce: <function>,  
+	{  
+		out: <output>,  
+		query: <document>,  
+		sort: <document>,  
+		limit: <number>,  
+	}  
+	finalize: <function>,  
+	verbose: <boolean> 
+} )
+```
+
+![](https://i.imgur.com/1Glbnb6.png)
+
+<mark style="background: #69E772;">Map Reduce example:</mark>
+![](https://i.imgur.com/Ufvc0K6.png)
+![](https://i.imgur.com/qwK1NBZ.png)
+![](https://i.imgur.com/hF2J8nF.png)
+
+In MongoDB, map-reduce operations use custom JavaScript functions to <mark style="background: #69E772;">map</mark>, or associate, values to a key. If a key has multiple values mapped to it, the operation <mark style="background: #69E772;">reduces</mark> the values for the key to a single object.
+
+### <mark style="background: #69E772;">The Map and Emit Function:</mark>
+
+In MongoDB, the emit function is used within the MapReduce framework to output key-value pairs during the mapping phase. When you define a MapReduce operation, the map function iterates over each document in a collection, and emit allows you to specify a key and value to pass to the reduce function for further processing.  
+
+The map function is applied to each document in a collection. For each document, you use emit(key, value) to emit a key-value pair. These emitted pairs are then grouped by key.
+
+```JavaScript
+function() { ... emit(key, value); }
+```
+
+<mark style="background: #69E772;">The map function has the following requirements:</mark>  
+- In the map function, reference the current document as <mark style="background: #69E772;">this</mark> within the function.  
+- The map function should <mark style="background: #69E772;">not</mark> access the database for any reason.  
+- The map function should be pure, or have <mark style="background: #69E772;">no</mark> impact outside of the function (i.e. side effects.)  
+- The map function may optionally call ``emit(key,value)`` any number of times to create an output document associating key with value.
+
+<mark style="background: #69E772;">Reduce Function:</mark> The reduce function takes each unique key and an array of all values associated with that key (from the map phase).  
+
+The reduce function processes these values and reduces them to a single result for each unique key.  
+
+The reduce function performs an "aggregation".

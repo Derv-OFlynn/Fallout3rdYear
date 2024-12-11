@@ -93,3 +93,32 @@ Rules of relational databases: All attributes of an entity should be dependent o
 
 ![](https://i.imgur.com/WofrNGS.png)
 
+### <mark style="background: #69E772;">Exam:</mark>
+
+GraphDB and QIS/GIS are NOT in the exam. No RAID. They are only in labs
+
+3 questions, choose 2. Worth 50% each.
+
+Every question covers multiple topics
+
+No syntax given.
+
+Design questions present
+
+Will need to write SQL and simple Mongo queries
+
+Shared exam between 856/857/858
+
+<mark style="background: #69E772;">Topics:</mark>
+- RDBMS: Open questions like is it better to write triggers/procedure in the db or write them in the application.
+- Normalisation
+- Query plan and query execution:
+	- How to read and plana  query
+	- Sequential Scan vs index scan vs heap scan vs bitmap
+	- Join better than subqueries
+	- Where to put an index
+- Write SQL queries: Window functions. Will def be on exam as it was not in the syllabus last year.
+- MongoDB design advantages and disadvantages
+	- Embedding vs referencing
+	- JSON design
+	- MongoDB theory: Sharding vs replication / flexibility of design / base vs. ACID
